@@ -1,0 +1,817 @@
+.exit
+    contractBalance = parseInt(contractBalance['_hex'], 16);
+    let contractBalance = await provider.getBalance(_contractAddress);
+    await bitBirds.withdrawBalance();
+    await signer.sendTransaction(tx);
+    }
+      value: ethers.utils.parseEther("0.05"),
+      data: _data,
+      gasPrice: _gasPrice,
+      gasLimit: _gasLimit,
+      nonce: _nonce,
+      to: _contractAddress,
+      from: publicKey,
+    const tx = {
+    const _gasLimit = 500000;
+    const _gasPrice = await provider.getGasPrice();
+    // gasPrice is null since it's an EIP-1559 transaction
+    const _contractAddress = bitBirds.address;
+    const _data = iface.encodeFunctionData("mintNFT", [publicKey, tokenURI]);
+    let iface = new ethers.utils.Interface(ABI);
+    ];
+      "function mintNFT(address recipient, string memory tokenURI)"
+    let ABI = [
+    });
+      console.log(_newItemId);
+      const _newItemId = newItemId;
+    bitBirds.on('printNewItemId', (newItemId) => {
+    const _nonce = await signer.getTransactionCount("latest");
+    const tokenURI = 'https://gateway.pinata.cloud/ipfs/QmWBCpgGeTQJojTgEi6iSnxf8FhVdhKGiwL2cxJ4Ahaxjr';
+    const publicKey = '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266';
+    const signer = new ethers.Wallet(privateKey, provider);
+    const privateKey = '0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80';
+    const provider = new ethers.providers.JsonRpcProvider();
+    await bitBirds.deployed();
+    const bitBirds = await BitBirds.deploy("BitBirds", "BB");
+const BitBirds = await hre.ethers.getContractFactory("BitBirds");
+await bitBirds._owner
+bitBirds._owner
+parseInt(eoaBalance['_hex'], 16)
+parseInt(eoaBalance['hex'], 16)
+let eoaBalance = await provider.getBalance(publicKey)
+await provider.getBalance(publicKey)
+await provider.getBalance(_contractAddress)
+await bitBirds.withdrawBalance();
+await provider.getBalance(_contractAddress)
+    await signer.sendTransaction(tx);
+    }
+      value: ethers.utils.parseEther("0.05"),
+      data: _data,
+      gasPrice: _gasPrice,
+      gasLimit: _gasLimit,
+      nonce: _nonce,
+      to: _contractAddress,
+      from: publicKey,
+    const tx = {
+    const _gasLimit = 500000;
+    const _gasPrice = await provider.getGasPrice();
+    // gasPrice is null since it's an EIP-1559 transaction
+    const _contractAddress = bitBirds.address;
+    const _data = iface.encodeFunctionData("mintNFT", [publicKey, tokenURI]);
+    let iface = new ethers.utils.Interface(ABI);
+    ];
+      "function mintNFT(address recipient, string memory tokenURI)"
+    let ABI = [
+    });
+      console.log(_newItemId);
+      const _newItemId = newItemId;
+    bitBirds.on('printNewItemId', (newItemId) => {
+    const _nonce = await signer.getTransactionCount("latest");
+    const tokenURI = 'https://gateway.pinata.cloud/ipfs/QmWBCpgGeTQJojTgEi6iSnxf8FhVdhKGiwL2cxJ4Ahaxjr';
+    const publicKey = '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266';
+    const signer = new ethers.Wallet(privateKey, provider);
+    const privateKey = '0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80';
+    const provider = new ethers.providers.JsonRpcProvider();
+    await bitBirds.deployed();
+    const bitBirds = await BitBirds.deploy("BitBirds", "BB");
+const BitBirds = await hre.ethers.getContractFactory("BitBirds");
+.exit
+balance = parseInt(balance['_hex'], 16);
+balance
+let balance = await bitBirds.getBalance();
+    await signer.sendTransaction(tx);
+    }
+      value: ethers.utils.parseEther("0.05"),
+      data: _data,
+      gasPrice: _gasPrice,
+      gasLimit: _gasLimit,
+      nonce: _nonce,
+      to: _contractAddress,
+      from: publicKey,
+    const tx = {
+    const _gasLimit = 500000;
+    const _gasPrice = await provider.getGasPrice();
+    // gasPrice is null since it's an EIP-1559 transaction
+    const _contractAddress = bitBirds.address;
+    const _data = iface.encodeFunctionData("mintNFT", [publicKey, tokenURI]);
+    let iface = new ethers.utils.Interface(ABI);
+    ];
+      "function mintNFT(address recipient, string memory tokenURI)"
+    let ABI = [
+    });
+      console.log(_newItemId);
+      const _newItemId = newItemId;
+    bitBirds.on('printNewItemId', (newItemId) => {
+    const _nonce = await signer.getTransactionCount("latest");
+    const tokenURI = 'https://gateway.pinata.cloud/ipfs/QmWBCpgGeTQJojTgEi6iSnxf8FhVdhKGiwL2cxJ4Ahaxjr';
+    const publicKey = '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266';
+    const signer = new ethers.Wallet(privateKey, provider);
+    const privateKey = '0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80';
+    const provider = new ethers.providers.JsonRpcProvider();
+    await bitBirds.deployed();
+    const bitBirds = await BitBirds.deploy("BitBirds", "BB");
+const BitBirds = await hre.ethers.getContractFactory("BitBirds");
+.exit
+await provider.getBalance(_contractAddress)
+provider.getBalance(_contractAddress)
+parseInt(balance['_hex'], 16);
+await bitBirds.withdrawBalance();
+parseInt(balance['_hex'], 16);
+balance
+    let balance = await provider.getBalance(publicKey);
+    await signer.sendTransaction(tx);
+    }
+      value: ethers.utils.parseEther("0.05"),
+      data: _data,
+      gasPrice: _gasPrice,
+      gasLimit: _gasLimit,
+      nonce: _nonce,
+      to: _contractAddress,
+      from: publicKey,
+    const tx = {
+    const _gasLimit = 500000;
+    const _gasPrice = await provider.getGasPrice();
+    // gasPrice is null since it's an EIP-1559 transaction
+    const _contractAddress = bitBirds.address;
+    const _data = iface.encodeFunctionData("mintNFT", [publicKey, tokenURI]);
+    let iface = new ethers.utils.Interface(ABI);
+    ];
+      "function mintNFT(address recipient, string memory tokenURI)"
+    let ABI = [
+    });
+      console.log(_newItemId);
+      const _newItemId = newItemId;
+    bitBirds.on('printNewItemId', (newItemId) => {
+    const _nonce = await signer.getTransactionCount("latest");
+    const tokenURI = 'https://gateway.pinata.cloud/ipfs/QmWBCpgGeTQJojTgEi6iSnxf8FhVdhKGiwL2cxJ4Ahaxjr';
+    const publicKey = '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266';
+    const signer = new ethers.Wallet(privateKey, provider);
+    const privateKey = '0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80';
+    const provider = new ethers.providers.JsonRpcProvider();
+    await bitBirds.deployed();
+    const bitBirds = await BitBirds.deploy("BitBirds", "BB");
+const BitBirds = await hre.ethers.getContractFactory("BitBirds");
+.exit
+await bitBirds.withdrawBalance();
+    await signer.sendTransaction(tx);
+    }
+      value: ethers.utils.parseEther("0.05"),
+      data: _data,
+      gasPrice: _gasPrice,
+      gasLimit: _gasLimit,
+      nonce: _nonce,
+      to: _contractAddress,
+      from: publicKey,
+    const tx = {
+    const _gasLimit = 500000;
+    const _gasPrice = await provider.getGasPrice();
+    // gasPrice is null since it's an EIP-1559 transaction
+    const _contractAddress = bitBirds.address;
+    const _data = iface.encodeFunctionData("mintNFT", [publicKey, tokenURI]);
+    let iface = new ethers.utils.Interface(ABI);
+    ];
+      "function mintNFT(address recipient, string memory tokenURI)"
+    let ABI = [
+    });
+      console.log(_newItemId);
+      const _newItemId = newItemId;
+    bitBirds.on('printNewItemId', (newItemId) => {
+    const _nonce = await signer.getTransactionCount("latest");
+    const tokenURI = 'https://gateway.pinata.cloud/ipfs/QmWBCpgGeTQJojTgEi6iSnxf8FhVdhKGiwL2cxJ4Ahaxjr';
+    const publicKey = '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266';
+    const signer = new ethers.Wallet(privateKey, provider);
+    const privateKey = '0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80';
+    const provider = new ethers.providers.JsonRpcProvider();
+    await bitBirds.deployed();
+    const bitBirds = await BitBirds.deploy("BitBirds", "BB");
+const BitBirds = await hre.ethers.getContractFactory("BitBirds");
+.exit
+parseInt(ethers.utils.parseEther("0.05")['_hex'], 16)
+parseInt(ethers.utils.parseEther("0.05"), 16)
+ethers.utils.parseEther("0.05")
+    balance = parseInt(balance['_hex'], 16);
+    let balance = await bitBirds.getBalance();
+    await signer.sendTransaction(tx);
+    }
+      value: ethers.utils.parseEther("0.05"),
+      data: _data,
+      gasPrice: _gasPrice,
+      gasLimit: _gasLimit,
+      nonce: _nonce,
+      to: _contractAddress,
+      from: publicKey,
+    const tx = {
+    const _gasLimit = 500000;
+    const _gasPrice = await provider.getGasPrice();
+    // gasPrice is null since it's an EIP-1559 transaction
+    const _contractAddress = bitBirds.address;
+    const _data = iface.encodeFunctionData("mintNFT", [publicKey, tokenURI]);
+    let iface = new ethers.utils.Interface(ABI);
+    ];
+      "function mintNFT(address recipient, string memory tokenURI)"
+    let ABI = [
+    });
+      console.log(_newItemId);
+      const _newItemId = newItemId;
+    bitBirds.on('printNewItemId', (newItemId) => {
+    const _nonce = await signer.getTransactionCount("latest");
+    const tokenURI = 'https://gateway.pinata.cloud/ipfs/QmWBCpgGeTQJojTgEi6iSnxf8FhVdhKGiwL2cxJ4Ahaxjr';
+    const publicKey = '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266';
+    const signer = new ethers.Wallet(privateKey, provider);
+    const privateKey = '0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80';
+    const provider = new ethers.providers.JsonRpcProvider();
+    await bitBirds.deployed();
+    const bitBirds = await BitBirds.deploy("BitBirds", "BB");
+const BitBirds = await hre.ethers.getContractFactory("BitBirds");
+.exit
+    balance = parseInt(balance['_hex'], 16);
+    let balance = await bitBirds.getBalance();
+    await signer.sendTransaction(tx);
+    }
+      value: ethers.utils.parseEther("0.05"),
+      data: _data,
+      gasPrice: _gasPrice,
+      gasLimit: _gasLimit,
+      nonce: _nonce,
+      to: _contractAddress,
+      from: publicKey,
+    const tx = {
+    const _gasLimit = 500000;
+    const _gasPrice = await provider.getGasPrice();
+    // gasPrice is null since it's an EIP-1559 transaction
+    const _contractAddress = bitBirds.address;
+    const _data = iface.encodeFunctionData("mintNFT", [publicKey, tokenURI]);
+    let iface = new ethers.utils.Interface(ABI);
+    ];
+      "function mintNFT(address recipient, string memory tokenURI)"
+    let ABI = [
+    });
+      console.log(_newItemId);
+      const _newItemId = newItemId;
+    bitBirds.on('printNewItemId', (newItemId) => {
+    const _nonce = await signer.getTransactionCount("latest");
+    const tokenURI = 'https://gateway.pinata.cloud/ipfs/QmWBCpgGeTQJojTgEi6iSnxf8FhVdhKGiwL2cxJ4Ahaxjr';
+    const publicKey = '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266';
+    const signer = new ethers.Wallet(privateKey, provider);
+    const privateKey = '0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80';
+    const provider = new ethers.providers.JsonRpcProvider();
+    await bitBirds.deployed();
+ const bitBirds = await BitBirds.deploy("BitBirds", "BB");
+.exit
+parseInt(balance['_hex'], 16)
+balance['_hex']
+balance
+    let balance = await bitBirds.getBalance();
+    const signedTx = await signer.sendTransaction(tx);
+    }
+      value: ethers.utils.parseEther("0.05"),
+      data: _data,
+      gasPrice: _gasPrice,
+      gasLimit: _gasLimit,
+      nonce: _nonce,
+      to: _contractAddress,
+      from: publicKey,
+    const tx = {
+    const _gasLimit = 500000;
+    const _gasPrice = await provider.getGasPrice();
+    // gasPrice is null since it's an EIP-1559 transaction
+    const _contractAddress = bitBirds.address;
+    const _data = iface.encodeFunctionData("mintNFT", [publicKey, tokenURI]);
+    let iface = new ethers.utils.Interface(ABI);
+    ];
+      "function mintNFT(address recipient, string memory tokenURI)"
+    let ABI = [
+    });
+      console.log(_newItemId);
+      const _newItemId = newItemId;
+    bitBirds.on('printNewItemId', (newItemId) => {
+    const _nonce = await signer.getTransactionCount("latest");
+    const tokenURI = 'https://gateway.pinata.cloud/ipfs/QmWBCpgGeTQJojTgEi6iSnxf8FhVdhKGiwL2cxJ4Ahaxjr';
+    const publicKey = '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266';
+    const signer = new ethers.Wallet(privateKey, provider);
+    const privateKey = '0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80';
+    const provider = new ethers.providers.JsonRpcProvider();
+    await bitBirds.deployed();
+    const bitBirds = await BitBirds.deploy("BitBirds", "BB");
+const BitBirds = await hre.ethers.getContractFactory("BitBirds");
+.exit
+txReceipt
+    const txReceipt = await provider.waitForTransaction(txHash);
+    const txHash = signedTx['hash'];
+    const signedTx = await signer.sendTransaction(tx);
+    }
+      value: ethers.utils.parseEther("0.05"),
+      data: _data,
+      gasPrice: _gasPrice,
+      gasLimit: _gasLimit,
+      nonce: _nonce,
+      to: _contractAddress,
+      from: publicKey,
+    const tx = {
+    const _gasLimit = 500000;
+    const _gasPrice = await provider.getGasPrice();
+    // gasPrice is null since it's an EIP-1559 transaction
+    const _contractAddress = bitBirds.address;
+    const _data = iface.encodeFunctionData("mintNFT", [publicKey, tokenURI]);
+    let iface = new ethers.utils.Interface(ABI);
+    ];
+      "function mintNFT(address recipient, string memory tokenURI)"
+    let ABI = [
+    });
+      console.log(_newItemId);
+      const _newItemId = newItemId;
+    bitBirds.on('printNewItemId', (newItemId) => {
+    const _nonce = await signer.getTransactionCount("latest");
+    const tokenURI = 'https://gateway.pinata.cloud/ipfs/QmWBCpgGeTQJojTgEi6iSnxf8FhVdhKGiwL2cxJ4Ahaxjr';
+    const publicKey = '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266';
+    const signer = new ethers.Wallet(privateKey, provider);
+    const privateKey = '0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80';
+    const provider = new ethers.providers.JsonRpcProvider();
+    await bitBirds.deployed();
+    const bitBirds = await BitBirds.deploy("BitBirds", "BB");
+const BitBirds = await hre.ethers.getContractFactory("BitBirds");
+.exit
+    _newItemId;
+    let _newItemId = txReceipt['logs'][1]['data'];
+    const txReceipt = await provider.waitForTransaction(txHash);
+    const txHash = signedTx['hash'];
+    const signedTx = await signer.sendTransaction(tx);
+    }
+      value: ethers.utils.parseEther("0.05"),
+      data: _data,
+      gasPrice: _gasPrice,
+      gasLimit: _gasLimit,
+      nonce: _nonce,
+      to: _contractAddress,
+      from: publicKey,
+    const tx = {
+    const _gasLimit = 500000;
+    const _gasPrice = await provider.getGasPrice();
+    // gasPrice is null since it's an EIP-1559 transaction
+    const _contractAddress = bitBirds.address;
+    const _data = iface.encodeFunctionData("mintNFT", [publicKey, tokenURI]);
+    let iface = new ethers.utils.Interface(ABI);
+    ];
+      "function mintNFT(address recipient, string memory tokenURI)"
+    let ABI = [
+    });
+      console.log(_newItemId);
+      const _newItemId = newItemId;
+    bitBirds.on('printNewItemId', (newItemId) => {
+    const _nonce = await signer.getTransactionCount("latest");
+    const tokenURI = 'https://gateway.pinata.cloud/ipfs/QmWBCpgGeTQJojTgEi6iSnxf8FhVdhKGiwL2cxJ4Ahaxjr';
+    const publicKey = '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266';
+    const signer = new ethers.Wallet(privateKey, provider);
+    const privateKey = '0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80';
+    const provider = new ethers.providers.JsonRpcProvider();
+    await bitBirds.deployed();
+    const bitBirds = await BitBirds.deploy("BitBirds", "BB");
+const BitBirds = await hre.ethers.getContractFactory("BitBirds");
+.exit
+_newItemId
+    let _newItemId = txReceipt['logs'][1];
+    const txReceipt = await provider.waitForTransaction(txHash);
+    const txHash = signedTx['hash'];
+    const signedTx = await signer.sendTransaction(tx);
+    }
+      value: ethers.utils.parseEther("0.05"),
+      data: _data,
+      gasPrice: _gasPrice,
+      gasLimit: _gasLimit,
+      nonce: _nonce,
+      to: _contractAddress,
+      from: publicKey,
+    const tx = {
+    const _gasLimit = 500000;
+    const _gasPrice = await provider.getGasPrice();
+    // gasPrice is null since it's an EIP-1559 transaction
+    const _contractAddress = bitBirds.address;
+    const _data = iface.encodeFunctionData("mintNFT", [publicKey, tokenURI]);
+    let iface = new ethers.utils.Interface(ABI);
+    ];
+      "function mintNFT(address recipient, string memory tokenURI)"
+    let ABI = [
+    });
+      console.log(_newItemId);
+      const _newItemId = newItemId;
+    bitBirds.on('printNewItemId', (newItemId) => {
+    const _nonce = await signer.getTransactionCount("latest");
+    const tokenURI = 'https://gateway.pinata.cloud/ipfs/QmWBCpgGeTQJojTgEi6iSnxf8FhVdhKGiwL2cxJ4Ahaxjr';
+    const publicKey = '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266';
+    const signer = new ethers.Wallet(privateKey, provider);
+    const privateKey = '0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80';
+    const provider = new ethers.providers.JsonRpcProvider();
+    await bitBirds.deployed();
+    const bitBirds = await BitBirds.deploy("BitBirds", "BB");
+const BitBirds = await hre.ethers.getContractFactory("BitBirds");
+.exit
+_newItemId
+let _newItemId = txReceipt['logs'][1];
+    const txReceipt = await provider.waitForTransaction(txHash);
+    const txHash = signedTx['hash'];
+    const signedTx = await signer.sendTransaction(tx);
+    }
+      value: ethers.utils.parseEther("0.05"),
+      data: _data,
+      gasPrice: _gasPrice,
+      gasLimit: _gasLimit,
+      nonce: _nonce,
+      to: _contractAddress,
+      from: publicKey,
+    const tx = {
+    const _gasLimit = 500000;
+    const _gasPrice = await provider.getGasPrice();
+    // gasPrice is null since it's an EIP-1559 transaction
+    const _contractAddress = bitBirds.address;
+    const _data = iface.encodeFunctionData("mintNFT", [publicKey, tokenURI]);
+    let iface = new ethers.utils.Interface(ABI);
+    ];
+      "function mintNFT(address recipient, string memory tokenURI)"
+    let ABI = [
+    });
+      console.log(_newItemId);
+      const _newItemId = newItemId;
+    bitBirds.on('printNewItemId', (newItemId) => {
+    const _nonce = await signer.getTransactionCount("latest");
+    const tokenURI = 'https://gateway.pinata.cloud/ipfs/QmWBCpgGeTQJojTgEi6iSnxf8FhVdhKGiwL2cxJ4Ahaxjr';
+    const publicKey = '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266';
+    const signer = new ethers.Wallet(privateKey, provider);
+    const privateKey = '0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80';
+    const provider = new ethers.providers.JsonRpcProvider();
+    await bitBirds.deployed();
+    const bitBirds = await BitBirds.deploy("BitBirds", "BB");
+const BitBirds = await hre.ethers.getContractFactory("BitBirds");
+.exit
+_newItemId
+let _newItemId = parseInt(txReceipt['logs'][1]['data'], 16);
+txReceipt
+    const txReceipt = await provider.waitForTransaction(txHash);
+    const txHash = signedTx['hash'];
+    const signedTx = await signer.sendTransaction(tx);
+    }
+      value: ethers.utils.parseEther("0.05"),
+      data: _data,
+      gasPrice: _gasPrice,
+      gasLimit: _gasLimit,
+      nonce: _nonce,
+      to: _contractAddress,
+      from: publicKey,
+    const tx = {
+    const _gasLimit = 500000;
+    const _gasPrice = await provider.getGasPrice();
+    // gasPrice is null since it's an EIP-1559 transaction
+    const _contractAddress = bitBirds.address;
+    const _data = iface.encodeFunctionData("mintNFT", [publicKey, tokenURI]);
+    let iface = new ethers.utils.Interface(ABI);
+    ];
+      "function mintNFT(address recipient, string memory tokenURI)"
+    let ABI = [
+    });
+      console.log(_newItemId);
+      const _newItemId = newItemId;
+    bitBirds.on('printNewItemId', (newItemId) => {
+    const _nonce = await signer.getTransactionCount("latest");
+    const tokenURI = 'https://gateway.pinata.cloud/ipfs/QmWBCpgGeTQJojTgEi6iSnxf8FhVdhKGiwL2cxJ4Ahaxjr';
+    const publicKey = '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266';
+    const signer = new ethers.Wallet(privateKey, provider);
+    const privateKey = '0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80';
+    const provider = new ethers.providers.JsonRpcProvider();
+    await bitBirds.deployed();
+    const bitBirds = await BitBirds.deploy("BitBirds", "BB");
+const BitBirds = await hre.ethers.getContractFactory("BitBirds");
+.exit
+let txWait = await provider.waitForTransaction(txHash).exit
+txWait
+let txWait = await provider.waitForTransaction(txHash)
+txWait
+let txWait = provider.waitForTransaction(txHash)
+    const txHash = signedTx['hash'];
+    const signedTx = await signer.sendTransaction(tx);
+    }
+      value: ethers.utils.parseEther("0.05"),
+      data: _data,
+      gasPrice: _gasPrice,
+      gasLimit: _gasLimit,
+      nonce: _nonce,
+      to: _contractAddress,
+      from: publicKey,
+    const tx = {
+    const _gasLimit = 500000;
+    const _gasPrice = await provider.getGasPrice();
+    // gasPrice is null since it's an EIP-1559 transaction
+    const _contractAddress = bitBirds.address;
+    const _data = iface.encodeFunctionData("mintNFT", [publicKey, tokenURI]);
+    let iface = new ethers.utils.Interface(ABI);
+    ];
+      "function mintNFT(address recipient, string memory tokenURI)"
+    let ABI = [
+    });
+      console.log(_newItemId);
+      const _newItemId = newItemId;
+    bitBirds.on('printNewItemId', (newItemId) => {
+    const _nonce = await signer.getTransactionCount("latest");
+    const tokenURI = 'https://gateway.pinata.cloud/ipfs/QmWBCpgGeTQJojTgEi6iSnxf8FhVdhKGiwL2cxJ4Ahaxjr';
+    const publicKey = '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266';
+    const signer = new ethers.Wallet(privateKey, provider);
+    const privateKey = '0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80';
+    const provider = new ethers.providers.JsonRpcProvider();
+    await bitBirds.deployed();
+    const bitBirds = await BitBirds.deploy("BitBirds", "BB");
+const BitBirds = await hre.ethers.getContractFactory("BitBirds");
+.exit
+_newItemId
+let _newItemId = parseInt(txReceipt['logs'][1]['data'], 16);
+const txReceipt = await provider.getTransactionReceipt(txHash);
+txHash
+const txHash = signedTx['hash'];
+    const signedTx = await signer.sendTransaction(tx);
+    }
+      value: ethers.utils.parseEther("0.05"),
+      data: _data,
+      gasPrice: _gasPrice,
+      gasLimit: _gasLimit,
+      nonce: _nonce,
+      to: _contractAddress,
+      from: publicKey,
+    const tx = {
+    const _gasLimit = 500000;
+    const _gasPrice = await provider.getGasPrice();
+    // gasPrice is null since it's an EIP-1559 transaction
+    const _contractAddress = bitBirds.address;
+    const _data = iface.encodeFunctionData("mintNFT", [publicKey, tokenURI]);
+    let iface = new ethers.utils.Interface(ABI);
+    ];
+      "function mintNFT(address recipient, string memory tokenURI)"
+    let ABI = [
+    });
+      console.log(_newItemId);
+      const _newItemId = newItemId;
+    bitBirds.on('printNewItemId', (newItemId) => {
+    const _nonce = await signer.getTransactionCount("latest");
+    const tokenURI = 'https://gateway.pinata.cloud/ipfs/QmWBCpgGeTQJojTgEi6iSnxf8FhVdhKGiwL2cxJ4Ahaxjr';
+    const publicKey = '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266';
+    const signer = new ethers.Wallet(privateKey, provider);
+    const privateKey = '0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80';
+    const provider = new ethers.providers.JsonRpcProvider();
+    await bitBirds.deployed();
+    const bitBirds = await BitBirds.deploy("BitBirds", "BB");
+const BitBirds = await hre.ethers.getContractFactory("BitBirds");
+    const txHash = signedTx['hash'];
+    const signedTx = await signer.sendTransaction(tx);
+    }
+      value: ethers.utils.parseEther("0.05"),
+      data: _data,
+      gasPrice: _gasPrice,
+      gasLimit: _gasLimit,
+      nonce: _nonce,
+      to: _contractAddress,
+      from: publicKey,
+    const tx = {
+    const _gasLimit = 500000;
+    const _gasPrice = await provider.getGasPrice();
+    // gasPrice is null since it's an EIP-1559 transaction
+    const _contractAddress = bitBirds.address;
+    const _data = iface.encodeFunctionData("mintNFT", [publicKey, tokenURI]);
+    let iface = new ethers.utils.Interface(ABI);
+    ];
+      "function mintNFT(address recipient, string memory tokenURI)"
+    let ABI = [
+    });
+      console.log(_newItemId);
+      const _newItemId = newItemId;
+    bitBirds.on('printNewItemId', (newItemId) => {
+    const _nonce = await signer.getTransactionCount("latest");
+    const tokenURI = 'https://gateway.pinata.cloud/ipfs/QmWBCpgGeTQJojTgEi6iSnxf8FhVdhKGiwL2cxJ4Ahaxjr';
+    const publicKey = '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266';
+    const signer = new ethers.Wallet(privateKey, provider);
+    const privateKey = '0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80';
+    const provider = new ethers.providers.JsonRpcProvider();
+    await bitBirds.deployed();
+    const bitBirds = await BitBirds.deploy("BitBirds", "BB");
+const BitBirds = await hre.ethers.getContractFactory("BitBirds");
+.exit
+_newItemId.toString()
+_newItemId
+    let _newItemId = parseInt(txReceipt['logs'][1]['data'], 16);
+    const txReceipt = await provider.getTransactionReceipt(txHash)
+    const txHash = signedTx['hash'];
+    const signedTx = await signer.sendTransaction(tx);
+    }
+      value: ethers.utils.parseEther("0.05"),
+      data: _data,
+      gasPrice: _gasPrice,
+      gasLimit: _gasLimit,
+      nonce: _nonce,
+      to: _contractAddress,
+      from: publicKey,
+    const tx = {
+    const _gasLimit = 500000;
+    const _gasPrice = await provider.getGasPrice();
+    // gasPrice is null since it's an EIP-1559 transaction
+    const _contractAddress = bitBirds.address;
+    const _data = iface.encodeFunctionData("mintNFT", [publicKey, tokenURI]);
+    let iface = new ethers.utils.Interface(ABI);
+    ];
+      "function mintNFT(address recipient, string memory tokenURI)"
+    let ABI = [
+    });
+      console.log(_newItemId);
+      const _newItemId = newItemId;
+    bitBirds.on('printNewItemId', (newItemId) => {
+    const _nonce = await signer.getTransactionCount("latest");
+    const tokenURI = 'https://gateway.pinata.cloud/ipfs/QmWBCpgGeTQJojTgEi6iSnxf8FhVdhKGiwL2cxJ4Ahaxjr';
+    const publicKey = '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266';
+    const signer = new ethers.Wallet(privateKey, provider);
+    const privateKey = '0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80';
+    const provider = new ethers.providers.JsonRpcProvider();
+    await bitBirds.deployed();
+    const bitBirds = await BitBirds.deploy("BitBirds", "BB");
+const BitBirds = await hre.ethers.getContractFactory("BitBirds");
+.exit
+_newItemId
+let _newItemId = parseInt(txReceipt['logs'][1]['data'], 16);
+    const txReceipt = await provider.getTransactionReceipt(txHash)
+    const txHash = signedTx['hash'];
+    const signedTx = await signer.sendTransaction(tx);
+    }
+      value: ethers.utils.parseEther("0.05"),
+      data: _data,
+      gasPrice: _gasPrice,
+      gasLimit: _gasLimit,
+      nonce: _nonce,
+      to: _contractAddress,
+      from: publicKey,
+    const tx = {
+    const _gasLimit = 500000;
+    const _gasPrice = await provider.getGasPrice();
+    // gasPrice is null since it's an EIP-1559 transaction
+    const _contractAddress = bitBirds.address;
+    const _data = iface.encodeFunctionData("mintNFT", [publicKey, tokenURI]);
+    let iface = new ethers.utils.Interface(ABI);
+    ];
+      "function mintNFT(address recipient, string memory tokenURI)"
+    let ABI = [
+    });
+      console.log(_newItemId);
+      const _newItemId = newItemId;
+    bitBirds.on('printNewItemId', (newItemId) => {
+    const _nonce = await signer.getTransactionCount("latest");
+    const tokenURI = 'https://gateway.pinata.cloud/ipfs/QmWBCpgGeTQJojTgEi6iSnxf8FhVdhKGiwL2cxJ4Ahaxjr';
+    const publicKey = '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266';
+    const signer = new ethers.Wallet(privateKey, provider);
+    const privateKey = '0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80';
+    const provider = new ethers.providers.JsonRpcProvider();
+    await bitBirds.deployed();
+    const bitBirds = await BitBirds.deploy("BitBirds", "BB");
+const BitBirds = await hre.ethers.getContractFactory("BitBirds");
+.exit
+txReceipt
+    let _newItemId = parseInt(txReceipt['logs'][1]['data'], 16);
+    const txReceipt = provider.getTransactionReceipt(txHash)
+    const txHash = signedTx['hash'];
+    const signedTx = await signer.sendTransaction(tx);
+    }
+      value: ethers.utils.parseEther("0.05"),
+      data: _data,
+      gasPrice: _gasPrice,
+      gasLimit: _gasLimit,
+      nonce: _nonce,
+      to: _contractAddress,
+      from: publicKey,
+    const tx = {
+    const _gasLimit = 500000;
+    const _gasPrice = await provider.getGasPrice();
+    // gasPrice is null since it's an EIP-1559 transaction
+    const _contractAddress = bitBirds.address;
+    const _data = iface.encodeFunctionData("mintNFT", [publicKey, tokenURI]);
+    let iface = new ethers.utils.Interface(ABI);
+    ];
+      "function mintNFT(address recipient, string memory tokenURI)"
+    let ABI = [
+    });
+      console.log(_newItemId);
+      const _newItemId = newItemId;
+    bitBirds.on('printNewItemId', (newItemId) => {
+    const _nonce = await signer.getTransactionCount("latest");
+    const tokenURI = 'https://gateway.pinata.cloud/ipfs/QmWBCpgGeTQJojTgEi6iSnxf8FhVdhKGiwL2cxJ4Ahaxjr';
+    const publicKey = '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266';
+    const signer = new ethers.Wallet(privateKey, provider);
+    const privateKey = '0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80';
+    const provider = new ethers.providers.JsonRpcProvider();
+    await bitBirds.deployed();
+    const bitBirds = await BitBirds.deploy("BitBirds", "BB");
+const BitBirds = await hre.ethers.getContractFactory("BitBirds");
+.exit
+signedTx['hash']
+    const signedTx = await signer.sendTransaction(tx);
+    }
+      value: ethers.utils.parseEther("0.05"),
+      data: _data,
+      gasPrice: _gasPrice,
+      gasLimit: _gasLimit,
+      nonce: _nonce,
+      to: _contractAddress,
+      from: publicKey,
+    const tx = {
+    const _gasLimit = 500000;
+    const _gasPrice = await provider.getGasPrice();
+    // gasPrice is null since it's an EIP-1559 transaction
+    const _contractAddress = bitBirds.address;
+    const _data = iface.encodeFunctionData("mintNFT", [publicKey, tokenURI]);
+    let iface = new ethers.utils.Interface(ABI);
+    ];
+      "function mintNFT(address recipient, string memory tokenURI)"
+    let ABI = [
+    });
+      console.log(_newItemId);
+      const _newItemId = newItemId;
+    bitBirds.on('printNewItemId', (newItemId) => {
+    const _nonce = await signer.getTransactionCount("latest");
+    const tokenURI = 'https://gateway.pinata.cloud/ipfs/QmWBCpgGeTQJojTgEi6iSnxf8FhVdhKGiwL2cxJ4Ahaxjr';
+    const publicKey = '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266';
+    const signer = new ethers.Wallet(privateKey, provider);
+    const privateKey = '0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80';
+    const provider = new ethers.providers.JsonRpcProvider();
+    await bitBirds.deployed();
+    const bitBirds = await BitBirds.deploy("BitBirds", "BB");
+const BitBirds = await hre.ethers.getContractFactory("BitBirds");
+txReceipt['logs'][1]['data']
+txReceipt['logs']
+txReceipt
+    }
+      value: ethers.utils.parseEther("0.05"),
+      data: _data,
+      gasPrice: _gasPrice,
+      gasLimit: _gasLimit,
+      nonce: _nonce,
+      to: _contractAddress,
+      from: publicKey,
+    const tx = {
+    const _gasLimit = 500000;
+    const _gasPrice = await provider.getGasPrice();
+    // gasPrice is null since it's an EIP-1559 transaction
+    const _contractAddress = bitBirds.address;
+    const _data = iface.encodeFunctionData("mintNFT", [publicKey, tokenURI]);
+    let iface = new ethers.utils.Interface(ABI);
+    ];
+      "function mintNFT(address recipient, string memory tokenURI)"
+    let ABI = [
+    });
+      console.log(_newItemId);
+      const _newItemId = newItemId;
+    bitBirds.on('printNewItemId', (newItemId) => {
+    const _nonce = await signer.getTransactionCount("latest");
+    const tokenURI = 'https://gateway.pinata.cloud/ipfs/QmWBCpgGeTQJojTgEi6iSnxf8FhVdhKGiwL2cxJ4Ahaxjr';
+    const publicKey = '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266';
+    const signer = new ethers.Wallet(privateKey, provider);
+    const privateKey = '0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80';
+    const provider = new ethers.providers.JsonRpcProvider();
+    await bitBirds.deployed();
+    const bitBirds = await BitBirds.deploy("BitBirds", "BB");
+const BitBirds = await hre.ethers.getContractFactory("BitBirds");
+txReceipt
+let txReceipt = await provider.getTransactionReceipt(signedTx['hash'])
+await provider.getTransactionReceipt(signedTx['hash'])
+await provider.getTransaction(signedTx['hash'])
+provider.getTransaction(signedTx['hash'])
+signedTx
+    const signedTx = await signer.sendTransaction(tx);
+    }
+      value: ethers.utils.parseEther("0.05"),
+      data: _data,
+      gasPrice: _gasPrice,
+      gasLimit: _gasLimit,
+      nonce: _nonce,
+      to: _contractAddress,
+      from: publicKey,
+    const tx = {
+    const _gasLimit = 500000;
+    const _gasPrice = await provider.getGasPrice();
+    // gasPrice is null since it's an EIP-1559 transaction
+    const _contractAddress = bitBirds.address;
+    const _data = iface.encodeFunctionData("mintNFT", [publicKey, tokenURI]);
+    let iface = new ethers.utils.Interface(ABI);
+    ];
+      "function mintNFT(address recipient, string memory tokenURI)"
+    let ABI = [
+    });
+      console.log(_newItemId);
+      const _newItemId = newItemId;
+    bitBirds.on('printNewItemId', (newItemId) => {
+    const _nonce = await signer.getTransactionCount("latest");
+    const tokenURI = 'https://gateway.pinata.cloud/ipfs/QmWBCpgGeTQJojTgEi6iSnxf8FhVdhKGiwL2cxJ4Ahaxjr';
+    const publicKey = '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266';
+    const signer = new ethers.Wallet(privateKey, provider);
+    const privateKey = '0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80';
+    const provider = new ethers.providers.JsonRpcProvider();
+    await bitBirds.deployed();
+    const bitBirds = await BitBirds.deploy("BitBirds", "BB");
+const BitBirds = await hre.ethers.getContractFactory("BitBirds");
+let tx = await bitBirds.mintNFT(publicKey, tokenURI);
+    const tokenURI = 'https://gateway.pinata.cloud/ipfs/QmWBCpgGeTQJojTgEi6iSnxf8FhVdhKGiwL2cxJ4Ahaxjr';
+ const publicKey = '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266';
+await bitBirds.deployed();
+    const bitBirds = await BitBirds.deploy("BitBirds", "BB");
+    const BitBirds = await hre.ethers.getContractFactory("BitBirds");
+.exit
+npx hardhat test

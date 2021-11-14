@@ -1,0 +1,50 @@
+@font-face {
+	font-family: 'NevisBold';
+	src: local('NevisBold'), url('./fonts/NevisBold.ttf') format('truetype');
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: 'GenuineSansSerif';
+	src: local('GenuineSansSerif'), url('./fonts/GenuineSansSerif.otf') format('opentype');
+	font-weight: normal;
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body,
+button {
+	font-family: 'NevisBold', sans-serif;
+}
+
+h1,
+h2,
+li {
+	font-family: 'NevisBold', sans-serif !important;
+}
+
+html {
+	scroll-behavior: smooth;
+	scroll-padding-top: 150px;
+}
+
+body,
+#root,
+.App {
+	min-height: 100vh;
+}
+
+p {
+	letter-spacing: 1px;
+	line-height: 1.5;
+}
+
+@media screen and (max-width: 960px) {
+	html {
+		scroll-padding-top: 100px;
+	}
+}

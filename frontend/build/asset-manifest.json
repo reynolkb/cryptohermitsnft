@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.c2b43373.chunk.css",
+    "main.js": "/static/js/main.d6f17135.chunk.js",
+    "main.js.map": "/static/js/main.d6f17135.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.d934808d.js",
+    "runtime-main.js.map": "/static/js/runtime-main.d934808d.js.map",
+    "static/js/2.e6706d45.chunk.js": "/static/js/2.e6706d45.chunk.js",
+    "static/js/2.e6706d45.chunk.js.map": "/static/js/2.e6706d45.chunk.js.map",
+    "static/js/3.b29db1e8.chunk.js": "/static/js/3.b29db1e8.chunk.js",
+    "static/js/3.b29db1e8.chunk.js.map": "/static/js/3.b29db1e8.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.c2b43373.chunk.css.map": "/static/css/main.c2b43373.chunk.css.map",
+    "static/js/2.e6706d45.chunk.js.LICENSE.txt": "/static/js/2.e6706d45.chunk.js.LICENSE.txt",
+    "static/media/Crypto-Hermits-Logo-2-Small.54b58327.png": "/static/media/Crypto-Hermits-Logo-2-Small.54b58327.png",
+    "static/media/App.css": "/static/media/NevisBold.706a4540.ttf",
+    "static/media/desktop.2043187a.jpeg": "/static/media/desktop.2043187a.jpeg",
+    "static/media/mobile.9191d20d.jpeg": "/static/media/mobile.9191d20d.jpeg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d934808d.js",
+    "static/js/2.e6706d45.chunk.js",
+    "static/css/main.c2b43373.chunk.css",
+    "static/js/main.d6f17135.chunk.js"
+  ]
+}

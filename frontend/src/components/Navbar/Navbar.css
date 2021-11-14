@@ -1,0 +1,89 @@
+.parent-nav {
+	position: sticky;
+	top: 0;
+	left: 0;
+}
+
+.NavbarItems {
+	background-color: #3abdb1;
+	height: 150px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	width: 100%;
+}
+
+.navbar-logo {
+	cursor: pointer;
+	height: 150px;
+	width: auto;
+}
+
+.menu-icon {
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	transform: translate(-100%, 60%);
+	font-size: 1.8rem;
+	cursor: pointer;
+}
+
+.fa-bars {
+	color: #fff;
+	font-size: 1.5rem;
+}
+
+.fa-times {
+	color: #fff;
+	font-size: 2rem;
+}
+
+.nav-menu {
+	width: 100%;
+	position: absolute;
+	top: 150px;
+	left: -100%;
+	padding: 0;
+	margin: 0;
+}
+
+.nav-menu.active {
+	background-color: #206166;
+	left: 0;
+	z-index: 1;
+}
+
+.nav-links {
+	font-size: 1.2rem;
+	text-align: center;
+	padding: 20px;
+	width: 100%;
+	display: block;
+	color: white;
+	text-decoration: none;
+}
+
+.nav-links:hover {
+	background-color: #3abdb1;
+}
+
+@media screen and (max-width: 960px) {
+	.NavbarItems {
+		height: 100px;
+	}
+
+	.navbar-logo {
+		height: 100px;
+	}
+
+	.nav-menu {
+		top: 100px;
+	}
+
+	#Footer {
+		padding-left: 15vw;
+		padding-right: 15vw;
+	}
+}
