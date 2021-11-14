@@ -32,10 +32,14 @@ html {
 	scroll-padding-top: 150px;
 }
 
-body,
-#root,
+body {
+	height: 100%;
+	position: relative;
+}
+
 .App {
 	min-height: 100vh;
+	position: relative;
 }
 
 p {

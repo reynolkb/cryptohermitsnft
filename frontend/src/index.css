@@ -9,13 +9,6 @@
 	margin: auto;
 }
 
-.footer-line {
-	border: 5px solid #3abdb1;
-	width: 60vw;
-	margin: auto;
-	bottom: 0;
-}
-
 @media screen and (max-width: 960px) {
 	.section {
 		padding-left: 15vw;
@@ -23,10 +16,6 @@
 	}
 
 	.line-break {
-		width: 70vw;
-	}
-
-	.footer-line {
 		width: 70vw;
 	}
 }

@@ -5,8 +5,8 @@ import coverPhotoMobile from './mobile.jpeg';
 import About from '../About/About';
 import Roadmap from '../Roadmap/Roadmap';
 import Team from '../Team/Team';
+import FAQS from '../FAQS/FAQS';
 import Connect from '../Connect/Connect';
-import Footer from '../Footer/Footer';
 
 class Home extends Component {
 	render() {
@@ -22,10 +22,15 @@ class Home extends Component {
 				<hr className='line-break' />
 				<Team />
 				<hr className='line-break' />
+				<FAQS />
+				<hr className='line-break' />
 				<Connect />
 				<hr className='line-break' />
-				<Footer />
-				<hr className='footer-line' />
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
 			</div>
 		);
 	}

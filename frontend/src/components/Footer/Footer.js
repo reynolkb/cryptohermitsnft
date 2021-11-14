@@ -6,6 +6,9 @@ class Footer extends Component {
 		return (
 			<div id='Footer'>
 				<p>&copy; 2021 CryptoHermits</p>
+				<br></br>
+				<br></br>
+				<hr className='footer-line' />
 			</div>
 		);
 	}

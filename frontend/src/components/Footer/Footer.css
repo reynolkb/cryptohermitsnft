@@ -1,11 +1,23 @@
 #Footer {
-  padding: 2.5vh 20vw;
-  text-align: center;
+	padding: 0 20vw;
+	text-align: center;
+	margin-top: auto;
+	bottom: 0;
+	position: absolute;
+}
+
+.footer-line {
+	border: 5px solid #3abdb1;
+	width: 60vw;
 }
 
 @media screen and (max-width: 960px) {
-  #Footer {
-    padding-left: 15vw;
-    padding-right: 15vw;
-  }
+	#Footer {
+		padding-left: 15vw;
+		padding-right: 15vw;
+	}
+
+	.footer-line {
+		width: 70vw;
+	}
 }
