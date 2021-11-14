@@ -19,11 +19,7 @@ button:hover {
 }
 
 #walletButton {
-	float: right;
-}
-
-#title {
-	margin-top: 32px;
+	float: center;
 }
 
 #pendingTransaction {

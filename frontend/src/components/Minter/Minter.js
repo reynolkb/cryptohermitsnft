@@ -208,13 +208,12 @@ const Minter = () => {
 	return (
 		<React.Fragment>
 			<div className='section'>
+				<h1 id='title'>Mint NFT</h1>
+				<br></br>
 				<button id='walletButton' onClick={connectWalletPressed}>
 					{walletAddress.length > 0 ? 'Connected: ' + String(walletAddress).substring(0, 6) + '...' + String(walletAddress).substring(38) : <span>Connect Wallet</span>}
 				</button>
-
 				<br></br>
-				<br></br>
-				<h1 id='title'>CryptoHermits</h1>
 				<br></br>
 				<p>Get your random CryptoHermit NFT below, all NFTs are 0.01 ETH!</p>
 				<br></br>
