@@ -7,11 +7,13 @@ import Roadmap from '../Roadmap/Roadmap';
 import Team from '../Team/Team';
 import FAQS from '../FAQS/FAQS';
 import Connect from '../Connect/Connect';
+import Navbar from '../Navbar/Navbar';
 
 class Home extends Component {
 	render() {
 		return (
 			<div>
+				<Navbar />
 				<div id='Home'>
 					<img src={coverPhoto} className='coverPhoto' alt='CryptoHermits Logo' />
 					<img src={coverPhotoMobile} className='coverPhotoMobile' alt='CryptoHermits Logo Mobile' />

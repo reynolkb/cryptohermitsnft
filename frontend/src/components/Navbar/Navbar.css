@@ -40,6 +40,11 @@
 	font-size: 2rem;
 }
 
+.fa-arrow-left {
+	color: #fff;
+	font-size: 1.5rem;
+}
+
 .nav-menu {
 	width: 100%;
 	position: absolute;

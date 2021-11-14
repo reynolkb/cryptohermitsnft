@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { connectWallet, getCurrentWalletConnected, mintNFT } from '../../util/interact.js';
+import NavbarMinter from '../Navbar/Navbar-Minter';
 import './Minter.css';
 const alchemyKey = process.env.REACT_APP_ALCHEMY_KEY;
 const { createAlchemyWeb3 } = require('@alch/alchemy-web3');
@@ -207,6 +208,7 @@ const Minter = () => {
 
 	return (
 		<React.Fragment>
+			<NavbarMinter />
 			<div className='section'>
 				<h1 id='title'>Mint NFT</h1>
 				<br></br>

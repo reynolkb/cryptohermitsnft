@@ -12,7 +12,6 @@ class App extends Component {
 		return (
 			<BrowserRouter>
 				<div className='App'>
-					<NavBar />
 					<ScrollToTop />
 					<Routes>
 						<Route path='/' element={<Home />} />
