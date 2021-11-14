@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import NavBar from './components/Navbar/Navbar';
 import ScrollToTop from './util/ScrollToTop';
@@ -10,7 +10,7 @@ import Footer from './components/Footer/Footer';
 class App extends Component {
 	render() {
 		return (
-			<BrowserRouter>
+			<HashRouter>
 				<div className='App'>
 					<ScrollToTop />
 					<Routes>
@@ -19,7 +19,7 @@ class App extends Component {
 					</Routes>
 					<Footer />
 				</div>
-			</BrowserRouter>
+			</HashRouter>
 		);
 	}
 }

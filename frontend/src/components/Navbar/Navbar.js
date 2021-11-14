@@ -16,7 +16,7 @@ class Navbar extends Component {
 		return (
 			<header className='parent-nav'>
 				<nav className='NavbarItems'>
-					<HashLink smooth to={'/#Home'}>
+					<HashLink smooth to={'#Home'}>
 						<img src={logo} className='navbar-logo' alt='CryptoHermits Logo' />
 					</HashLink>
 					<div className='menu-icon' onClick={this.handleClick}>
@@ -25,25 +25,25 @@ class Navbar extends Component {
 						<i className={this.state.clicked ? 'fas fa-times' : 'fas fa-bars'}></i>
 					</div>
 					<ul className={this.state.clicked ? 'nav-menu active' : 'nav-menu'}>
-						<HashLink smooth to={'/#Home'} className='nav-links' onClick={this.handleClick}>
+						<HashLink smooth to={'#Home'} className='nav-links' onClick={this.handleClick}>
 							Home
 						</HashLink>
 						<Link to='/mint' className='nav-links' onClick={this.handleClick}>
 							Mint NFT
 						</Link>
-						<HashLink smooth to={'/#About'} className='nav-links' onClick={this.handleClick}>
+						<HashLink smooth to={'#About'} className='nav-links' onClick={this.handleClick}>
 							About
 						</HashLink>
-						<HashLink smooth to={'/#Roadmap'} className='nav-links' onClick={this.handleClick}>
+						<HashLink smooth to={'#Roadmap'} className='nav-links' onClick={this.handleClick}>
 							Roadmap
 						</HashLink>
-						<HashLink smooth to={'/#Team'} className='nav-links' onClick={this.handleClick}>
+						<HashLink smooth to={'#Team'} className='nav-links' onClick={this.handleClick}>
 							Team
 						</HashLink>
-						<HashLink smooth to={'/#FAQS'} className='nav-links' onClick={this.handleClick}>
+						<HashLink smooth to={'#FAQS'} className='nav-links' onClick={this.handleClick}>
 							FAQS
 						</HashLink>
-						<HashLink smooth to={'/#Connect'} className='nav-links' onClick={this.handleClick}>
+						<HashLink smooth to={'#Connect'} className='nav-links' onClick={this.handleClick}>
 							Connect
 						</HashLink>
 					</ul>

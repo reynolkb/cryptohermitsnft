@@ -35,11 +35,7 @@ class FAQS extends Component {
 				<br></br>
 				<h2>How do I mint an NFT?</h2>
 				<p>
-					Once you have MetaMask installed and Ethereum in your wallet you can{' '}
-					<Link to='/mint' target='_blank'>
-						click here
-					</Link>{' '}
-					to mint an NFT.
+					Once you have MetaMask installed and Ethereum in your wallet you can <Link to='/mint'>click here</Link> to mint an NFT.
 				</p>
 				<br></br>
 				<br></br>
