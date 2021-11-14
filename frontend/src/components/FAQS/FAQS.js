@@ -11,7 +11,7 @@ class FAQS extends Component {
 				<br></br>
 				<h2>How do I download MetaMask and fund my MetaMask wallet?</h2>
 				<p>
-					1. You will need to{' '}
+					1. You need to{' '}
 					<a href='https://metamask.io/download' target='_blank'>
 						download MetaMask
 					</a>

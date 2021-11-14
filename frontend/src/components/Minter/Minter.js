@@ -59,7 +59,7 @@ const Minter = () => {
 					{' '}
 					🦊{' '}
 					<a target='_blank' rel='noreferrer' href={`https://metamask.io/download.html`}>
-						You must install Metamask, a virtual Ethereum wallet, in your browser or mobile phone.
+						You need to download MetaMask.
 					</a>
 				</p>
 			);
