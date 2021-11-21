@@ -1,13 +1,14 @@
-'''
+"""
 Configuration parameters.
-'''
+"""
 import os
 from dotenv import load_dotenv
+
 load_dotenv()
 
 ################################################# STANDARD PROCESSING PARAMETERS #################################################
 # Get the DATABASE_CONNECTION_STRING from the environment (.env or Heroku config)
-DATABASE_CONNECTION_STRING = os.getenv('DATABASE_CONNECTION_STRING')
+DATABASE_CONNECTION_STRING = os.getenv("DATABASE_CONNECTION_STRING")
 
 # The port for the localhost database.  Only relevant if DATABASE_CONNECTION_STRING is an empty string or None.
 DATABASE_LOCAL_PORT = 27017
@@ -22,203 +23,258 @@ DO_WRITE_LOG_FILE = False
 DO_WRITE_TO_CONSOLE = False
 
 # Send internal emails to these email addresses.  Only relevant if DO_SEND_EMAILS == True
-SEND_TO_EMAIL_ADDRESSES = 'reynolds_johnd@yahoo.com' # , jjjkreynolds@gmail.com, kylereynolds789@gmail.com
+SEND_TO_EMAIL_ADDRESSES = "reynolds_johnd@yahoo.com"  # , jjjkreynolds@gmail.com, kylereynolds789@gmail.com
 
 
 ################################################# NFT COLLECTION DEFINITIONS #################################################
 NFT_DEFINITION_BOOKWORMS = {
-    'Name': 'Bookworms',
-    'Description' : 'A description of the bookworm collection that Bianca can come up with.',
-    'Quantity' : 10000, # Quantity of NFT's to generate.  Set to a really high number if you want to generate the maximum number.
-    'QuantityOfExposableTokens' : 10, # The initial quantity of tokens that will have their metadata exposable.
-
+    "Name": "Bookworms",
+    "Description": "A description of the bookworm collection that Bianca can come up with.",
+    "ImageExtension": ".png",  # .png, .jpg, etc.
+    "Quantity": 98,  # Quantity of NFT's to generate.  Set to a really high number if you want to generate the maximum number.
+    "QuantityOfExposableTokens": 5,  # The initial quantity of tokens that will have their metadata exposable.
     # Update the database with the images.  Since the images are so large, it can be very slow to update a remote database.
     # So only turn this to True when you are 100% sure that the images are finalized.
-    'UpdateDatabaseWithImages' : True,
-
+    "UpdateDatabaseWithImages": True,
     # Local folders for the input images and output images and output metadata.
-    'InputImageFolder' : 'CryptoHermits/Bookworm/InputImages/', # input image files
-    'OutputImageFolder' : 'CryptoHermits/Bookworm/OutputImages/', # output NFT images
-    'OutputMetadataFolder' : 'CryptoHermits/Bookworm/OutputMetadata/', # output json metadata files
-    'ImageExtension' : '.png', # .png, .jpg, etc.
-
+    "AttributeImageFolder": "CryptoHermits/Bookworm/AttributeImages/",  # input image files
+    "OutputImageFolder": "CryptoHermits/Bookworm/OutputImages/",  # output NFT images
+    "OutputMetadataFolder": "CryptoHermits/Bookworm/OutputMetadata/",  # output json metadata files
+    # The optional SignatureImages is a sub-folder contaiing full complete unique images.
+    # So if there are 10 of them, and you have specified the above 'Quantity' = 990, then a total of 1000 NFTs will be produced.
+    # They will be assigned a StatisticalRaity of 0, the highest Rarity (eg 'Mythic'), and a TraitCount of 1.
+    # You will need to back into the first attribute[0] probability.
+    "SignatureImageFolder": "CryptoHermits/Bookworm/SignatureImages/",
     # Round 1 - Images and metadata are on Mongo via nftInitializeDatabase
     # the 'external_url' = 'BaseExternalUri' and 'image' = 'BaseImageUri'
     # Generate the images
-
-    'BaseExternalUri' : 'https://www.cryptohermitsnft.com/images/',
-    'BaseImageUri' : 'https://www.cryptohermitsnft.com/images/',
-
+    "BaseExternalUri": "https://www.cryptohermitsnft.com/images/",
+    "BaseImageUri": "https://www.cryptohermitsnft.com/images/",
     # Round 2 - Images on Mongo, JSON on Mongo. Buyer views on OpenSea
     # Check Mongo and make sure Mongo returns correct metadata. Example: https://www.cryptohermitsnft.com/1.json should return the correct metadata for NFT 1
     # Launch smart contract and make base uri https://cryptohermitsnft.com/metadata/
-
     # Update BaseImageUri hash to hash of IPFS image folder
     # 'BaseExternalUri' : 'https://gateway.pinata.cloud/ipfs/QmVpkXZkWoTf9AQWzHcA4HZxjRRpJPoSUUekL2RX5sMbxd/',
     # 'BaseImageUri' : 'ipfs://QmVpkXZkWoTf9AQWzHcA4HZxjRRpJPoSUUekL2RX5sMbxd/',
-
     # Round 3 - Images on IPFS, JSON on IPFS. Sale is over and all NFTs are sold.
     # Update smart contract base uri to ipfs://QmYrVgtkHnXDw9KURzgSbmejgzpEcje6FV5AofEmBx98kz/
-
-    'Traits' : (
-        {'Name' : 'Base',
-         'Attributes' : ({'Name' : 'Base Layer', 'FilePath' : '00_Base Layer.png', 'Probability' : 100},)},
-        {'Name' : 'Floor',
-         'Attributes' : ({'Name' : 'Wood-Floor', 'FilePath' : '01_Wood-Floor.png', 'Probability' : 100},)},
-        {'Name' : 'Background',
-         'Attributes' : ({'Name' : 'Brick-Wall', 'FilePath' : '02_Brick-Wall.png', 'Probability' : 100},)},
-        {'Name' : 'Left Wall',
-         'Attributes' : ({'Name' : 'GrayLeftWall', 'FilePath' : '03_Left-Wall.png', 'Probability' : 100},)},
-        {'Name' : 'Lighting',
-         'Attributes' : ({'Name' : 'Nothing', 'FilePath' : None, 'Probability' : 1},
-                         {'Name' : 'Lava-Lamp', 'FilePath' : '04_Lava-Lamp.png', 'Probability' : 99},)},
-        {'Name' : 'Chair',
-         'Attributes' : ({'Name' : 'Tie-Dye', 'FilePath' : '05_Tie-Dye.png', 'Probability' : 100},)},
-        {'Name' : 'Hairdos',
-         'Attributes' : (
-           {'Name' : 'Light-Mohawk', 'FilePath' : '06_Light-Mohawk.png', 'Probability' : 33.33},
-           {'Name' : 'Medium-Mohawk', 'FilePath' : '06_Medium-Mohawk.png', 'Probability' : 33.33},
-           {'Name' : 'Dark-Mohawk', 'FilePath' : '06_Dark-Mohawk.png', 'Probability' : 33.34},
-          )
+    "Traits": (
+        # Level 0
+        {
+            "Name": "Floor",
+            "Attributes": (
+                {"Name": "Checkered", "Probability": 20},
+                {"Name": "Concrete", "Probability": 20},
+                {"Name": "Grass", "Probability": 20},
+                {"Name": "Shag_Rug", "Probability": 20},
+                {"Name": "Wood_Floor", "Probability": 20},
+            ),
         },
-        {'Name' : 'Outfits',
-         'Attributes' : (
-           {'Name' : 'Light-Robe', 'FilePath' : '07_Light-Robe.png', 'Probability' : 33.33},
-           {'Name' : 'Medium-Robe', 'FilePath' : '07_Medium-Robe.png', 'Probability' : 33.33},
-           {'Name' : 'Dark-Robe', 'FilePath' : '07_Dark-Robe.png', 'Probability' : 33.34},
-          )
+        # Level 1
+        {"Name": "Left Wall", "Attributes": ({"Name": "Left_Wall", "Probability": 100},)},
+        # Level 2
+        {
+            "Name": "Back Wall",
+            "Attributes": (
+                {"Name": "Brick_Wall", "Probability": 17},
+                {"Name": "Last_Supper_Wall", "Probability": 17},
+                {"Name": "Marriage_Wall", "Probability": 17},
+                {"Name": "Palm_Tree_Wall", "Probability": 17},
+                {"Name": "Roses_Wall", "Probability": 16},
+                {"Name": "TV_Wall", "Probability": 16},
+            ),
         },
-        {'Name' : 'Book Titles',
-         'Attributes' : ({'Name' : 'GreenBook', 'FilePath' : '08_Book.png', 'Probability' : 100},)},
-        {'Name' : 'Shoes',
-         'Attributes' : ({'Name' : 'BrownSlippers', 'FilePath' : '09_Slippers.png', 'Probability' : 100},)},
-        {'Name' : 'Sideboard',
-         'Attributes' : ({'Name' : 'BrownSideboard', 'FilePath' : '10_Sideboard.png', 'Probability' : 100},)},
-        {'Name' : 'Sideboard Objects',
-         'Attributes' : ({'Name' : 'Nothing', 'FilePath' : None, 'Probability' : 1},
-                         {'Name' : 'GreenWineBottle', 'FilePath' : '11_Wine-Bottle.png', 'Probability' : 99},)},
-        ),
-
-    'Exclusions' : [
-       # i don't want a mohawk with vuarnet sunglasses
-       {'Hairdos' : 'Light-Mohawk', 'Outfits' : 'Medium-Robe'},
-       {'Hairdos' : 'Light-Mohawk', 'Outfits' : 'Dark-Robe'},
-       {'Hairdos' : 'Medium-Mohawk', 'Outfits' : 'Light-Robe'},
-       {'Hairdos' : 'Medium-Mohawk', 'Outfits' : 'Dark-Robe'},
-       {'Hairdos' : 'Dark-Mohawk', 'Outfits' : 'Light-Robe'},
-       {'Hairdos' : 'Dark-Mohawk', 'Outfits' : 'Medium-Robe'},
-
-       # i don't want zeke to have a wool scarf and a hoop earring
-      #  {'Dog' : 'Zeke', 'Scarf' : 'WoolScarf', 'Earring' : 'hoop'}
-    ],
-
-    # these are the only traits i want to use for all 10,000 of the images
-    #'Inclusions' : [
-    #    {'Dog' : 'Buddy', 'LeftEarring' : 'CrossEarring20'},
-    #    {'Dog' : 'Zeke', 'Scarf' : 'WoolScarf', 'RightEarring' : 'CrossEarring20'}]
-    }
-
-
-NFT_DEFINITION_DOGS = {
-    'Name': 'CrazyDogs',
-    'Description' : 'Crazy dogs with different traits.',
-    'Quantity' : 20, #20, # 18290, # Quantity of NFT's to generate. 18291
-    'QuantityOfExposableTokens' : 1, # The initial quantity of tokens that will have their metadata exposable.
-
-    # Local folders for the input images and output images and output metadata.
-    'InputImageFolder' : 'CrazyDogs/InputImages/', # Location of the input image files.
-    'OutputImageFolder' : 'CrazyDogs/OutputImages/', # Location of the output NFTs and json metadata files.
-    'OutputMetadataFolder' : 'CrazyDogs/OutputMetadata/', # Location of the output NFTs and json metadata files.
-    'ImageExtension' : '.png',
-
-    # Refer to the method CreateUris(nftDefinition) to understand how the following 2 fields are used.
-    'BaseExternalUri' : 'https://www.cryptohermitsnft.com/',
-    'BaseImageUri' : None,
-    #'BaseExternalUri' : 'https://gateway.pinata.cloud/ipfs/Qmeuwa4V181ns6QknnZCdoEfp2yREcrB6neodDMHwCTG9o/',
-    #'BaseImageUri' : 'ipfs://Qmeuwa4V181ns6QknnZCdoEfp2yREcrB6neodDMHwCTG9o/',
-
-    'Traits' : (
-
-        {'Name' : 'Dog',
-         'Attributes' : ({'Name' : 'Buddy', 'FilePath' : 'body_dalmation.png', 'Offset' : (0, 0), 'Probability' : 90},
-                         {'Name' : 'Zeke', 'FilePath' : 'body_dalmation_zeke.png', 'Offset' : (0, 0), 'Probability' : 10})},
-
-        {'Name' : 'Sunglasses',
-         'Attributes' : ({'Name' : 'Nothing', 'FilePath' : None, 'Probability' : 10},
-                         {'Name' : 'CatEyes', 'FilePath' : 'sunglasses_cateyes.png', 'Offset' : (126, 24), 'Probability' : 40, 'Resize' : (80, 30)},
-                         {'Name' : 'Rayban', 'FilePath' : 'sunglasses_rayban.png', 'Offset' : (126, 14), 'Probability' : 20, 'Resize' : (80, 30)},
-                         {'Name' : 'Vuarnet', 'FilePath' : 'sunglasses_vuarnet.png', 'Offset' : (126, 24), 'Probability' : 30, 'Resize' : (80, 30)})},
-
-        {'Name' : 'Scarf',
-         'Attributes' : ({'Name' : 'Nothing', 'FilePath' : None, 'Probability' : 20},
-                         {'Name' : 'ScandanavianScarf', 'FilePath' : 'scarf_scandinavian.png', 'Offset' : (142, 80), 'Probability' : 20, 'Resize' : (50, 120)}, # 146, 84
-                         {'Name' : 'BlackScarf', 'FilePath' : 'scarf_black.png', 'Offset' : (142, 96), 'Probability' : 10, 'Resize' : (50, 120)},
-                         {'Name' : 'PurpleScarf', 'FilePath' : 'scarf_purple.png', 'Offset' : (142, 96), 'Probability' : 20, 'Resize' : (50, 120)},
-
-                         #{'Name' : 'MultiColorScarf', 'FilePath' : 'scarf_multi_color.png', 'Offset' : (142, 96), 'Probability' : 20, 'Resize' : (50, 120)},
-                         {'Name' : 'MultiColorScarf1', 'FilePath' : 'scarf_multi_color.png', 'Offset' : (142, 96), 'Probability' : 1, 'Resize' : (50, 120)},
-                         {'Name' : 'MultiColorScarf2', 'FilePath' : 'scarf_multi_color.png', 'Offset' : (142, 96), 'Probability' : 1, 'Resize' : (50, 120)},
-                         {'Name' : 'MultiColorScarf3', 'FilePath' : 'scarf_multi_color.png', 'Offset' : (142, 96), 'Probability' : 1, 'Resize' : (50, 120)},
-                         {'Name' : 'MultiColorScarf4', 'FilePath' : 'scarf_multi_color.png', 'Offset' : (142, 96), 'Probability' : 1, 'Resize' : (50, 120)},
-                         {'Name' : 'MultiColorScarf5', 'FilePath' : 'scarf_multi_color.png', 'Offset' : (142, 96), 'Probability' : 1, 'Resize' : (50, 120)},
-                         {'Name' : 'MultiColorScarf6', 'FilePath' : 'scarf_multi_color.png', 'Offset' : (142, 96), 'Probability' : 1, 'Resize' : (50, 120)},
-                         {'Name' : 'MultiColorScarf7', 'FilePath' : 'scarf_multi_color.png', 'Offset' : (142, 96), 'Probability' : 1, 'Resize' : (50, 120)},
-                         {'Name' : 'MultiColorScarf8', 'FilePath' : 'scarf_multi_color.png', 'Offset' : (142, 96), 'Probability' : 1, 'Resize' : (50, 120)},
-                         {'Name' : 'MultiColorScarf9', 'FilePath' : 'scarf_multi_color.png', 'Offset' : (142, 96), 'Probability' : 1, 'Resize' : (50, 120)},
-                         {'Name' : 'MultiColorScarf10', 'FilePath' : 'scarf_multi_color.png', 'Offset' : (142, 96), 'Probability' : 1, 'Resize' : (50, 120)},
-                         {'Name' : 'MultiColorScarf11', 'FilePath' : 'scarf_multi_color.png', 'Offset' : (142, 96), 'Probability' : 1, 'Resize' : (50, 120)},
-                         {'Name' : 'MultiColorScarf12', 'FilePath' : 'scarf_multi_color.png', 'Offset' : (142, 96), 'Probability' : 1, 'Resize' : (50, 120)},
-                         {'Name' : 'MultiColorScarf13', 'FilePath' : 'scarf_multi_color.png', 'Offset' : (142, 96), 'Probability' : 1, 'Resize' : (50, 120)},
-                         {'Name' : 'MultiColorScarf14', 'FilePath' : 'scarf_multi_color.png', 'Offset' : (142, 96), 'Probability' : 1, 'Resize' : (50, 120)},
-                         {'Name' : 'MultiColorScarf15', 'FilePath' : 'scarf_multi_color.png', 'Offset' : (142, 96), 'Probability' : 1, 'Resize' : (50, 120)},
-                         {'Name' : 'MultiColorScarf16', 'FilePath' : 'scarf_multi_color.png', 'Offset' : (142, 96), 'Probability' : 1, 'Resize' : (50, 120)},
-                         {'Name' : 'MultiColorScarf17', 'FilePath' : 'scarf_multi_color.png', 'Offset' : (142, 96), 'Probability' : 1, 'Resize' : (50, 120)},
-                         {'Name' : 'MultiColorScarf18', 'FilePath' : 'scarf_multi_color.png', 'Offset' : (142, 96), 'Probability' : 1, 'Resize' : (50, 120)},
-                         {'Name' : 'MultiColorScarf19', 'FilePath' : 'scarf_multi_color.png', 'Offset' : (142, 96), 'Probability' : 1, 'Resize' : (50, 120)},
-                         {'Name' : 'MultiColorScarf20', 'FilePath' : 'scarf_multi_color.png', 'Offset' : (142, 96), 'Probability' : 1, 'Resize' : (50, 120)},
-
-                         {'Name' : 'WoolScarf', 'FilePath' : 'scarf_wool.png', 'Offset' : (142, 96), 'Probability' : 10, 'Resize' : (50, 120)})},
-
-        {'Name' : 'LeftEarring',
-         'Attributes' : ({'Name' : 'Nothing', 'FilePath' : None, 'Probability' : 80},
-                         #{'Name' : 'CrossEarring', 'FilePath' : 'earring_cross.png', 'Offset' : (94, 35), 'Probability' : 20, 'Resize' : (40, 80)})},
-                         {'Name' : 'CrossEarring01', 'FilePath' : 'earring_cross.png', 'Offset' : (94, 35), 'Probability' : 5, 'Resize' : (40, 80)},
-                         {'Name' : 'CrossEarring03', 'FilePath' : 'earring_cross.png', 'Offset' : (94, 35), 'Probability' : 5, 'Resize' : (40, 80)},
-                         {'Name' : 'CrossEarring05', 'FilePath' : 'earring_cross.png', 'Offset' : (94, 35), 'Probability' : 5, 'Resize' : (40, 80)},
-                         {'Name' : 'CrossEarring20', 'FilePath' : 'earring_cross.png', 'Offset' : (94, 35), 'Probability' : 5, 'Resize' : (40, 80)})},
-
-        {'Name' : 'RightEarring',
-         'Attributes' : ({'Name' : 'Nothing', 'FilePath' : None, 'Probability' : 20},
-                         #{'Name' : 'CrossEarring', 'FilePath' : 'earring_cross.png', 'Offset' : (201, 35), 'Probability' : 20, 'Resize' : (40, 80)})},
-                         {'Name' : 'CrossEarring01', 'FilePath' : 'earring_cross.png', 'Offset' : (201, 35), 'Probability' : 4, 'Resize' : (40, 80)},
-                         {'Name' : 'CrossEarring02', 'FilePath' : 'earring_cross.png', 'Offset' : (201, 35), 'Probability' : 4, 'Resize' : (40, 80)},
-                         {'Name' : 'CrossEarring03', 'FilePath' : 'earring_cross.png', 'Offset' : (201, 35), 'Probability' : 4, 'Resize' : (40, 80)},
-                         {'Name' : 'CrossEarring04', 'FilePath' : 'earring_cross.png', 'Offset' : (201, 35), 'Probability' : 4, 'Resize' : (40, 80)},
-                         {'Name' : 'CrossEarring05', 'FilePath' : 'earring_cross.png', 'Offset' : (201, 35), 'Probability' : 4, 'Resize' : (40, 80)},
-                         {'Name' : 'CrossEarring06', 'FilePath' : 'earring_cross.png', 'Offset' : (201, 35), 'Probability' : 4, 'Resize' : (40, 80)},
-                         {'Name' : 'CrossEarring07', 'FilePath' : 'earring_cross.png', 'Offset' : (201, 35), 'Probability' : 4, 'Resize' : (40, 80)},
-                         {'Name' : 'CrossEarring08', 'FilePath' : 'earring_cross.png', 'Offset' : (201, 35), 'Probability' : 4, 'Resize' : (40, 80)},
-                         {'Name' : 'CrossEarring09', 'FilePath' : 'earring_cross.png', 'Offset' : (201, 35), 'Probability' : 4, 'Resize' : (40, 80)},
-                         {'Name' : 'CrossEarring10', 'FilePath' : 'earring_cross.png', 'Offset' : (201, 35), 'Probability' : 4, 'Resize' : (40, 80)},
-                         {'Name' : 'CrossEarring11', 'FilePath' : 'earring_cross.png', 'Offset' : (201, 35), 'Probability' : 4, 'Resize' : (40, 80)},
-                         {'Name' : 'CrossEarring12', 'FilePath' : 'earring_cross.png', 'Offset' : (201, 35), 'Probability' : 4, 'Resize' : (40, 80)},
-                         {'Name' : 'CrossEarring13', 'FilePath' : 'earring_cross.png', 'Offset' : (201, 35), 'Probability' : 4, 'Resize' : (40, 80)},
-                         {'Name' : 'CrossEarring14', 'FilePath' : 'earring_cross.png', 'Offset' : (201, 35), 'Probability' : 4, 'Resize' : (40, 80)},
-                         {'Name' : 'CrossEarring15', 'FilePath' : 'earring_cross.png', 'Offset' : (201, 35), 'Probability' : 4, 'Resize' : (40, 80)},
-                         {'Name' : 'CrossEarring16', 'FilePath' : 'earring_cross.png', 'Offset' : (201, 35), 'Probability' : 4, 'Resize' : (40, 80)},
-                         {'Name' : 'CrossEarring17', 'FilePath' : 'earring_cross.png', 'Offset' : (201, 35), 'Probability' : 4, 'Resize' : (40, 80)},
-                         {'Name' : 'CrossEarring18', 'FilePath' : 'earring_cross.png', 'Offset' : (201, 35), 'Probability' : 4, 'Resize' : (40, 80)},
-                         {'Name' : 'CrossEarring19', 'FilePath' : 'earring_cross.png', 'Offset' : (201, 35), 'Probability' : 4, 'Resize' : (40, 80)},
-                         {'Name' : 'CrossEarring20', 'FilePath' : 'earring_cross.png', 'Offset' : (201, 35), 'Probability' : 4, 'Resize' : (40, 80)})},
-
-        ),
-
-    'Exclusions' : [
-        {'Dog' : 'Buddy', 'Sunglasses' : 'Vuarnet'},
-        {'Dog' : 'Zeke', 'Scarf' : 'WoolScarf', 'LeftEarring' : 'Nothing'}],
-
-    #'Inclusions' : [
-    #    {'Dog' : 'Buddy', 'LeftEarring' : 'CrossEarring20'},
-    #    {'Dog' : 'Zeke', 'LeftEarring' : 'CrossEarring20'},
-    #    {'Dog' : 'Zeke', 'Scarf' : 'WoolScarf', 'RightEarring' : 'CrossEarring20'}]
-    }
+        # Level 3
+        {
+            "Name": "Lighting",
+            "Attributes": (
+                {"Name": "None", "FilePath": None, "Probability": 22},
+                {"Name": "Cannabis", "Probability": 13},
+                {"Name": "Disco_Ball", "Probability": 13},
+                {"Name": "Gun_Lamp", "Probability": 13},
+                {"Name": "Lava_Lamp", "Probability": 13},
+                {"Name": "Leg_Lamp", "Probability": 13},
+                {"Name": "Torch", "Probability": 13},
+            ),
+        },
+        # Level 4
+        {
+            "Name": "Chair",
+            "Attributes": (
+                {"Name": "Flag_Chair", "Probability": 17},
+                {"Name": "Leather_Chair", "Probability": 17},
+                {"Name": "Plaid_Chair", "Probability": 17},
+                {"Name": "Polka_Dot_Chair", "Probability": 17},
+                {"Name": "Shell_Chair", "Probability": 16},
+                {"Name": "Tie_Dye_Chair", "Probability": 16},
+            ),
+        },
+        # Level 5
+        {
+            "Name": "Hair",
+            "Attributes": (
+                {"Name": "Dark_Beehive", "Probability": 6.25},
+                {"Name": "Dark_Box_Braids", "Probability": 6.25},
+                {"Name": "Dark_Buzzcut", "Probability": 6.25},
+                {"Name": "Dark_Mohawk", "Probability": 6.25},
+                {"Name": "Dark_Rainbow_Hair", "Probability": 6.25},
+                {"Name": "Light_Beehive", "Probability": 6.25},
+                {"Name": "Light_Box_Braids", "Probability": 6.25},
+                {"Name": "Light_Buzzcut", "Probability": 6.25},
+                {"Name": "Light_Mohawk", "Probability": 6.25},
+                {"Name": "Light_Rainbow_Hair", "Probability": 6.25},
+                {"Name": "Medium_Beehive", "Probability": 6.25},
+                {"Name": "Medium_Box_Braids", "Probability": 6.25},
+                {"Name": "Medium_Buzzcut", "Probability": 6.25},
+                {"Name": "Medium_Mohawk", "Probability": 6.25},
+                {"Name": "Medium_Rainbow_Hair", "Probability": 6.25},
+                # A Mullet can be worn by any body, irrespective of skin tone.
+                {"Name": "Mullet", "Probability": 6.25},
+            ),
+        },
+        # Level 6
+        {
+            "Name": "Body",
+            "Attributes": (
+                {"Name": "Dark_Bell_Bottoms", "Probability": 6.67},
+                {"Name": "Dark_Manwoman", "Probability": 6.67},
+                {"Name": "Dark_Robe", "Probability": 6.67},
+                {"Name": "Dark_Suit", "Probability": 6.67},
+                {"Name": "Dark_Tracksuit", "Probability": 6.67},
+                {"Name": "Light_Bell_Bottoms", "Probability": 6.67},
+                {"Name": "Light_Manwoman", "Probability": 6.67},
+                {"Name": "Light_Robe", "Probability": 6.67},
+                {"Name": "Light_Suit", "Probability": 6.67},
+                {"Name": "Light_Tracksuit", "Probability": 6.67},
+                {"Name": "Medium_Bell_Bottoms", "Probability": 6.67},
+                {"Name": "Medium_Manwoman", "Probability": 6.67},
+                {"Name": "Medium_Robe", "Probability": 6.67},
+                {"Name": "Medium_Suit", "Probability": 6.67},
+                {"Name": "Medium_Tracksuit", "Probability": 6.62},
+            ),
+        },
+        # Level 7 (RarityTrait)
+        {
+            "Name": "Book Color",
+            "IsRarityTrait": True,
+            "Attributes": (
+                {"Name": "Mythic", "FilePath": "BookColorMythic.png", "Probability": 2},
+                {"Name": "Exotic", "FilePath": "BookColorExotic.png", "Probability": 3.4},
+                {"Name": "Legendary", "FilePath": "BookColorLegendary.png", "Probability": 7.5},
+                {"Name": "Epic", "FilePath": "BookColorEpic.png", "Probability": 12},
+                {"Name": "Rare", "FilePath": "BookColorRare.png", "Probability": 17},
+                {"Name": "Uncommon", "FilePath": "BookColorUncommon.png", "Probability": 25},
+                {"Name": "Common", "FilePath": "BookColorCommon.png", "Probability": 33.1},
+            ),
+        },
+        # Level 8
+        {"Name": "Book Title", "Attributes": ({"Name": "_0002s_0000_Book", "Probability": 100},)},
+        # Level 9
+        {
+            "Name": "Shoes",
+            "Attributes": (
+                # These shoes can be worn by any body.
+                {"Name": "Boots", "Probability": 3.2},
+                {"Name": "Converse", "Probability": 3.1},
+                {"Name": "Slippers", "Probability": 3.1},
+                {"Name": "Socks_Slides", "Probability": 3.1},
+                # These shoes can only be worn by a body with the matching clothes.  The skin tone of the body is irrelevant.
+                {"Name": "Boots_Bell_Bottoms", "Probability": 2.5},
+                {"Name": "Converse_Bell_Bottoms", "Probability": 2.5},
+                {"Name": "Converse_Suit", "Probability": 2.5},
+                {"Name": "Converse_Tracksuit", "Probability": 2.5},
+                {"Name": "Dress_Shoes_Bell_Bottoms", "Probability": 2.5},
+                {"Name": "Dress_Shoes_Robe_Manwoman", "Probability": 2.5},  # These can be worn both by a 'Robe' or 'Manwoman' body.
+                {"Name": "Dress_Shoes_Suit", "Probability": 2.5},
+                {"Name": "Dress_Shoes_Tracksuit", "Probability": 2.5},
+                {"Name": "Socks_Slides_Bell_Bottoms", "Probability": 2.5},
+                {"Name": "Socks_Slides_Suit", "Probability": 2.5},
+                {"Name": "Socks_Slides_Tracksuit", "Probability": 2.5},
+                # These shoes can only be worn by a dark body with the matching clothes.
+                {"Name": "Dark_High_Heels_Bell_Bottoms", "Probability": 2.5},
+                {"Name": "Dark_High_Heels_Robe_Manwoman", "Probability": 2.5},  # These can be worn both by a 'Robe' or 'Manwoman' body.
+                {"Name": "Dark_High_Heels_Suit", "Probability": 2.5},
+                {"Name": "Dark_High_Heels_Tracksuit", "Probability": 2.5},
+                {"Name": "Dark_Slippers_Bell_Bottoms", "Probability": 2.5},
+                {"Name": "Dark_Slippers_Robe_Manwoman", "Probability": 2.5},  # These can be worn both by a 'Robe' or 'Manwoman' body.
+                {"Name": "Dark_Slippers_Suit", "Probability": 2.5},
+                {"Name": "Dark_Slippers_Tracksuit", "Probability": 2.5},
+                # These shoes can only be worn by a light body with the matching clothes.
+                {"Name": "Light_High_Heels_Bell_Bottoms", "Probability": 2.5},
+                {"Name": "Light_High_Heels_Robe_Manwoman", "Probability": 2.5},  # These can be worn both by a 'Robe' or 'Manwoman' body.
+                {"Name": "Light_High_Heels_Suit", "Probability": 2.5},
+                {"Name": "Light_High_Heels_Tracksuit", "Probability": 2.5},
+                {"Name": "Light_Slippers_Bell_Bottoms", "Probability": 2.5},
+                {"Name": "Light_Slippers_Robe_Manwoman", "Probability": 2.5},  # These can be worn both by a 'Robe' or 'Manwoman' body.
+                {"Name": "Light_Slippers_Suit", "Probability": 2.5},
+                {"Name": "Light_Slippers_Tracksuit", "Probability": 2.5},
+                # These shoes can only be worn by a medium body with the matching clothes.
+                {"Name": "Medium_High_Heels_Bell_Bottoms", "Probability": 2.5},
+                {"Name": "Medium_High_Heels_Robe_Manwoman", "Probability": 2.5},  # These can be worn both by a 'Robe' or 'Manwoman' body.
+                {"Name": "Medium_High_Heels_Suit", "Probability": 2.5},
+                {"Name": "Medium_High_Heels_Tracksuit", "Probability": 2.5},
+                {"Name": "Medium_Slippers_Bell_Bottoms", "Probability": 2.5},
+                {"Name": "Medium_Slippers_Robe_Manwoman", "Probability": 2.5},  # These can be worn both by a 'Robe' or 'Manwoman' body.
+                {"Name": "Medium_Slippers_Suit", "Probability": 2.5},
+                {"Name": "Medium_Slippers_Tracksuit", "Probability": 2.5},
+            ),
+        },
+        # Level 10
+        # You have to have the sideboard, otherwise there will be a hole in the left wall.
+        {"Name": "Sideboard", "Attributes": ({"Name": "Sideboard", "Probability": 100},)},
+        # Level 11
+        {
+            "Name": "Sideboard Object",
+            "Attributes": (
+                {"Name": "None", "FilePath": None, "Probability": 23},
+                {"Name": "Beer_Bottle", "Probability": 11},
+                {"Name": "Bong", "Probability": 11},
+                {"Name": "Cigars", "Probability": 11},
+                {"Name": "Coffee_Mug", "Probability": 11},
+                {"Name": "Crypto_Hermit", "Probability": 11},
+                {"Name": "Tumbler", "Probability": 11},
+                {"Name": "Wine_Bottle", "Probability": 11},
+            ),
+        },
+    ),
+    # i don't want a certain mohawk with certain outfits (don't mix skin tones)
+    "Exclusions": (
+        {"Hair": "Dark_*", "Body": "Light_*"},
+        {"Hair": "Dark_*", "Body": "Medium_*"},
+        {"Hair": "Light_*", "Body": "Dark_*"},
+        {"Hair": "Light_*", "Body": "Medium_*"},
+        {"Hair": "Medium_*", "Body": "Dark_*"},
+        {"Hair": "Medium_*", "Body": "Light_*"},
+        {"Hair": "Dark_*", "Shoes": "Light_*"},
+        {"Hair": "Dark_*", "Shoes": "Medium_*"},
+        {"Hair": "Light_*", "Shoes": "Dark_*"},
+        {"Hair": "Light_*", "Shoes": "Medium_*"},
+        {"Hair": "Medium_*", "Shoes": "Dark_*"},
+        {"Hair": "Medium_*", "Shoes": "Light_*"},
+        {"Body": "Dark_*", "Shoes": "Light_*"},
+        {"Body": "Dark_*", "Shoes": "Medium_*"},
+        {"Body": "Light_*", "Shoes": "Dark_*"},
+        {"Body": "Light_*", "Shoes": "Medium_*"},
+        {"Body": "Medium_*", "Shoes": "Dark_*"},
+        {"Body": "Medium_*", "Shoes": "Light_*"},
+        {"Body": "*_Bell_Bottoms", "Shoes": "*_Robe_Manwoman"},
+        {"Body": "*_Bell_Bottoms", "Shoes": "*_Suit"},
+        {"Body": "*_Bell_Bottoms", "Shoes": "*_Tracksuit"},
+        {"Body": "*_Manwoman", "Shoes": "*_Bell_Bottoms"},
+        {"Body": "*_Manwoman", "Shoes": "*_Suit"},
+        {"Body": "*_Manwoman", "Shoes": "*_Tracksuit"},
+        {"Body": "*_Robe", "Shoes": "*_Bell_Bottoms"},
+        {"Body": "*_Robe", "Shoes": "*_Suit"},
+        {"Body": "*_Robe", "Shoes": "*_Tracksuit"},
+        {"Body": "*_Suit", "Shoes": "*_Bell_Bottoms"},
+        {"Body": "*_Suit", "Shoes": "*_Robe_Manwoman"},
+        {"Body": "*_Suit", "Shoes": "*_Tracksuit"},
+        {"Body": "*_Tracksuit", "Shoes": "*_Bell_Bottoms"},
+        {"Body": "*_Tracksuit", "Shoes": "*_Robe_Manwoman"},
+        {"Body": "*_Tracksuit", "Shoes": "*_Suit"},
+    ),
+    # These are the only traits I want to use for all 10,000 of the images
+    #'Inclusions' : (
+    #    {'Hair' : 'Dark_*', 'Body' : 'Dark_*', 'Sideboard Object' : 'Wine_Bottle', 'Chair' : 'Tie_Dye_Chair'},
+    #    )
+}

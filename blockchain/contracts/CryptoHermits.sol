@@ -20,11 +20,19 @@ contract CryptoHermits is ERC721Enumerable, Ownable {
     // cost for each nft
     uint256 public cost = 0.01 ether;
     // max supply of NFT tokens
-    uint256 public maxSupply = 1000;
-    // max amount a wallet can mint
+    uint256 public maxSupply = 15;
+    // // max amount a wallet can mint for presale
+    // uint256 public maxPresaleSupply = 8;
+    // max amount a wallet can mint after presale is over
     uint256 public maxMintAmount = 3;
+    // max amount a wallet can mint for presale
+    uint256 public maxPresaleMintAmount = 3;
     // paused boolean for pausing the smart contract
     bool public paused = false;
+    // boolean for if presale is active
+    bool public presaleActive = true;
+    // address array for whitelisted addresses
+    address[] public whitelistedAddresses;
 
     event printNewTokenId(uint256 _newTokenId);
 
@@ -54,8 +62,29 @@ contract CryptoHermits is ERC721Enumerable, Ownable {
 
         // if msg.sender is not the owner
         if (msg.sender != owner()) {
-            // the balance of the sender plus the amount they want to mint has to be less then the max mint amount
-            require(balanceOf(msg.sender) + _mintAmount <= maxMintAmount, "You can only purchase 3 tokens");
+            // if presale is active
+            if (presaleActive == true) {
+                // loop through array of whitelisted users to see if the user is whitelisted for the presale
+                require(isWhitelisted(msg.sender), "user is not whitelisted");
+                // // make sure the current supply + the _mintAmount does not exceed the maxPresaleSupply
+                // require(supply + _mintAmount <= maxPresaleSupply, "please mint a lower amount, the presale cap is 2000 NFTs");
+                // the balance of the sender plus the amount they want to mint has to be less then the max presale mint amount
+                require(balanceOf(msg.sender) + _mintAmount <= maxPresaleMintAmount, "You can only purchase 3 tokens for the presale");
+            }
+            // if presale is not active
+            else {
+                // if the address is whitelisted
+                if (isWhitelisted(msg.sender) == true) {
+                    // the balance of the sender plus the amount they want to mint has to be less then the max presale mint amount
+                    require(balanceOf(msg.sender) + _mintAmount <= maxPresaleMintAmount + maxMintAmount, "You can only purchase 6 tokens total");
+                }
+                // if the address is not whitelisted
+                else {
+                    // the balance of the sender plus the amount they want to mint has to be less then the max mint amount
+                    require(balanceOf(msg.sender) + _mintAmount <= maxMintAmount, "You can only purchase 3 tokens total");
+                }
+            }
+            
             // charge them
             require(msg.value >= cost * _mintAmount);
         }
@@ -69,6 +98,15 @@ contract CryptoHermits is ERC721Enumerable, Ownable {
             _safeMint(msg.sender, newTokenId);
             emit printNewTokenId(newTokenId);
         }
+    }
+
+    function isWhitelisted(address _user) public view returns (bool) {
+        for(uint256 i = 0; i < whitelistedAddresses.length; i++) {
+            if (whitelistedAddresses[i] == _user) {
+                return true;
+            }
+        }
+        return false;
     }
 
     function walletOfOwner(address _owner) public view returns (uint256[] memory) {
@@ -96,8 +134,12 @@ contract CryptoHermits is ERC721Enumerable, Ownable {
         cost = _newCost;
     }
 
-    function setmaxMintAmount(uint256 _newmaxMintAmount) public onlyOwner {
-        maxMintAmount = _newmaxMintAmount;
+    function setmaxMintAmount(uint256 _newMaxMintAmount) public onlyOwner {
+        maxMintAmount = _newMaxMintAmount;
+    }
+
+    function setMaxPresaleMintAmount(uint256 _newMaxPresaleMintAmount) public onlyOwner {
+        maxPresaleMintAmount = _newMaxPresaleMintAmount;
     }
 
     function setBaseURI(string memory _newBaseURI) public onlyOwner {
@@ -106,6 +148,16 @@ contract CryptoHermits is ERC721Enumerable, Ownable {
 
     function setBaseExtension(string memory _newBaseExtension) public onlyOwner {
         baseExtension = _newBaseExtension;
+    }
+
+    function setPresaleStatus(bool _state) public onlyOwner {
+        presaleActive = _state;
+    }
+
+    // ["0x53434cF062FD750eD4Efa7B552e72Ab800acEa18", "0xc469A3721D7839625b76c73A9A37C37795F3699b"]
+    function whitelistUsers(address[] calldata _users) public onlyOwner {
+        delete whitelistedAddresses;
+        whitelistedAddresses = _users;
     }
 
     function pause(bool _state) public onlyOwner {
