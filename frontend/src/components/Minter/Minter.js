@@ -11,6 +11,10 @@ web3.eth.handleRevert = true;
 const Minter = () => {
 	// string that stores the user's wallet address
 	const [walletAddress, setWallet] = useState('');
+    // number of tokens minted so far
+	const [tokensMinted, setTokensMinted] = useState('');
+    // number of total tokens
+	const [totalTokens, setTotalTokens] = useState('');
 	// string that contains a message to display at the bottom of the UI
 	const [status, setStatus] = useState('');
 	// string that contains the pending transaction string to display at the bottom of the UI
@@ -19,6 +23,8 @@ const Minter = () => {
 	const [transactionURL, setTransactionURL] = useState('');
 	// string that contains the transactionURLTxt to display at the bottom of the UI
 	const [transactionURLTxt, setTransactionURLTxt] = useState('');
+
+    var numberTokensMinted;
 
 	// called after component is rendered
 	// call wallet listener and another wallet function to update UI to reflect whether a wallet is already connected
@@ -29,6 +35,10 @@ const Minter = () => {
 
 			setWallet(address);
 			setStatus(status);
+
+            // numberTokensMinted = await fetch(`https://www.cryptohermitsnft.com/getTotalTokens`, {method: 'GET'});
+            // numberTokensMinted = await numberTokensMinted.json();
+            // setTokensMinted(numberTokensMinted['tokensMinted']);
 
 			addWalletListener();
 		}
@@ -79,6 +89,10 @@ const Minter = () => {
 		return new Promise((resolve) => {
 			setTimeout(resolve, ms);
 		});
+	}
+
+    function numberWithCommas(x) {
+		return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 	}
 
 	// called to mint the user's NFT
@@ -167,6 +181,9 @@ const Minter = () => {
 		// upon completion of transaction, update success variable
 		var txSuccess = txReceipt['status'];
 
+		// index of last token minted
+		var lastIndex;
+
 		// if the transaction was successful, then get the tokenId
 		if (txSuccess) {
 			var tokenIdArr = [];
@@ -177,6 +194,11 @@ const Minter = () => {
 				tokenId = parseInt(txReceipt['logs'][1]['data'], 16);
 				tokenIdArr.push(tokenId);
 
+                lastIndex = tokenIdArr.length - 1;
+                numberTokensMinted = await fetch(`https://www.cryptohermitsnft.com/setTokensMinted/${numberWithCommas(tokenIdArr[lastIndex])}`, {method: 'PUT'});
+				numberTokensMinted = await numberTokensMinted.json();
+                setTokensMinted(numberTokensMinted['tokensMinted']);
+
 				setTransactionStatus(`Now that your transaction is completed, you can view your NFT on Open Sea once the metadata is revealed. Your token id is ${tokenIdArr}.`);
 				setTransactionURLTxt('Completed Transaction');
 			} else {
@@ -185,15 +207,15 @@ const Minter = () => {
 					tokenIdArr.push(tokenId);
 				}
 
+                lastIndex = tokenIdArr.length - 1;
+                numberTokensMinted = await fetch(`https://www.cryptohermitsnft.com/setTokensMinted/${numberWithCommas(tokenIdArr[lastIndex])}`, {method: 'PUT'});
+				numberTokensMinted = await numberTokensMinted.json();
+                setTokensMinted(numberTokensMinted['tokensMinted']);
+
 				setTransactionStatus(`Now that your transaction is completed, you can view your NFTs on Open Sea once the metadata is revealed. Your token ids are ${tokenIdArr}.`);
 				setTransactionURLTxt('Completed Transaction');
 			}
 
-			// if (txResponse.status >= 400 && txResponse.status < 600) {
-			// }
-
-			// var txResponseJson = await txResponse.json();
-			// console.log(txResponseJson);
 			document.getElementById('mintButton').innerHTML = 'Mint NFT';
 		} else {
 			// failed example 0xec7f5f035cc1e831e4dcc9cb3fb67b1d4a6e41dc45aaa5986ae81163f1d3355c
@@ -215,6 +237,9 @@ const Minter = () => {
 				<button id='walletButton' onClick={connectWalletPressed}>
 					{walletAddress.length > 0 ? 'Connected: ' + String(walletAddress).substring(0, 6) + '...' + String(walletAddress).substring(38) : <span>Connect Wallet</span>}
 				</button>
+                <br></br>
+				<br></br>
+				<p>Tokens Minted: {tokensMinted}/{totalTokens}</p>
 				<br></br>
 				<br></br>
 				<p>Get your random CryptoHermit NFT below, all NFTs are 0.01 ETH!</p>
