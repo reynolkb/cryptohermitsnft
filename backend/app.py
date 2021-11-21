@@ -75,7 +75,7 @@ def GetMetadata(tokenIdJson):
 def SetTokensMinted(tokensMinted):
     try:
         nftUtil.SetTokensMinted(tokensMinted)
-        return jsonify({"success": True})
+        return jsonify({"success": True, "tokensMinted": tokensMinted})
     except:
         return jsonify({"success": False})
 
@@ -84,7 +84,7 @@ def SetTokensMinted(tokensMinted):
 def SetTotalTokens(totalTokens):
     try:
         nftUtil.SetTotalTokens(totalTokens)
-        return jsonify({"success": True})
+        return jsonify({"success": True, "totalTokens": totalTokens})
     except:
         return jsonify({"success": False})
 
