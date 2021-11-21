@@ -25,6 +25,7 @@ const Minter = () => {
 	const [transactionURLTxt, setTransactionURLTxt] = useState('');
 
     var numberTokensMinted;
+    var numberTotalTokens;
 
 	// called after component is rendered
 	// call wallet listener and another wallet function to update UI to reflect whether a wallet is already connected
@@ -36,14 +37,22 @@ const Minter = () => {
 			setWallet(address);
 			setStatus(status);
 
-            // numberTokensMinted = await fetch(`https://www.cryptohermitsnft.com/getTotalTokens`, {method: 'GET'});
-            // numberTokensMinted = await numberTokensMinted.json();
-            // setTokensMinted(numberTokensMinted['tokensMinted']);
+            numberTokensMinted = await fetch(`https://www.cryptohermitsnft.com/getTokensMinted`, {method: 'GET'});
+            numberTokensMinted = await numberTokensMinted.json();
+            setTokensMinted(numberWithCommas(numberTokensMinted['tokensMinted']));
+
+            numberTotalTokens = await fetch(`https://www.cryptohermitsnft.com/getTotalTokens`, {method: 'GET'});
+            numberTotalTokens = await numberTotalTokens.json();
+            setTotalTokens(numberWithCommas(numberTotalTokens['totalTokens']));
 
 			addWalletListener();
 		}
 		connectWallet();
 	}, []);
+
+    function numberWithCommas(x) {
+		return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+	}
 
 	function addWalletListener() {
 		// check if Metamask is installed
@@ -89,10 +98,6 @@ const Minter = () => {
 		return new Promise((resolve) => {
 			setTimeout(resolve, ms);
 		});
-	}
-
-    function numberWithCommas(x) {
-		return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 	}
 
 	// called to mint the user's NFT
