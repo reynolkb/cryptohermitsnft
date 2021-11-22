@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { connectWallet, getCurrentWalletConnected, mintNFT } from '../../util/interact.js';
 import NavbarMinter from '../Navbar/Navbar-Minter';
 import './Minter.css';
@@ -24,8 +24,8 @@ const Minter = () => {
 	// string that contains the transactionURLTxt to display at the bottom of the UI
 	const [transactionURLTxt, setTransactionURLTxt] = useState('');
 
-    var numberTokensMinted;
-    var numberTotalTokens;
+    var tokensMintedResponse;
+    var totalTokensResponse;
 
 	// called after component is rendered
 	// call wallet listener and another wallet function to update UI to reflect whether a wallet is already connected
@@ -34,25 +34,27 @@ const Minter = () => {
 			// empty [] means it will be only called on the component's first render
 			const { address, status } = await getCurrentWalletConnected();
 
+            tokensMintedResponse = await fetch(`https://www.cryptohermitsnft.com/getTokensMinted`, {method: 'GET'});
+            tokensMintedResponse = await tokensMintedResponse.json();
+            tokensMintedResponse = tokensMintedResponse['tokensMinted'];
+            setTokensMinted(tokensMintedResponse);
+
+            totalTokensResponse = await fetch(`https://www.cryptohermitsnft.com/getTotalTokens`, {method: 'GET'});
+            totalTokensResponse = await totalTokensResponse.json();
+            totalTokensResponse = totalTokensResponse['totalTokens'];
+            setTotalTokens(totalTokensResponse);
+
 			setWallet(address);
 			setStatus(status);
-
-            numberTokensMinted = await fetch(`https://www.cryptohermitsnft.com/getTokensMinted`, {method: 'GET'});
-            numberTokensMinted = await numberTokensMinted.json();
-            setTokensMinted(numberWithCommas(numberTokensMinted['tokensMinted']));
-
-            numberTotalTokens = await fetch(`https://www.cryptohermitsnft.com/getTotalTokens`, {method: 'GET'});
-            numberTotalTokens = await numberTotalTokens.json();
-            setTotalTokens(numberWithCommas(numberTotalTokens['totalTokens']));
 
 			addWalletListener();
 		}
 		connectWallet();
 	}, []);
 
-    function numberWithCommas(x) {
-		return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-	}
+    // function numberWithCommas(x) {
+	// 	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+	// }
 
 	function addWalletListener() {
 		// check if Metamask is installed
@@ -199,10 +201,10 @@ const Minter = () => {
 				tokenId = parseInt(txReceipt['logs'][1]['data'], 16);
 				tokenIdArr.push(tokenId);
 
-                lastIndex = tokenIdArr.length - 1;
-                numberTokensMinted = await fetch(`https://www.cryptohermitsnft.com/setTokensMinted/${numberWithCommas(tokenIdArr[lastIndex])}`, {method: 'PUT'});
-				numberTokensMinted = await numberTokensMinted.json();
-                setTokensMinted(numberTokensMinted['tokensMinted']);
+                // lastIndex = tokenIdArr.length - 1;
+                // numberTokensMinted = await fetch(`https://www.cryptohermitsnft.com/setTokensMinted/${numberWithCommas(tokenIdArr[lastIndex])}`, {method: 'PUT'});
+				// numberTokensMinted = await numberTokensMinted.json();
+                // setTokensMinted(numberTokensMinted['tokensMinted']);
 
 				setTransactionStatus(`Now that your transaction is completed, you can view your NFT on Open Sea once the metadata is revealed. Your token id is ${tokenIdArr}.`);
 				setTransactionURLTxt('Completed Transaction');
@@ -212,10 +214,10 @@ const Minter = () => {
 					tokenIdArr.push(tokenId);
 				}
 
-                lastIndex = tokenIdArr.length - 1;
-                numberTokensMinted = await fetch(`https://www.cryptohermitsnft.com/setTokensMinted/${numberWithCommas(tokenIdArr[lastIndex])}`, {method: 'PUT'});
-				numberTokensMinted = await numberTokensMinted.json();
-                setTokensMinted(numberTokensMinted['tokensMinted']);
+                // lastIndex = tokenIdArr.length - 1;
+                // numberTokensMinted = await fetch(`https://www.cryptohermitsnft.com/setTokensMinted/${numberWithCommas(tokenIdArr[lastIndex])}`, {method: 'PUT'});
+				// numberTokensMinted = await numberTokensMinted.json();
+                // setTokensMinted(numberTokensMinted['tokensMinted']);
 
 				setTransactionStatus(`Now that your transaction is completed, you can view your NFTs on Open Sea once the metadata is revealed. Your token ids are ${tokenIdArr}.`);
 				setTransactionURLTxt('Completed Transaction');

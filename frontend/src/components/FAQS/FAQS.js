@@ -12,21 +12,21 @@ class FAQS extends Component {
 				<h2>How do I download MetaMask and fund my MetaMask wallet?</h2>
 				<p>
 					1. You need to{' '}
-					<a href='https://metamask.io/download' target='_blank'>
+					<a href='https://metamask.io/download' target='_blank' rel='noreferrer'>
 						download MetaMask
 					</a>
 					.
 				</p>
 				<p>
 					2.{' '}
-					<a href='https://www.coinbase.com/buy-ethereum' target='_blank'>
+					<a href='https://www.coinbase.com/buy-ethereum' target='_blank' rel='noreferrer'>
 						Buy Ethereum
 					</a>{' '}
 					from an exchange.
 				</p>
 				<p>
 					3.{' '}
-					<a href='https://www.coinbase.com/learn/tips-and-tutorials/how-to-send-crypto' target='_blank'>
+					<a href='https://www.coinbase.com/learn/tips-and-tutorials/how-to-send-crypto' target='_blank' rel='noreferrer'>
 						Transfer it
 					</a>{' '}
 					to your MetaMask Wallet.
