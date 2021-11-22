@@ -12,9 +12,9 @@ const Minter = () => {
 	// string that stores the user's wallet address
 	const [walletAddress, setWallet] = useState('');
     // number of tokens minted so far
-	const [tokensMinted, setTokensMinted] = useState('');
+	const [tokensMinted, setTokensMinted] = useState('loading...');
     // number of total tokens
-	const [totalTokens, setTotalTokens] = useState('');
+	const [totalTokens, setTotalTokens] = useState('loading...');
 	// string that contains a message to display at the bottom of the UI
 	const [status, setStatus] = useState('');
 	// string that contains the pending transaction string to display at the bottom of the UI
@@ -34,6 +34,11 @@ const Minter = () => {
 			// empty [] means it will be only called on the component's first render
 			const { address, status } = await getCurrentWalletConnected();
 
+			setWallet(address);
+			setStatus(status);
+            
+			addWalletListener();
+
             tokensMintedResponse = await fetch(`https://www.cryptohermitsnft.com/getTokensMinted`, {method: 'GET'});
             tokensMintedResponse = await tokensMintedResponse.json();
             tokensMintedResponse = tokensMintedResponse['tokensMinted'];
@@ -43,18 +48,9 @@ const Minter = () => {
             totalTokensResponse = await totalTokensResponse.json();
             totalTokensResponse = totalTokensResponse['totalTokens'];
             setTotalTokens(totalTokensResponse);
-
-			setWallet(address);
-			setStatus(status);
-
-			addWalletListener();
 		}
 		connectWallet();
 	}, []);
-
-    // function numberWithCommas(x) {
-	// 	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-	// }
 
 	function addWalletListener() {
 		// check if Metamask is installed
@@ -100,6 +96,10 @@ const Minter = () => {
 		return new Promise((resolve) => {
 			setTimeout(resolve, ms);
 		});
+	}
+
+    function numberWithCommas(x) {
+		return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 	}
 
 	// called to mint the user's NFT
@@ -201,10 +201,10 @@ const Minter = () => {
 				tokenId = parseInt(txReceipt['logs'][1]['data'], 16);
 				tokenIdArr.push(tokenId);
 
-                // lastIndex = tokenIdArr.length - 1;
-                // numberTokensMinted = await fetch(`https://www.cryptohermitsnft.com/setTokensMinted/${numberWithCommas(tokenIdArr[lastIndex])}`, {method: 'PUT'});
-				// numberTokensMinted = await numberTokensMinted.json();
-                // setTokensMinted(numberTokensMinted['tokensMinted']);
+                lastIndex = tokenIdArr.length - 1;
+                tokensMintedResponse = await fetch(`https://www.cryptohermitsnft.com/setTokensMinted/${numberWithCommas(tokenIdArr[lastIndex])}`, {method: 'PUT'});
+				tokensMintedResponse = await tokensMintedResponse.json();
+                setTokensMinted(tokensMintedResponse['tokensMinted']);
 
 				setTransactionStatus(`Now that your transaction is completed, you can view your NFT on Open Sea once the metadata is revealed. Your token id is ${tokenIdArr}.`);
 				setTransactionURLTxt('Completed Transaction');
@@ -214,10 +214,10 @@ const Minter = () => {
 					tokenIdArr.push(tokenId);
 				}
 
-                // lastIndex = tokenIdArr.length - 1;
-                // numberTokensMinted = await fetch(`https://www.cryptohermitsnft.com/setTokensMinted/${numberWithCommas(tokenIdArr[lastIndex])}`, {method: 'PUT'});
-				// numberTokensMinted = await numberTokensMinted.json();
-                // setTokensMinted(numberTokensMinted['tokensMinted']);
+                lastIndex = tokenIdArr.length - 1;
+                tokensMintedResponse = await fetch(`https://www.cryptohermitsnft.com/setTokensMinted/${numberWithCommas(tokenIdArr[lastIndex])}`, {method: 'PUT'});
+				tokensMintedResponse = await tokensMintedResponse.json();
+                setTokensMinted(tokensMintedResponse['tokensMinted']);
 
 				setTransactionStatus(`Now that your transaction is completed, you can view your NFTs on Open Sea once the metadata is revealed. Your token ids are ${tokenIdArr}.`);
 				setTransactionURLTxt('Completed Transaction');
