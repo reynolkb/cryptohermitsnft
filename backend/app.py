@@ -82,16 +82,16 @@ def SetTokensMinted(tokensMinted):
 @app.route("/getTokensMinted", methods=["GET"])
 def getTokensMinted():
     try:
-        nftUtil.GetTokensMinted()
-        return jsonify({"success": True, "tokensMinted": tokensMinted})
+        tokensMintedResponse = nftUtil.GetTokensMinted()
+        return jsonify({"success": True, "tokensMinted": tokensMintedResponse})
     except:
         return jsonify({"success": False})
 
 @app.route("/getTotalTokens", methods=["GET"])
 def getTotalTokens():
     try:
-        nftUtil.GetTotalTokens()
-        return jsonify({"success": True, "totalTokens": totalTokens})
+        totalTokensResponse = nftUtil.GetTotalTokens()
+        return jsonify({"success": True, "totalTokens": totalTokensResponse})
     except:
         return jsonify({"success": False})
 
