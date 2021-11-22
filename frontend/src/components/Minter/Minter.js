@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connectWallet, getCurrentWalletConnected, mintNFT } from '../../util/interact.js';
 import NavbarMinter from '../Navbar/Navbar-Minter';
 import './Minter.css';
