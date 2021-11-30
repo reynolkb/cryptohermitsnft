@@ -1,0 +1,40 @@
+.roadmap-text {
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	line-height: 22px;
+	text-align: center;
+}
+
+.roadmap-step {
+	width: 646px;
+	margin-left: 175px;
+	margin-top: 28px;
+}
+
+.roadmap-percent {
+	font-size: 36px;
+	line-height: 43.2px;
+	color: #2e8c8e;
+	text-shadow: -2px -2px 0 #fff, 0 -2px 0 #fff, 2px -2px 0 #fff, 2px 0 0 #fff, 2px 2px 0 #fff, 0 2px 0 #fff, -2px 2px 0 #fff, -2px 0 0 #fff;
+}
+
+@media screen and (max-width: 480px) {
+	.roadmap-text {
+		font-size: 14px;
+		line-height: 16.8px;
+		margin-left: 34px;
+		margin-right: 34px;
+	}
+	.roadmap-step {
+		width: 283px;
+		/* margin-left: 68px; */
+		margin-left: 34px;
+		margin-right: 34px;
+		margin-top: 18px;
+	}
+	.roadmap-percent {
+		font-size: 24px;
+		line-height: 28.8px;
+	}
+}

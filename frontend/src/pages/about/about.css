@@ -1,0 +1,10 @@
+.para-about {
+  margin-top: 30px; 
+  max-width: 579px;
+}
+
+@media screen and (max-width: 480px) {
+  .para-about {
+    max-width: 354px;
+  } 
+}

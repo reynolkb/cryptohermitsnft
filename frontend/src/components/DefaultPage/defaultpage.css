@@ -1,0 +1,96 @@
+/* Page Layouts */
+.default-layout {
+	width: 100vw;
+	min-height: 100vh;
+}
+.default-background-wrapper {
+	/* position: absolute; */
+	width: 100vw;
+	min-height: 100vh;
+	background: transparent;
+}
+
+/* .header-gradient {
+	background: linear-gradient(180deg, #308b8e 0%, #38a3a7 60%, #5db8bb 85%, transparent 100%);
+	width: 100vw;
+	height: 30vh;
+	z-index: 1;
+	position: absolute;
+} */
+
+/* .center-image {
+	background: url('../../assets/desktop.jpeg') no-repeat;
+	background-size: 120vw 60vh;
+	background-position-x: -20vw;
+	height: 60vh;
+	width: 100vw;
+	margin-top: 22vh;
+} */
+
+/* .footer-gradient {
+	width: 100vw;
+	height: 24vh;
+	z-index: 1;
+	position: absolute;
+	bottom: 0;
+	background: linear-gradient(180deg, transparent 0%, #f0b289 20%, #f0b289 100%);
+} */
+
+.top-left-logo {
+	position: absolute;
+	top: 5px;
+	left: 3vw;
+	z-index: 3;
+	height: 12vh;
+	cursor: pointer;
+}
+
+.header-footer-wrapper {
+	width: 100vw;
+	height: 100vh;
+}
+
+.content-wrapper {
+	/* position: absolute; */
+	width: 100vw;
+	min-height: 100vh;
+	top: 0;
+	left: 0;
+	z-index: 2;
+	display: flex;
+	flex-direction: column;
+
+	background: linear-gradient(180deg, #5db8bb 0%, #f0b289 100%);
+}
+.child-wrapper {
+	margin-bottom: 70px;
+	width: 100vw;
+}
+
+@media screen and (max-width: 768px) {
+	.default-background-wrapper {
+		/* background-image: url('../../assets/mobile-bg.png'); */
+		background-image: none;
+		background-size: 100vw 100vh;
+	}
+
+	/* .content-wrapper {
+		background: linear-gradient(180deg, #5db8bb 0%, #f0b289 100%);
+	} */
+
+	.header-gradient,
+	.footer-gradient,
+	.center-image {
+		display: none;
+	}
+	.default-background-wrapper {
+		text-align: center;
+	}
+	.top-left-logo {
+		position: relative;
+		left: 0;
+	}
+	.content-wrapper {
+		align-items: center;
+	}
+}

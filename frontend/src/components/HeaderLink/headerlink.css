@@ -1,0 +1,36 @@
+.header-link-wrapper {
+	position: absolute;
+	top: 48px;
+	right: 60px;
+	width: 65%;
+	max-width: 890px;
+	z-index: 4;
+}
+.header-link-ul {
+	display: flex;
+	justify-content: space-between;
+}
+.header-link-ul li {
+	display: inline-flex;
+	color: white;
+	text-transform: uppercase;
+	cursor: pointer;
+	height: 36px;
+	justify-content: center;
+	font-size: 16px;
+	line-height: 19.2px;
+	font-weight: 400;
+	font-style: normal;
+}
+.header-link-bottom {
+	position: absolute;
+	width: 25px;
+	height: 3px;
+	background: #f2653c;
+	bottom: 0;
+}
+@media screen and (max-width: 768px) {
+	.header-link-ul {
+		display: none;
+	}
+}

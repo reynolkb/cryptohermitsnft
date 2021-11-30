@@ -1,0 +1,27 @@
+.para-founder{
+  margin-top: 60px;
+}
+.para-team {
+  max-width: 639px;
+  margin-top: 35px;
+}
+.para-artist {
+  margin-top: 40px;
+}
+.para-artist-content {
+  margin-top: 27px;
+}
+@media screen and (max-width: 480px) {
+  .para-founder{
+    margin-top: 30px;
+  }
+  .para-team {
+    margin: 15px 28px 0 28px;
+  }
+  .para-artist {
+    margin-top: 20px;
+  }
+  .para-artist-content {
+    margin-top: 15px;
+  }
+}

@@ -1,9 +1,19 @@
 #Footer {
+	width: 100vw;
 	padding: 0 20vw;
 	text-align: center;
 	margin-top: auto;
 	bottom: 0;
-	position: absolute;
+	/* position: absolute; */
+	text-transform: uppercase;
+	z-index: 4;
+}
+
+.footer-text {
+	font-size: 16px;
+	line-height: 19.2px;
+	font-weight: 400;
+	font-style: normal;
 }
 
 .footer-line {
@@ -11,13 +21,14 @@
 	width: 60vw;
 }
 
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 480px) {
 	#Footer {
-		padding-left: 15vw;
-		padding-right: 15vw;
+		padding-left: 10vw;
+		padding-right: 10vw;
+		padding-bottom: 3vh;
 	}
-
-	.footer-line {
-		width: 70vw;
+	.footer-text {
+		font-size: 14px;
+		line-height: 14.4px;
 	}
 }

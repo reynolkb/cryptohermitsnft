@@ -231,6 +231,10 @@ NFT_DEFINITION_BOOKWORMS = {
         (("Hair", "Dark_*"), ("Body", "Dark_*")),
         (("Hair", "Light_*"), ("Body", "Light_*")),
         (("Hair", "Medium_*"), ("Body", "Medium_*")),
+        # If the body is dark, then the hair must be either dark or a Mullet.
+        (("Body", "Dark_*"), ("Hair", ("Dark_*", "Mullet"))),
+        (("Body", "Light_*"), ("Hair", ("Light_*", "Mullet"))),
+        (("Body", "Medium_*"), ("Hair", ("Medium_*", "Mullet"))),
         # If the shoes are dark, then the body must be dark.
         (("Shoes", "Dark_*"), ("Body", "Dark_*")),
         (("Shoes", "Light_*"), ("Body", "Light_*")),
@@ -239,23 +243,99 @@ NFT_DEFINITION_BOOKWORMS = {
         (("Shoes", "Dark_*"), ("Hair", ("Dark_*", "Mullet"))),
         (("Shoes", "Light_*"), ("Hair", ("Light_*", "Mullet"))),
         (("Shoes", "Medium_*"), ("Hair", ("Medium_*", "Mullet"))),
+        # --------------------------------- Body/Shoes Inclusions ---------------------------------
+        # Dark_Bell_Bottoms
+        (
+            ("Body", "Dark_Bell_Bottoms"),
+            ("Shoes", ("Boots_Bell_Bottoms", "Converse_Bell_Bottoms", "Dark_High_Heels_Bell_Bottoms", "Dark_Slippers_Bell_Bottoms", "Dress_Shoes_Bell_Bottoms", "Socks_Slides_Bell_Bottoms")),
+        ),
+        # Medium_Bell_Bottoms
+        (
+            ("Body", "Medium_Bell_Bottoms"),
+            ("Shoes", ("Boots_Bell_Bottoms", "Converse_Bell_Bottoms", "Medium_High_Heels_Bell_Bottoms", "Medium_Slippers_Bell_Bottoms", "Dress_Shoes_Bell_Bottoms", "Socks_Slides_Bell_Bottoms")),
+        ),
+        # Light_Bell_Bottoms
+        (
+            ("Body", "Light_Bell_Bottoms"),
+            ("Shoes", ("Boots_Bell_Bottoms", "Converse_Bell_Bottoms", "Light_High_Heels_Bell_Bottoms", "Light_Slippers_Bell_Bottoms", "Dress_Shoes_Bell_Bottoms", "Socks_Slides_Bell_Bottoms")),
+        ),
+        # Dark_Manwoman
+        (
+            ("Body", "Dark_Manwoman"),
+            ("Shoes", ("Boots", "Converse", "Dark_High_Heels_Robe_Manwoman", "Dark_Slippers_Robe_Manwoman", "Dress_Shoes_Robe_Manwoman", "Socks_Slides")),
+        ),
+        # Medium_Manwoman
+        (
+            ("Body", "Medium_Manwoman"),
+            ("Shoes", ("Boots", "Converse", "Medium_High_Heels_Robe_Manwoman", "Medium_Slippers_Robe_Manwoman", "Dress_Shoes_Robe_Manwoman", "Socks_Slides")),
+        ),
+        # Light_Manwoman
+        (
+            ("Body", "Light_Manwoman"),
+            ("Shoes", ("Boots", "Converse", "Light_High_Heels_Robe_Manwoman", "Light_Slippers_Robe_Manwoman", "Dress_Shoes_Robe_Manwoman", "Socks_Slides")),
+        ),
+        # Dark_Robe
+        (
+            ("Body", "Dark_Robe"),
+            ("Shoes", ("Boots", "Converse", "Dark_High_Heels_Robe_Manwoman", "Dark_Slippers_Robe_Manwoman", "Dress_Shoes_Robe_Manwoman", "Socks_Slides")),
+        ),
+        # Medium_Robe
+        (
+            ("Body", "Medium_Robe"),
+            ("Shoes", ("Boots", "Converse", "Medium_High_Heels_Robe_Manwoman", "Medium_Slippers_Robe_Manwoman", "Dress_Shoes_Robe_Manwoman", "Socks_Slides")),
+        ),
+        # Light_Robe
+        (
+            ("Body", "Light_Robe"),
+            ("Shoes", ("Boots", "Converse", "Light_High_Heels_Robe_Manwoman", "Light_Slippers_Robe_Manwoman", "Dress_Shoes_Robe_Manwoman", "Socks_Slides")),
+        ),
+        # Dark_Suit
+        (
+            ("Body", "Dark_Suit"),
+            ("Shoes", ("Boots", "Converse_Suit", "Dark_High_Heels_Suit", "Dark_Slippers_Suit", "Dress_Shoes_Suit", "Socks_Slides_Suit")),
+        ),
+        # Medium_Suit
+        (
+            ("Body", "Medium_Suit"),
+            ("Shoes", ("Boots", "Converse_Suit", "Medium_High_Heels_Suit", "Medium_Slippers_Suit", "Dress_Shoes_Suit", "Socks_Slides_Suit")),
+        ),
+        # Light_Suit
+        (
+            ("Body", "Light_Suit"),
+            ("Shoes", ("Boots", "Converse_Suit", "Light_High_Heels_Suit", "Light_Slippers_Suit", "Dress_Shoes_Suit", "Socks_Slides_Suit")),
+        ),
+        # Dark_Tracksuit
+        (
+            ("Body", "Dark_Tracksuit"),
+            ("Shoes", ("Boots", "Converse_Tracksuit", "Dark_High_Heels_Tracksuit", "Dark_Slippers_Tracksuit", "Dress_Shoes_Tracksuit", "Socks_Slides_Tracksuit")),
+        ),
+        # Medium_Tracksuit
+        (
+            ("Body", "Medium_Tracksuit"),
+            ("Shoes", ("Boots", "Converse_Tracksuit", "Medium_High_Heels_Tracksuit", "Medium_Slippers_Tracksuit", "Dress_Shoes_Tracksuit", "Socks_Slides_Tracksuit")),
+        ),
+        # Light_Tracksuit
+        (
+            ("Body", "Light_Tracksuit"),
+            ("Shoes", ("Boots", "Converse_Tracksuit", "Light_High_Heels_Tracksuit", "Light_Slippers_Tracksuit", "Dress_Shoes_Tracksuit", "Socks_Slides_Tracksuit")),
+        ),
     ),
     # Kyle says these are incorrect.
-    "Exclusions": (
-        {"Body": "*_Bell_Bottoms", "Shoes": "*_Robe_Manwoman"},
-        {"Body": "*_Bell_Bottoms", "Shoes": "*_Suit"},
-        {"Body": "*_Bell_Bottoms", "Shoes": "*_Tracksuit"},
-        {"Body": "*_Manwoman", "Shoes": "*_Bell_Bottoms"},
-        {"Body": "*_Manwoman", "Shoes": "*_Suit"},
-        {"Body": "*_Manwoman", "Shoes": "*_Tracksuit"},
-        {"Body": "*_Robe", "Shoes": "*_Bell_Bottoms"},
-        {"Body": "*_Robe", "Shoes": "*_Suit"},
-        {"Body": "*_Robe", "Shoes": "*_Tracksuit"},
-        {"Body": "*_Suit", "Shoes": "*_Bell_Bottoms"},
-        {"Body": "*_Suit", "Shoes": "*_Robe_Manwoman"},
-        {"Body": "*_Suit", "Shoes": "*_Tracksuit"},
-        {"Body": "*_Tracksuit", "Shoes": "*_Bell_Bottoms"},
-        {"Body": "*_Tracksuit", "Shoes": "*_Robe_Manwoman"},
-        {"Body": "*_Tracksuit", "Shoes": "*_Suit"},
-    ),
+    # "Exclusions": (
+    #     {"Body": "*_Bell_Bottoms", "Shoes": "*_Robe_Manwoman"},
+    #     {"Body": "*_Bell_Bottoms", "Shoes": "*_Suit"},
+    #     {"Body": "*_Bell_Bottoms", "Shoes": "*_Tracksuit"},
+    #     {"Body": "*_Manwoman", "Shoes": "*_Bell_Bottoms"},
+    #     {"Body": "*_Manwoman", "Shoes": "*_Suit"},
+    #     {"Body": "*_Manwoman", "Shoes": "*_Tracksuit"},
+    #     {"Body": "*_Robe", "Shoes": "*_Bell_Bottoms"},
+    #     {"Body": "*_Robe", "Shoes": "*_Suit"},
+    #     {"Body": "*_Robe", "Shoes": "*_Tracksuit"},
+    #     {"Body": "*_Suit", "Shoes": "*_Bell_Bottoms"},
+    #     {"Body": "*_Suit", "Shoes": "*_Robe_Manwoman"},
+    #     {"Body": "*_Suit", "Shoes": "*_Tracksuit"},
+    #     {"Body": "*_Tracksuit", "Shoes": "*_Bell_Bottoms"},
+    #     {"Body": "*_Tracksuit", "Shoes": "*_Robe_Manwoman"},
+    #     {"Body": "*_Tracksuit", "Shoes": "*_Suit"},
+    # ),
 }
