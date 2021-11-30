@@ -6,7 +6,7 @@ import './team.css';
 export default function Team(props) {
 	return (
 		<DefaultPage>
-			<div className='page-home'>
+			<div className='page-mint'>
 				<p className='text-magento-border' style={{ marginTop: '2vh' }}>
 					Team
 				</p>

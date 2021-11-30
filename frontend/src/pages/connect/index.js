@@ -8,7 +8,7 @@ import './connect.css';
 export default function Connect(props) {
 	return (
 		<DefaultPage>
-			<div className='page-home'>
+			<div className='page-mint'>
 				<p className='text-magento-border' style={{ marginTop: '2vh' }}>
 					Connect
 				</p>

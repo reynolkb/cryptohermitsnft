@@ -14,7 +14,7 @@ export default function Faq(props) {
 	const [qShow5, setQShow5] = useState(false);
 	return (
 		<DefaultPage>
-			<div className='page-home'>
+			<div className='page-mint'>
 				<p className='text-magento-border' style={{ marginTop: '2vh' }}>
 					FAQ
 				</p>
