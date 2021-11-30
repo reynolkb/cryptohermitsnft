@@ -1429,8 +1429,8 @@
       ]
     },
     "/Users/kylereynolds/Documents/Coding/NFTs/cryptohermits/code/blockchain/contracts/CryptoHermits.sol": {
-      "lastModificationDate": 1636838943190,
-      "contentHash": "417bebbf9e8cd6b29c01f3fb5f5f8f73",
+      "lastModificationDate": 1637353979843,
+      "contentHash": "01f962a3bc4ca0256be48c3ddeef7b04",
       "sourceName": "contracts/CryptoHermits.sol",
       "solcConfig": {
         "version": "0.8.0",

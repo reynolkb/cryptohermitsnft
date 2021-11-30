@@ -11,6 +11,11 @@ module.exports = {
   // defaultNetwork: "rinkeby",
   networks: {
     hardhat: {},
+    // localhost: {
+    //   url: 'http://127.0.0.1:8545',
+    // },
+    
+    // comment out rinkeby network for tests
     rinkeby: {
       url: API_URL,
       accounts: [`0x${PRIVATE_KEY}`],

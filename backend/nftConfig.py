@@ -13,24 +13,14 @@ DATABASE_CONNECTION_STRING = os.getenv("DATABASE_CONNECTION_STRING")
 # The port for the localhost database.  Only relevant if DATABASE_CONNECTION_STRING is an empty string or None.
 DATABASE_LOCAL_PORT = 27017
 
-# False = Do not send emails, True = Do send emails
-DO_SEND_EMAILS = False
-
-# False = Do not write to the csv log file, True = Do write to the csv log file
-DO_WRITE_LOG_FILE = False
-
-# False = Do not write messages to the console, True = Do write messages to the console
-DO_WRITE_TO_CONSOLE = False
-
-# Send internal emails to these email addresses.  Only relevant if DO_SEND_EMAILS == True
-SEND_TO_EMAIL_ADDRESSES = "reynolds_johnd@yahoo.com"  # , jjjkreynolds@gmail.com, kylereynolds789@gmail.com
-
+# Get the optional 'FRONTEND_BACKEND_HANDSHAKE' which will be required for external flask `apps.
+FRONTEND_BACKEND_PASSWORD = os.getenv("FRONTEND_BACKEND_PASSWORD")
 
 ################################################# NFT COLLECTION DEFINITIONS #################################################
 NFT_DEFINITION_BOOKWORMS = {
     "Name": "Bookworms",
     "Description": "A description of the bookworm collection that Bianca can come up with.",
-    "ImageExtension": ".png",  # .png, .jpg, etc.
+    "ImageType": "png",  # png, jpg, etc.
     "Quantity": 98,  # Quantity of NFT's to generate.  Set to a really high number if you want to generate the maximum number.
     "QuantityOfExposableTokens": 5,  # The initial quantity of tokens that will have their metadata exposable.
     # Update the database with the images.  Since the images are so large, it can be very slow to update a remote database.
@@ -63,11 +53,11 @@ NFT_DEFINITION_BOOKWORMS = {
         {
             "Name": "Floor",
             "Attributes": (
-                {"Name": "Checkered", "Probability": 20},
-                {"Name": "Concrete", "Probability": 20},
+                {"Name": "Checkered", "Probability": 18},
+                {"Name": "Concrete", "Probability": 19},
                 {"Name": "Grass", "Probability": 20},
-                {"Name": "Shag_Rug", "Probability": 20},
-                {"Name": "Wood_Floor", "Probability": 20},
+                {"Name": "Shag_Rug", "Probability": 21},
+                {"Name": "Wood_Floor", "Probability": 22},
             ),
         },
         # Level 1
@@ -76,37 +66,37 @@ NFT_DEFINITION_BOOKWORMS = {
         {
             "Name": "Back Wall",
             "Attributes": (
-                {"Name": "Brick_Wall", "Probability": 17},
-                {"Name": "Last_Supper_Wall", "Probability": 17},
-                {"Name": "Marriage_Wall", "Probability": 17},
+                {"Name": "Brick_Wall", "Probability": 14},
+                {"Name": "Last_Supper_Wall", "Probability": 15},
+                {"Name": "Marriage_Wall", "Probability": 16},
                 {"Name": "Palm_Tree_Wall", "Probability": 17},
-                {"Name": "Roses_Wall", "Probability": 16},
-                {"Name": "TV_Wall", "Probability": 16},
+                {"Name": "Roses_Wall", "Probability": 18},
+                {"Name": "TV_Wall", "Probability": 20},
             ),
         },
         # Level 3
         {
             "Name": "Lighting",
             "Attributes": (
-                {"Name": "None", "FilePath": None, "Probability": 22},
-                {"Name": "Cannabis", "Probability": 13},
-                {"Name": "Disco_Ball", "Probability": 13},
-                {"Name": "Gun_Lamp", "Probability": 13},
+                {"Name": "Nothing", "FilePath": None, "Probability": 25},
+                {"Name": "Cannabis", "Probability": 10},
+                {"Name": "Disco_Ball", "Probability": 11},
+                {"Name": "Gun_Lamp", "Probability": 12},
                 {"Name": "Lava_Lamp", "Probability": 13},
-                {"Name": "Leg_Lamp", "Probability": 13},
-                {"Name": "Torch", "Probability": 13},
+                {"Name": "Leg_Lamp", "Probability": 14},
+                {"Name": "Torch", "Probability": 15},
             ),
         },
         # Level 4
         {
             "Name": "Chair",
             "Attributes": (
-                {"Name": "Flag_Chair", "Probability": 17},
-                {"Name": "Leather_Chair", "Probability": 17},
-                {"Name": "Plaid_Chair", "Probability": 17},
+                {"Name": "Flag_Chair", "Probability": 14},
+                {"Name": "Leather_Chair", "Probability": 15},
+                {"Name": "Plaid_Chair", "Probability": 16},
                 {"Name": "Polka_Dot_Chair", "Probability": 17},
-                {"Name": "Shell_Chair", "Probability": 16},
-                {"Name": "Tie_Dye_Chair", "Probability": 16},
+                {"Name": "Shell_Chair", "Probability": 18},
+                {"Name": "Tie_Dye_Chair", "Probability": 20},
             ),
         },
         # Level 5
@@ -164,7 +154,7 @@ NFT_DEFINITION_BOOKWORMS = {
                 {"Name": "Epic", "FilePath": "BookColorEpic.png", "Probability": 12},
                 {"Name": "Rare", "FilePath": "BookColorRare.png", "Probability": 17},
                 {"Name": "Uncommon", "FilePath": "BookColorUncommon.png", "Probability": 25},
-                {"Name": "Common", "FilePath": "BookColorCommon.png", "Probability": 33.1},
+                {"Name": "Common", "FilePath": "BookColorCommon.png", "Probability": 33.1},  # 33.1
             ),
         },
         # Level 8
@@ -174,7 +164,7 @@ NFT_DEFINITION_BOOKWORMS = {
             "Name": "Shoes",
             "Attributes": (
                 # These shoes can be worn by any body.
-                {"Name": "Boots", "Probability": 3.2},
+                {"Name": "Boots", "Probability": 3.2},  # 3.2
                 {"Name": "Converse", "Probability": 3.1},
                 {"Name": "Slippers", "Probability": 3.1},
                 {"Name": "Socks_Slides", "Probability": 3.1},
@@ -226,7 +216,7 @@ NFT_DEFINITION_BOOKWORMS = {
         {
             "Name": "Sideboard Object",
             "Attributes": (
-                {"Name": "None", "FilePath": None, "Probability": 23},
+                {"Name": "Nothing", "FilePath": None, "Probability": 23},
                 {"Name": "Beer_Bottle", "Probability": 11},
                 {"Name": "Bong", "Probability": 11},
                 {"Name": "Cigars", "Probability": 11},
@@ -237,26 +227,22 @@ NFT_DEFINITION_BOOKWORMS = {
             ),
         },
     ),
-    # i don't want a certain mohawk with certain outfits (don't mix skin tones)
+    "Inclusions": (
+        # If the hair is dark, then the body must be dark.
+        (("Hair", "Dark_*"), ("Body", "Dark_*")),
+        (("Hair", "Light_*"), ("Body", "Light_*")),
+        (("Hair", "Medium_*"), ("Body", "Medium_*")),
+        # If the shoes are dark, then the body must be dark.
+        (("Shoes", "Dark_*"), ("Body", "Dark_*")),
+        (("Shoes", "Light_*"), ("Body", "Light_*")),
+        (("Shoes", "Medium_*"), ("Body", "Medium_*")),
+        # If the shoes are dark, then the hair must be either dark or a Mullet.
+        (("Shoes", "Dark_*"), ("Hair", ("Dark_*", "Mullet"))),
+        (("Shoes", "Light_*"), ("Hair", ("Light_*", "Mullet"))),
+        (("Shoes", "Medium_*"), ("Hair", ("Medium_*", "Mullet"))),
+    ),
+    # Kyle says these are incorrect.
     "Exclusions": (
-        {"Hair": "Dark_*", "Body": "Light_*"},
-        {"Hair": "Dark_*", "Body": "Medium_*"},
-        {"Hair": "Light_*", "Body": "Dark_*"},
-        {"Hair": "Light_*", "Body": "Medium_*"},
-        {"Hair": "Medium_*", "Body": "Dark_*"},
-        {"Hair": "Medium_*", "Body": "Light_*"},
-        {"Hair": "Dark_*", "Shoes": "Light_*"},
-        {"Hair": "Dark_*", "Shoes": "Medium_*"},
-        {"Hair": "Light_*", "Shoes": "Dark_*"},
-        {"Hair": "Light_*", "Shoes": "Medium_*"},
-        {"Hair": "Medium_*", "Shoes": "Dark_*"},
-        {"Hair": "Medium_*", "Shoes": "Light_*"},
-        {"Body": "Dark_*", "Shoes": "Light_*"},
-        {"Body": "Dark_*", "Shoes": "Medium_*"},
-        {"Body": "Light_*", "Shoes": "Dark_*"},
-        {"Body": "Light_*", "Shoes": "Medium_*"},
-        {"Body": "Medium_*", "Shoes": "Dark_*"},
-        {"Body": "Medium_*", "Shoes": "Light_*"},
         {"Body": "*_Bell_Bottoms", "Shoes": "*_Robe_Manwoman"},
         {"Body": "*_Bell_Bottoms", "Shoes": "*_Suit"},
         {"Body": "*_Bell_Bottoms", "Shoes": "*_Tracksuit"},
@@ -273,8 +259,4 @@ NFT_DEFINITION_BOOKWORMS = {
         {"Body": "*_Tracksuit", "Shoes": "*_Robe_Manwoman"},
         {"Body": "*_Tracksuit", "Shoes": "*_Suit"},
     ),
-    # These are the only traits I want to use for all 10,000 of the images
-    #'Inclusions' : (
-    #    {'Hair' : 'Dark_*', 'Body' : 'Dark_*', 'Sideboard Object' : 'Wine_Bottle', 'Chair' : 'Tie_Dye_Chair'},
-    #    )
 }

@@ -71,13 +71,14 @@ def GetMetadata(tokenIdJson):
         return jsonify({"success": False, "metadata": None, "errorMessage": nftUtil.ProcessException()})
 
 
-@app.route("/setTokensMinted/<tokensMinted>", methods=["PUT"])
-def SetTokensMinted(tokensMinted):
+@app.route("/setTokensMinted/<tokensMinted>/<password>", methods=["PUT"])
+def SetTokensMinted(tokensMinted, password):
     try:
-        nftUtil.SetTokensMinted(tokensMinted)
+        nftUtil.SetTokensMinted(tokensMinted, password)
         return jsonify({"success": True, "tokensMinted": tokensMinted})
     except:
         return jsonify({"success": False})
+
 
 @app.route("/getTokensMinted", methods=["GET"])
 def getTokensMinted():
@@ -86,6 +87,7 @@ def getTokensMinted():
         return jsonify({"success": True, "tokensMinted": tokensMintedResponse})
     except:
         return jsonify({"success": False})
+
 
 @app.route("/getTotalTokens", methods=["GET"])
 def getTotalTokens():
