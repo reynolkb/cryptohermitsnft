@@ -22,7 +22,7 @@ NFT_DEFINITION_BOOKWORMS = {
     "Description": "A description of the bookworm collection that Bianca can come up with.",
     "ImageType": "png",  # png, jpg, etc.
     "Quantity": 98,  # Quantity of NFT's to generate.  Set to a really high number if you want to generate the maximum number.
-    "QuantityOfExposableTokens": 5,  # The initial quantity of tokens that will have their metadata exposable.
+    "QuantityOfExposableTokens": 10,  # The initial quantity of tokens that will have their metadata exposable.
     # Update the database with the images.  Since the images are so large, it can be very slow to update a remote database.
     # So only turn this to True when you are 100% sure that the images are finalized.
     "UpdateDatabaseWithImages": True,
@@ -148,25 +148,24 @@ NFT_DEFINITION_BOOKWORMS = {
             "Name": "Book Color",
             "IsRarityTrait": True,
             "Attributes": (
-                {"Name": "Mythic", "FilePath": "BookColorMythic.png", "Probability": 2},
-                {"Name": "Exotic", "FilePath": "BookColorExotic.png", "Probability": 3.4},
-                {"Name": "Legendary", "FilePath": "BookColorLegendary.png", "Probability": 7.5},
-                {"Name": "Epic", "FilePath": "BookColorEpic.png", "Probability": 12},
-                {"Name": "Rare", "FilePath": "BookColorRare.png", "Probability": 17},
-                {"Name": "Uncommon", "FilePath": "BookColorUncommon.png", "Probability": 25},
-                {"Name": "Common", "FilePath": "BookColorCommon.png", "Probability": 33.1},  # 33.1
+                {"Name": "Mythic", "FilePath": "Mythic.png", "Probability": 2},
+                {"Name": "Exotic", "FilePath": "Exotic.png", "Probability": 3.4},
+                {"Name": "Legendary", "FilePath": "Legendary.png", "Probability": 7.5},
+                {"Name": "Epic", "FilePath": "Epic.png", "Probability": 12},
+                {"Name": "Rare", "FilePath": "Rare.png", "Probability": 17},
+                {"Name": "Uncommon", "FilePath": "Uncommon.png", "Probability": 25},
+                {"Name": "Common", "FilePath": "Common.png", "Probability": 33.1},  # 33.1
             ),
         },
         # Level 8
-        {"Name": "Book Title", "Attributes": ({"Name": "_0002s_0000_Book", "Probability": 100},)},
+        {"Name": "Book Title", "Attributes": ({"Name": "Comply-Or-Die", "Probability": 100},)},
         # Level 9
         {
             "Name": "Shoes",
             "Attributes": (
                 # These shoes can be worn by any body.
                 {"Name": "Boots", "Probability": 3.2},  # 3.2
-                {"Name": "Converse", "Probability": 3.1},
-                {"Name": "Slippers", "Probability": 3.1},
+                {"Name": "Converse", "Probability": 6.2},
                 {"Name": "Socks_Slides", "Probability": 3.1},
                 # These shoes can only be worn by a body with the matching clothes.  The skin tone of the body is irrelevant.
                 {"Name": "Boots_Bell_Bottoms", "Probability": 2.5},
