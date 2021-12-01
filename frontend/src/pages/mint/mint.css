@@ -2,7 +2,7 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	margin-top: 15vh;
+	margin-top: 30px;
 }
 .mint-amount {
 	padding: 13px 23px;
@@ -74,9 +74,6 @@
 	#transactionStatus {
 		margin-left: 50px;
 		margin-right: 50px;
-	}
-	.page-mint {
-		margin-top: 30px;
 	}
 }
 

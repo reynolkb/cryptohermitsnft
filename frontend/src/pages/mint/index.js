@@ -240,9 +240,7 @@ export default function Connect(props) {
 
 	return (
 		<div className='page-mint'>
-			<p className='text-magento-border' style={{ marginTop: '2vh' }}>
-				Mint Nft
-			</p>
+			<p className='text-magento-border'>Mint Nft</p>
 			<p className='text-normal-black' style={{ marginTop: 30 }}>
 				Tokens Minted {tokensMinted}/{totalTokens}
 			</p>

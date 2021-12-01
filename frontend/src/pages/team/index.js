@@ -5,9 +5,7 @@ import './team.css';
 export default function Team(props) {
 	return (
 		<div className='page-mint'>
-			<p className='text-magento-border' style={{ marginTop: '2vh' }}>
-				Team
-			</p>
+			<p className='text-magento-border'>Team</p>
 			<p className='text-title-black para-founder'>Founder</p>
 			<p className='text-normal-black para-team'>
 				We are a married couple whose aim is to stay anonymous. Thus proving who we are in terms of controversial societal categories like gender, race, and political affiliations do not

@@ -1,17 +1,16 @@
 .header-link-wrapper {
-	position: absolute;
-	top: 48px;
-	right: 60px;
 	width: 65%;
 	max-width: 890px;
 	z-index: 4;
 }
+
 .header-link-ul {
 	display: flex;
-	justify-content: space-between;
+	justify-content: space-around;
 }
+
 .header-link-ul li {
-	display: inline-flex;
+	display: inline-block;
 	color: white;
 	text-transform: uppercase;
 	cursor: pointer;
@@ -22,13 +21,18 @@
 	font-weight: 400;
 	font-style: normal;
 }
+
 .header-link-bottom {
-	position: absolute;
 	width: 25px;
 	height: 3px;
 	background: #f2653c;
 	bottom: 0;
+
+	margin: 15px auto;
+
+	/* border-bottom: 2.5px solid #f2653c; */
 }
+
 @media screen and (max-width: 768px) {
 	.header-link-ul {
 		display: none;

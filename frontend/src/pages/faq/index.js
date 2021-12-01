@@ -13,9 +13,7 @@ export default function Faq(props) {
 	const [qShow5, setQShow5] = useState(false);
 	return (
 		<div className='page-mint'>
-			<p className='text-magento-border' style={{ marginTop: '2vh' }}>
-				FAQ
-			</p>
+			<p className='text-magento-border'>FAQ</p>
 			<div className='faq-text-group'>
 				<div className='faq-text-question' onClick={() => setQShow1((prev) => !prev)}>
 					<FontAwesomeIcon icon={qShow1 ? faMinusSquare : faPlusSquare} className='faq-text-plus' />

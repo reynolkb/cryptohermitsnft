@@ -24,9 +24,12 @@ export default function App(props) {
 		<div className='App'>
 			<div className='site-wrapper'>
 				<ScrollToTop />
-				<img src={logo} className='top-left-logo' alt='logo' onClick={() => navigate('/')} />
-				<HeaderLink />
-				<MobileMenu />
+				<nav className='navbar'>
+					<img className='logo' src={logo} alt='logo' onClick={() => navigate('/')} />
+
+					<HeaderLink />
+					<MobileMenu />
+				</nav>
 				<div className='default-layout'>
 					<Routes>
 						<Route path='/' element={<Home />} />
