@@ -1,7 +1,7 @@
 .cover-photo-tablet {
 	display: block;
 	width: 100vw;
-	opacity: 0.75;
+	opacity: 0.5;
 }
 
 .cover-photo-container {
@@ -63,6 +63,10 @@
 	.cover-photo-mobile {
 		display: block;
 		width: 100vw;
-		opacity: 0.75;
+		opacity: 0.5;
+	}
+
+	.p-home {
+		font-size: 12px;
 	}
 }
