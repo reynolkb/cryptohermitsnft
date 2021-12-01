@@ -1,10 +1,19 @@
-.center-image {
-	background: url('../../assets/desktop.jpeg') no-repeat;
-	background-size: 100vw;
+.cover-photo-tablet {
+	display: block;
+	width: 100vw;
+	opacity: 0.75;
 }
 
-.cover-photo-tablet {
-	display: none;
+.cover-photo-container {
+	position: relative;
+	text-align: center;
+}
+
+.centered {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
 .cover-photo-mobile {
@@ -37,27 +46,10 @@
 }
 
 @media screen and (max-width: 768px) {
-	.center-image {
-		background: none;
-	}
-
-	.cover-photo-tablet {
-		display: block;
-		width: 100vw;
-	}
-
-	.cover-photo-mobile {
-		display: none;
-	}
-
 	.mobile-header-text {
 		display: none;
 	}
 
-	.para-home {
-		max-width: 337px;
-		text-shadow: none;
-	}
 	.btn-black {
 		padding: 8px 30px;
 	}
@@ -71,5 +63,6 @@
 	.cover-photo-mobile {
 		display: block;
 		width: 100vw;
+		opacity: 0.75;
 	}
 }
