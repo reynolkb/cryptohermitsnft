@@ -1,26 +1,24 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter, faDiscord } from '@fortawesome/free-brands-svg-icons';
 
 import './Footer.css';
 
-class Footer extends Component {
-	render() {
-		return (
-			<footer id='footer'>
-				<div className='footer-wrapper'>
-					<p className='footer-text'>
-						Copyright 2021. All rights reserved. <span style={{ textDecoration: 'underline' }}>cryptohermitsnft.com</span>
-					</p>
-					<br></br>
-					<p>
-						<FontAwesomeIcon icon={faTwitter} style={{ marginRight: 16 }} />
-						<FontAwesomeIcon icon={faDiscord} />
-					</p>
-				</div>
-			</footer>
-		);
+export default function Footer(props) {
+	function openTwitter() {
+		window.open('https://twitter.com/cryptohermits', '_blank');
 	}
-}
 
-export default Footer;
+	return (
+		<footer id='footer'>
+			<div className='footer-wrapper'>
+				<p className='footer-text'>&copy; 2021 BlockBot LLC</p>
+				<br></br>
+				<p>
+					<FontAwesomeIcon className='social-hover' icon={faTwitter} style={{ marginRight: 16 }} onClick={openTwitter} />
+					<FontAwesomeIcon className='social-hover' icon={faDiscord} />
+				</p>
+			</div>
+		</footer>
+	);
+}
