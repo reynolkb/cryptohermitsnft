@@ -17,6 +17,7 @@
 	line-height: 43.2px;
 	color: #2e8c8e;
 	text-shadow: -2px -2px 0 #fff, 0 -2px 0 #fff, 2px -2px 0 #fff, 2px 0 0 #fff, 2px 2px 0 #fff, 0 2px 0 #fff, -2px 2px 0 #fff, -2px 0 0 #fff;
+	margin-bottom: 5px;
 }
 
 @media screen and (max-width: 480px) {
