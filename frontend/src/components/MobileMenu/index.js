@@ -13,7 +13,7 @@ const navItems = [
 	{ title: 'Rarity', link: '/rarity' },
 	{ title: 'RoadMap', link: '/roadmap' },
 	{ title: 'Team', link: '/team' },
-	{ title: "FAQ's", link: '/faq' },
+	{ title: 'FAQ', link: '/faq' },
 	{ title: 'Connect', link: '/connect' },
 ];
 

@@ -25,13 +25,13 @@ export default function Faq(props) {
 							You need to{' '}
 							<a href='https://metamask.io/download' target='_blank' rel='noreferrer'>
 								download MetaMask.
-							</a>{' '}
+							</a>
 						</li>
 						<li className='space-list'>
 							<a href='https://www.coinbase.com/buy-ethereum' target='_blank' rel='noreferrer'>
 								Buy Ethereum
 							</a>{' '}
-							from an exchange.{' '}
+							from an exchange.
 						</li>
 						<li className='space-list'>
 							<a href='https://www.coinbase.com/learn/tips-and-tutorials/how-to-send-crypto' target='_blank' rel='noreferrer'>
