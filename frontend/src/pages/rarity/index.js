@@ -11,13 +11,13 @@ import './rarity.css';
 
 export default function Connect(props) {
 	const items = [
-		{ title: 'Common', color: '#6E6E6E', image: rarityImage1 },
-		{ title: 'Uncommon', color: '#737531', image: rarityImage2 },
-		{ title: 'Rare', color: '#3477B9', image: rarityImage3 },
-		{ title: 'Epic', color: '#9546A4', image: rarityImage4 },
-		{ title: 'Legendary', color: '#A75B19', image: rarityImage5 },
-		{ title: 'Exotic', color: '#268A8F', image: rarityImage6 },
-		{ title: 'Mythic', color: '#976F01', image: rarityImage7 },
+		{ title: 'Common', color: '#999999', image: rarityImage1 },
+		{ title: 'Uncommon', color: '#6DAE10', image: rarityImage2 },
+		{ title: 'Rare', color: '#10A1BA', image: rarityImage3 },
+		{ title: 'Epic', color: '#B049BD', image: rarityImage4 },
+		{ title: 'Legendary', color: '#D57F38', image: rarityImage5 },
+		{ title: 'Exotic', color: '#84ECEC', image: rarityImage6 },
+		{ title: 'Mythic', color: '#F6D248', image: rarityImage7 },
 	];
 	return (
 		<div className='page-rarity'>
@@ -28,7 +28,9 @@ export default function Connect(props) {
 			<div className='rarity-wrapper'>
 				{items.map((item, index) => (
 					<div className='rarity-item' key={`rarity-${index}`}>
-						<img className='rarity-image' src={item.image} alt={item} />
+						<a href={item.image}>
+							<img className='rarity-image' src={item.image} alt={item} />
+						</a>
 						<div className='rarity-text' style={{ color: item.color }}>
 							{item.title}
 						</div>
