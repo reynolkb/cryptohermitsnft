@@ -159,7 +159,7 @@ p {
 	.back-to-top {
 		font-size: 18px;
 		position: absolute;
-		right: 18px;
+		right: 8px;
 		bottom: 27px;
 	}
 }
@@ -167,10 +167,6 @@ p {
 @media screen and (max-width: 480px) {
 	.logo {
 		height: 100px;
-	}
-
-	.back-to-top {
-		right: 8px;
 	}
 
 	.text-magento-noborder {

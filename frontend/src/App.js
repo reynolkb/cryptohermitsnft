@@ -25,16 +25,6 @@ export default function App(props) {
 
 	const [showButton, setShowButton] = useState(false);
 
-	// useEffect(() => {
-	// 	document.addEventListener('scroll', () => {
-	// 		// if (document.pageYOffset > 10) {
-	// 		setShowButton(true);
-	// 		// } else {
-	// 		// setShowButton(false);
-	// 		// }
-	// 	});
-	// }, []);
-
 	const updateScrollState = (e) => {
 		const bottom = e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight;
 		if (bottom) {
@@ -57,7 +47,9 @@ export default function App(props) {
 			<div className='site-wrapper'>
 				<ScrollToTop />
 				<nav className='navbar'>
-					<img className='logo' src={logo} alt='logo' onClick={() => navigate('/')} />
+					<div className='logo-wrapper'>
+						<img className='logo' src={logo} alt='logo' onClick={() => navigate('/')} />
+					</div>
 
 					<HeaderLink />
 					<MobileMenu />

@@ -8,7 +8,7 @@
 	.mobile-menu-opener {
 		position: absolute;
 		top: 27px;
-		right: 18px;
+		right: 10px;
 		font-size: 18px;
 		z-index: 5;
 		display: block;
@@ -37,7 +37,7 @@
 	.mobile-menu-closer {
 		position: absolute;
 		top: 27px;
-		right: 20px;
+		right: 10px;
 		font-size: 18px;
 		z-index: 5;
 	}
@@ -61,14 +61,5 @@
 		height: 22px;
 		background: #f2653c;
 		left: 0;
-	}
-}
-@media screen and (max-width: 768px) {
-	.mobile-menu-opener {
-		right: 10px;
-	}
-
-	.mobile-menu-closer {
-		right: 10px;
 	}
 }
