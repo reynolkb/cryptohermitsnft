@@ -63,3 +63,12 @@
 		left: 0;
 	}
 }
+@media screen and (max-width: 768px) {
+	.mobile-menu-opener {
+		right: 10px;
+	}
+
+	.mobile-menu-closer {
+		right: 10px;
+	}
+}

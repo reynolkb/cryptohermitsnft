@@ -118,6 +118,18 @@ p {
 	text-shadow: -2px -2px 0 #fff, 0 -2px 0 #fff, 2px -2px 0 #fff, 2px 0 0 #fff, 2px 2px 0 #fff, 0 2px 0 #fff, -2px 2px 0 #fff, -2px 0 0 #fff;
 }
 
+.back-to-top {
+	font-size: 30px;
+	position: absolute;
+	right: 30px;
+	bottom: 30px;
+	z-index: 10;
+}
+
+.back-to-top:hover {
+	cursor: pointer;
+}
+
 @media screen and (max-width: 1024px) {
 	.text-magento-noborder {
 		font-size: 60px;
@@ -145,12 +157,23 @@ p {
 	.default-layout {
 		align-items: center;
 	}
+
+	.back-to-top {
+		font-size: 18px;
+		position: absolute;
+		right: 18px;
+		bottom: 27px;
+	}
 }
 
 @media screen and (max-width: 480px) {
 	.logo {
 		height: 100px;
 		padding-left: 150px;
+	}
+
+	.back-to-top {
+		right: 8px;
 	}
 
 	.text-magento-noborder {
