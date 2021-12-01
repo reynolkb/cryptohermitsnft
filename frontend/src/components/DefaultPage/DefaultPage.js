@@ -19,6 +19,7 @@ export default function DefaultPage(props) {
 				<img src={logo} className='top-left-logo' alt='logo' onClick={() => navigate('/')} />
 				<HeaderLink />
 				<MobileMenu />
+				{/* DefaultPage is set as root element of each page, so all children of page are passed to DefaultPage component as "children" property of "props" object. React supports this function as default. */}
 				<div className='child-wrapper'>{props.children}</div>
 				<Footer />
 			</div>

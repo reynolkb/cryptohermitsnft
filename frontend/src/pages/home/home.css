@@ -54,27 +54,28 @@
 		width: 100vw;
 	}
 
+	.cover-photo-mobile {
+		display: none;
+	}
+
 	.page-home {
 		margin-top: 30px;
+	}
+
+	.mobile-header-text {
+		display: none;
 	}
 
 	.para-home {
 		max-width: 337px;
 		text-shadow: none;
 	}
-
-	.mobile-header-text {
-		display: none;
+	.btn-black {
+		padding: 8px 30px;
 	}
 }
 
 @media screen and (max-width: 480px) {
-	.center-image {
-		/* background: url('../../assets/mobile.jpeg') no-repeat;
-		background-size: 100vw 35vh; */
-		background: none;
-	}
-
 	.cover-photo-tablet {
 		display: none;
 	}
@@ -82,9 +83,5 @@
 	.cover-photo-mobile {
 		display: block;
 		width: 100vw;
-	}
-
-	.btn-black {
-		padding: 8px 30px;
 	}
 }

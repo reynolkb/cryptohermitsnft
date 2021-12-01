@@ -44,7 +44,8 @@ body {
 .App {
 	min-height: 100vh;
 	overflow-x: hidden;
-	/* position: relative; */
+	position: relative;
+	background: linear-gradient(180deg, #3abdb1 0%, #9de1db 25%, #f6d3bc 75%, #efb288 100%);
 }
 
 p {
@@ -93,6 +94,15 @@ p {
 	text-shadow: -2px -2px 0 #fff, 0 -2px 0 #fff, 2px -2px 0 #fff, 2px 0 0 #fff, 2px 2px 0 #fff, 0 2px 0 #fff, -2px 2px 0 #fff, -2px 0 0 #fff;
 }
 
+.top-left-logo {
+	position: absolute;
+	top: 5px;
+	left: 3vw;
+	z-index: 3;
+	height: 12vh;
+	cursor: pointer;
+}
+
 @media screen and (max-width: 1024px) {
 	.text-magento-noborder {
 		font-size: 60px;
@@ -103,6 +113,13 @@ p {
 	}
 	.text-cyan {
 		font-size: 60px;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.top-left-logo {
+		position: relative;
+		left: 40vw;
 	}
 }
 
@@ -126,5 +143,16 @@ p {
 	.text-title-black {
 		font-size: 20px;
 		line-height: 24px;
+	}
+	.top-left-logo {
+		position: relative;
+		left: 35vw;
+	}
+}
+
+@media screen and (max-width: 375px) {
+	.top-left-logo {
+		position: relative;
+		left: 32vw;
 	}
 }

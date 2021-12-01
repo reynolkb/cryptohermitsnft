@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { connect } from 'react-redux';
 
 import './mobilemenu.css';
 
@@ -16,33 +17,40 @@ const navItems = [
 	{ title: 'Connect', link: '/connect' },
 ];
 
-export default function MobileMenu() {
+const MobileMenu = (props) => {
 	const navigate = useNavigate();
 	const location = useLocation();
 	const activeMenu = location.pathname;
-	const [openMenu, setOpenMenu] = useState(false);
+	// const [openMenu, setOpenMenu] = useState(false);
 
-	function handleMobileBarClick(status) {
-		setOpenMenu(status);
+	function openMenu() {
+		props.dispatch({ type: 'true' });
+		document.getElementById('mobile-bars').classList.add('hide-mobile-bars');
+		// var mobile = document.getElementById('mobile-bars');
+		// console.log(mobile.classList);
+	}
 
-		if (status) {
-			document.getElementById('mobile-bars').classList.add('hide-mobile-bars');
-			// var mobile = document.getElementById('mobile-bars');
-			// console.log(mobile.classList);
-		} else {
-			document.getElementById('mobile-bars').classList.remove('hide-mobile-bars');
-		}
+	function closeMenu() {
+		props.dispatch({ type: 'false' });
+		document.getElementById('mobile-bars').classList.remove('hide-mobile-bars');
+	}
+
+	function clickNavItemLink(item) {
+		navigate(item.link);
+
+		props.dispatch({ type: 'false' });
+		document.getElementById('mobile-bars').classList.remove('hide-mobile-bars');
 	}
 
 	return (
 		<div className='mobile-menu'>
-			<FontAwesomeIcon icon={faBars} className='mobile-menu-opener' id='mobile-bars' color='#FFF' onClick={() => handleMobileBarClick(true)} />
-			{openMenu && (
+			<FontAwesomeIcon icon={faBars} className='mobile-menu-opener' id='mobile-bars' color='#FFF' onClick={() => openMenu()} />
+			{props.openMenuStatus && (
 				<div className='mobile-menu-wrapper'>
-					<FontAwesomeIcon icon={faTimes} className='mobile-menu-closer' color='#FFF' onClick={() => handleMobileBarClick(false)} />
+					<FontAwesomeIcon icon={faTimes} className='mobile-menu-closer' color='#FFF' onClick={() => closeMenu()} />
 					<ul className='mobile-link-ul'>
 						{navItems.map((item, index) => (
-							<li key={`navitem-${index}`} onClick={() => navigate(item.link)}>
+							<li key={`navitem-${index}`} onClick={() => clickNavItemLink(item)}>
 								{item.link === activeMenu && <div className='mobile-link-left' />}
 								{item.title}
 							</li>
@@ -52,4 +60,10 @@ export default function MobileMenu() {
 			)}
 		</div>
 	);
-}
+};
+
+const mapStateToProps = (state) => ({
+	openMenuStatus: state.openMenuStatus,
+});
+
+export default connect(mapStateToProps)(MobileMenu);

@@ -36,15 +36,6 @@
 	background: linear-gradient(180deg, transparent 0%, #f0b289 20%, #f0b289 100%);
 } */
 
-.top-left-logo {
-	position: absolute;
-	top: 5px;
-	left: 3vw;
-	z-index: 3;
-	height: 12vh;
-	cursor: pointer;
-}
-
 .header-footer-wrapper {
 	width: 100vw;
 	height: 100vh;
@@ -61,7 +52,7 @@
 	flex-direction: column;
 
 	/* background: linear-gradient(180deg, #5db8bb 0%, #efb288 100%); */
-	background: linear-gradient(180deg, #3abdb1 0%, #9de1db 25%, #f6d3bc 75%, #efb288 100%);
+	/* background: linear-gradient(180deg, #3abdb1 0%, #9de1db 25%, #f6d3bc 75%, #efb288 100%); */
 }
 .child-wrapper {
 	margin-bottom: 70px;
@@ -86,10 +77,6 @@
 	}
 	.default-background-wrapper {
 		text-align: center;
-	}
-	.top-left-logo {
-		position: relative;
-		left: 0;
 	}
 	.content-wrapper {
 		align-items: center;

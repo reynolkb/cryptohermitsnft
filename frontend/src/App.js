@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { HashRouter, Route, Routes } from 'react-router-dom';
+import React from 'react';
+import { useNavigate, Route, Routes } from 'react-router-dom';
 import './App.css';
 import ScrollToTop from './util/ScrollToTop';
 // import Home from './components/Home/Home';
@@ -12,28 +12,31 @@ import Rarity from './pages/rarity';
 import Faq from './pages/faq';
 import RoadMap from './pages/roadmap';
 // import Minter from './components/Minter/Minter';
+import HeaderLink from './components/HeaderLink/HeaderLink';
+import Footer from './components/Footer/Footer';
+import MobileMenu from './components/MobileMenu';
+import logo from './assets/Crypto-Hermits-Logo-2-Small.png';
 
-class App extends Component {
-	render() {
-		return (
-			<HashRouter>
-				<div className='App'>
-					<ScrollToTop />
-					<Routes>
-						<Route path='/' element={<Home />} />
-						<Route path='/about' element={<About />} />
-						<Route path='/team' element={<Team />} />
-						<Route path='/connect' element={<Connect />} />
-						<Route path='/mint' element={<Mint />} />
-						<Route path='/rarity' element={<Rarity />} />
-						<Route path='/faq' element={<Faq />} />
-						<Route path='/roadmap' element={<RoadMap />} />
-					</Routes>
-					{/* <Footer /> */}
-				</div>
-			</HashRouter>
-		);
-	}
+export default function App(props) {
+	const navigate = useNavigate();
+
+	return (
+		<div className='App'>
+			<ScrollToTop />
+			<img src={logo} className='top-left-logo' alt='logo' onClick={() => navigate('/')} />
+			<HeaderLink />
+			<MobileMenu />
+			<Routes>
+				<Route path='/' element={<Home />} />
+				<Route path='/about' element={<About />} />
+				<Route path='/team' element={<Team />} />
+				<Route path='/connect' element={<Connect />} />
+				<Route path='/mint' element={<Mint />} />
+				<Route path='/rarity' element={<Rarity />} />
+				<Route path='/faq' element={<Faq />} />
+				<Route path='/roadmap' element={<RoadMap />} />
+			</Routes>
+			<Footer />
+		</div>
+	);
 }
-
-export default App;

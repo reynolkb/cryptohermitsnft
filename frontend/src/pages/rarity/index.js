@@ -1,6 +1,5 @@
 import React from 'react';
 
-import DefaultPage from '../../components/DefaultPage/DefaultPage';
 import rarityImage1 from '../../assets/rarity-item1.png';
 import rarityImage2 from '../../assets/rarity-item2.png';
 import rarityImage3 from '../../assets/rarity-item3.png';
@@ -21,26 +20,28 @@ export default function Connect(props) {
 		{ title: 'Mythic', color: '#976F01', image: rarityImage7 },
 	];
 	return (
-		<DefaultPage>
-			{/* <div className="rarity-custom-backend" /> */}
-			<div className='page-rarity'>
-				<p className='text-magento-border' style={{ marginTop: '2vh' }}>
-					Rarity
-				</p>
-				<p className='text-normal-black' style={{ marginTop: 20, maxWidth: 970 }}>
-					Each Bookworm NFT has a rarity ranging from common to mythic. The color of the book on the NFT corresponds with the rarity level. Below are some examples of NFTs you could get.
-				</p>
-				<div className='rarity-wrapper'>
-					{items.map((item, index) => (
-						<div className='rarity-item' key={`rarity-${index}`}>
-							<img className='rarity-image' src={item.image} alt={item} />
-							<div className='rarity-text' style={{ color: item.color }}>
-								{item.title}
+		<div className='default-layout'>
+			<div className='content-wrapper'>
+				{/* <div className="rarity-custom-backend" /> */}
+				<div className='page-rarity'>
+					<p className='text-magento-border' style={{ marginTop: '2vh' }}>
+						Rarity
+					</p>
+					<p className='text-normal-black' style={{ marginTop: 20, maxWidth: 970 }}>
+						Each Bookworm NFT has a rarity ranging from common to mythic. The color of the book on the NFT corresponds with the rarity level. Below are some examples of NFTs you could get.
+					</p>
+					<div className='rarity-wrapper'>
+						{items.map((item, index) => (
+							<div className='rarity-item' key={`rarity-${index}`}>
+								<img className='rarity-image' src={item.image} alt={item} />
+								<div className='rarity-text' style={{ color: item.color }}>
+									{item.title}
+								</div>
 							</div>
-						</div>
-					))}
+						))}
+					</div>
 				</div>
 			</div>
-		</DefaultPage>
+		</div>
 	);
 }

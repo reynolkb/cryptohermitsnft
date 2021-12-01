@@ -2,11 +2,11 @@
 	width: 100vw;
 	padding: 0 20vw;
 	text-align: center;
-	margin-top: auto;
 	bottom: 0;
-	/* position: absolute; */
+	position: absolute;
 	text-transform: uppercase;
 	z-index: 4;
+	margin-top: 50px;
 }
 
 .footer-text {
@@ -25,7 +25,7 @@
 	#Footer {
 		padding-left: 10vw;
 		padding-right: 10vw;
-		padding-bottom: 3vh;
+		padding-top: 3vh;
 	}
 	.footer-text {
 		font-size: 14px;

@@ -37,12 +37,16 @@
 	background: linear-gradient(180deg, #2e8c8e 9.55%, #ffffff 30%, #ffffff 80%, #efb288 100%);
 	z-index: 2;
 }
-@media screen and (max-width: 480px) {
+
+@media screen and (max-width: 768px) {
 	.page-rarity {
 		margin-left: 26px;
 		margin-right: 28px;
 		margin-top: 30px;
 	}
+}
+
+@media screen and (max-width: 480px) {
 	.rarity-image {
 		margin-bottom: 6px;
 		width: 120px;
