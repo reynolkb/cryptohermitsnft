@@ -42,6 +42,14 @@ export default function RoadMap(props) {
 							<li className='space-list'>Airdrop Mythic one of one NFT</li>
 						</ul>
 					</div>
+					<br></br>
+					<br></br>
+					<br></br>
+					<br></br>
+					<br></br>
+					<br></br>
+					<br></br>
+					<br></br>
 				</div>
 			</div>
 		</div>
