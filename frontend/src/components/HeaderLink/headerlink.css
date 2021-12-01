@@ -29,12 +29,10 @@
 	bottom: 0;
 
 	margin: 15px auto;
-
-	/* border-bottom: 2.5px solid #f2653c; */
 }
 
 @media screen and (max-width: 768px) {
-	.header-link-ul {
+	.header-link-wrapper {
 		display: none;
 	}
 }
