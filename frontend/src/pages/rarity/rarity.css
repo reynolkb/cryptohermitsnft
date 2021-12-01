@@ -3,7 +3,6 @@
 	flex-direction: column;
 	align-items: center;
 	margin-top: 15vh;
-	position: relative;
 	z-index: 4;
 }
 .rarity-wrapper {
@@ -31,7 +30,6 @@
 .rarity-custom-backend {
 	top: 0;
 	left: 0;
-	position: absolute;
 	width: 100vw;
 	height: 100vh;
 	background: linear-gradient(180deg, #2e8c8e 9.55%, #ffffff 30%, #ffffff 80%, #efb288 100%);

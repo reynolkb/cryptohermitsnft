@@ -1,12 +1,6 @@
 .center-image {
 	background: url('../../assets/desktop.jpeg') no-repeat;
 	background-size: 100vw;
-	/* background-size: 120vw 60vh; */
-	/* background-position-x: -20vw; */
-	/* height: 100vh; */
-	/* width: 100vw; */
-	/* margin-top: 22vh; */
-	/* background-repeat: no-repeat; */
 }
 
 .cover-photo-tablet {
@@ -44,8 +38,6 @@
 
 @media screen and (max-width: 768px) {
 	.center-image {
-		/* background: url('../../assets/mobile.jpeg') no-repeat;
-		background-size: 100vw 40vh; */
 		background: none;
 	}
 

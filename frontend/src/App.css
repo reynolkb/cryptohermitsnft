@@ -34,18 +34,24 @@ html {
 	scroll-padding-top: 150px;
 }
 
-body {
-	/* height: 100%; */
-	/* position: relative; */
-
-	/* background: #F0B289; */
-}
-
 .App {
 	min-height: 100vh;
 	overflow-x: hidden;
-	position: relative;
 	background: linear-gradient(180deg, #3abdb1 0%, #9de1db 25%, #f6d3bc 75%, #efb288 100%);
+
+	display: flex;
+	flex-direction: column;
+}
+
+.site-wrapper {
+	/* min-height: 85vh; */
+
+	/* option 1 */
+	/* min-height: 100vh;
+	display: flex;
+	flex-direction: column; */
+
+	flex: 1;
 }
 
 p {
@@ -53,10 +59,13 @@ p {
 	line-height: 1.5;
 }
 
-@media screen and (max-width: 960px) {
-	html {
-		scroll-padding-top: 100px;
-	}
+.default-layout {
+	width: 100vw;
+	top: 0;
+	left: 0;
+	z-index: 2;
+	display: flex;
+	flex-direction: column;
 }
 
 .text-magento-noborder {
@@ -116,10 +125,20 @@ p {
 	}
 }
 
+@media screen and (max-width: 960px) {
+	html {
+		scroll-padding-top: 100px;
+	}
+}
+
 @media screen and (max-width: 768px) {
 	.top-left-logo {
 		position: relative;
 		left: 40vw;
+	}
+
+	.default-layout {
+		align-items: center;
 	}
 }
 

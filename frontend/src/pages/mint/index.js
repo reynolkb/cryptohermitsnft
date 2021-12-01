@@ -239,60 +239,48 @@ export default function Connect(props) {
 	};
 
 	return (
-		<div className='default-layout'>
-			<div className='content-wrapper'>
-				<div className='page-mint'>
-					<p className='text-magento-border' style={{ marginTop: '2vh' }}>
-						Mint Nft
-					</p>
-					<p className='text-normal-black' style={{ marginTop: 30 }}>
-						Tokens Minted {tokensMinted}/{totalTokens}
-					</p>
-					<p className='text-normal-black' style={{ marginTop: 30 }}>
-						Get your random cryptohermit nft below, All nfts are 0.01 Eth!
-					</p>
-					<p className='text-normal-black' style={{ marginTop: 30 }}>
-						Number of Nfts to mint (3 max per wallet)
-					</p>
-					<div className='mint-select-wrapper'>
-						<select name='mintAmount' id='mintAmount' className='mint-amount'>
-							<option value='1'>1</option>
-							<option value='2'>2</option>
-							<option value='3'>3</option>
-						</select>
-						<FontAwesomeIcon icon={faChevronDown} className='mint-icon-down' onClick={() => document.getElementById('mintAmount').click()} />
-					</div>
-					<div className='mint-button-wrapper'>
-						<button id='walletButton' className='btn-cyan mint-connect' onClick={connectWalletPressed}>
-							{walletAddress.length > 0 ? 'Connected: ' + String(walletAddress).substring(0, 6) + '...' + String(walletAddress).substring(38) : 'Connect Wallet'}
-						</button>{' '}
-						<br id='button-separator' />
-						<button id='mintButton' className='btn-magento' onClick={onMintPressed}>
-							MINT NFT
-						</button>
-					</div>
-					<p id='status' className='text-normal-black'>
-						{status}
-					</p>
-					<br></br>
-					<br></br>
-					<p id='transactionStatus' className='text-normal-black'>
-						{transactionStatus}
-						<br></br>
-						<a href={`${transactionURL}`} target='_blank' rel='noreferrer'>
-							{transactionURLTxt}
-						</a>
-					</p>
-				</div>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
+		<div className='page-mint'>
+			<p className='text-magento-border' style={{ marginTop: '2vh' }}>
+				Mint Nft
+			</p>
+			<p className='text-normal-black' style={{ marginTop: 30 }}>
+				Tokens Minted {tokensMinted}/{totalTokens}
+			</p>
+			<p className='text-normal-black' style={{ marginTop: 30 }}>
+				Get your random cryptohermit nft below, All nfts are 0.01 Eth!
+			</p>
+			<p className='text-normal-black' style={{ marginTop: 30 }}>
+				Number of Nfts to mint (3 max per wallet)
+			</p>
+			<div className='mint-select-wrapper'>
+				<select name='mintAmount' id='mintAmount' className='mint-amount'>
+					<option value='1'>1</option>
+					<option value='2'>2</option>
+					<option value='3'>3</option>
+				</select>
+				<FontAwesomeIcon icon={faChevronDown} className='mint-icon-down' onClick={() => document.getElementById('mintAmount').click()} />
 			</div>
+			<div className='mint-button-wrapper'>
+				<button id='walletButton' className='btn-cyan mint-connect' onClick={connectWalletPressed}>
+					{walletAddress.length > 0 ? 'Connected: ' + String(walletAddress).substring(0, 6) + '...' + String(walletAddress).substring(38) : 'Connect Wallet'}
+				</button>{' '}
+				<br id='button-separator' />
+				<button id='mintButton' className='btn-magento' onClick={onMintPressed}>
+					MINT NFT
+				</button>
+			</div>
+			<p id='status' className='text-normal-black'>
+				{status}
+			</p>
+			<br></br>
+			<br></br>
+			<p id='transactionStatus' className='text-normal-black'>
+				{transactionStatus}
+				<br></br>
+				<a href={`${transactionURL}`} target='_blank' rel='noreferrer'>
+					{transactionURLTxt}
+				</a>
+			</p>
 		</div>
 	);
 }

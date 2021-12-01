@@ -22,20 +22,24 @@ export default function App(props) {
 
 	return (
 		<div className='App'>
-			<ScrollToTop />
-			<img src={logo} className='top-left-logo' alt='logo' onClick={() => navigate('/')} />
-			<HeaderLink />
-			<MobileMenu />
-			<Routes>
-				<Route path='/' element={<Home />} />
-				<Route path='/about' element={<About />} />
-				<Route path='/team' element={<Team />} />
-				<Route path='/connect' element={<Connect />} />
-				<Route path='/mint' element={<Mint />} />
-				<Route path='/rarity' element={<Rarity />} />
-				<Route path='/faq' element={<Faq />} />
-				<Route path='/roadmap' element={<RoadMap />} />
-			</Routes>
+			<div className='site-wrapper'>
+				<ScrollToTop />
+				<img src={logo} className='top-left-logo' alt='logo' onClick={() => navigate('/')} />
+				<HeaderLink />
+				<MobileMenu />
+				<div className='default-layout'>
+					<Routes>
+						<Route path='/' element={<Home />} />
+						<Route path='/about' element={<About />} />
+						<Route path='/team' element={<Team />} />
+						<Route path='/connect' element={<Connect />} />
+						<Route path='/mint' element={<Mint />} />
+						<Route path='/rarity' element={<Rarity />} />
+						<Route path='/faq' element={<Faq />} />
+						<Route path='/roadmap' element={<RoadMap />} />
+					</Routes>
+				</div>
+			</div>
 			<Footer />
 		</div>
 	);

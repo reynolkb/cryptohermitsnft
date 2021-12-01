@@ -1,13 +1,26 @@
-#Footer {
-	width: 100vw;
-	padding: 0 20vw;
-	text-align: center;
+#footer {
 	bottom: 0;
-	position: absolute;
+	width: 100vw;
+
+	text-align: center;
 	text-transform: uppercase;
 	z-index: 4;
-	margin-top: 50px;
+
+	/* margin-top: 50px; */
+
+	/* option 1 */
+	/* margin-top: auto;
+	padding-top: 100px;
+	padding-bottom: 50px; */
+
+	margin: 0 auto;
+	padding: 50px 40px 10px 40px;
 }
+
+/* .footer-wrapper {
+	margin: 0 auto;
+	padding: 20px;
+} */
 
 .footer-text {
 	font-size: 16px;
@@ -22,10 +35,9 @@
 }
 
 @media screen and (max-width: 480px) {
-	#Footer {
+	#footer {
 		padding-left: 10vw;
 		padding-right: 10vw;
-		padding-top: 3vh;
 	}
 	.footer-text {
 		font-size: 12px;
