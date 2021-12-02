@@ -2,7 +2,6 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	margin-top: 30px;
 	z-index: 4;
 }
 .rarity-wrapper {
