@@ -16,9 +16,8 @@ export default function Home(props) {
 					<p className='text-magento-noborder mobile-header-text'>Crypto</p>
 					<p className='text-cyan mobile-header-text'>Hermits</p>
 					{/* <p className='text-normal-black para-home'> */}
-					<p className='p-home'>Join the revolution of bookworms, self sufficient homesteaders, homeschoolers, fighters of free speech and leaders of ethical sustainable living.</p>
 					<button className='btn-black' style={{ marginTop: 40 }} onClick={() => navigate('/about')}>
-						ENTER
+						JOIN THE REVOLUTION
 					</button>
 				</div>
 			</div>
