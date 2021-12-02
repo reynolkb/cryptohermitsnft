@@ -59,6 +59,10 @@ html {
 	align-items: center;
 }
 
+.navbar-mobile {
+	display: none;
+}
+
 .logo {
 	height: 150px;
 }
@@ -150,7 +154,11 @@ p {
 
 @media screen and (max-width: 768px) {
 	.navbar {
-		justify-content: center;
+		display: none;
+	}
+
+	.navbar-mobile {
+		display: flex;
 	}
 
 	.default-layout {

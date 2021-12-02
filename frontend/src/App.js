@@ -52,6 +52,12 @@ export default function App(props) {
 					</div>
 
 					<HeaderLink />
+				</nav>
+				<nav className='navbar-mobile'>
+					<div className='left-container-mobile'></div>
+					<div className='logo-wrapper'>
+						<img className='logo' src={logo} alt='logo' onClick={() => navigate('/')} />
+					</div>
 					<MobileMenu />
 				</nav>
 				<div className='default-layout'>
