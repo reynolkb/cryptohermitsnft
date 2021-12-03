@@ -158,7 +158,17 @@ NFT_DEFINITION_BOOKWORMS = {
             ),
         },
         # Level 8
-        {"Name": "Book Title", "Attributes": ({"Name": "Comply-Or-Die", "Probability": 100},)},
+        {
+            "Name": "Book Title",
+            "Attributes": (
+                {"Name": "Comply_Or_Die", "Probability": 14},
+                {"Name": "Don't_Shed_On_Me", "Probability": 15},
+                {"Name": "How_To_Survive_The_Y2K", "Probability": 16},
+                {"Name": "Men_On_The_Moon", "Probability": 17},
+                {"Name": "Soul_Not_For_Sale", "Probability": 18},
+                {"Name": "The_12_Steps_for_Social_Media_Addicts", "Probability": 20},
+            ),
+        },
         # Level 9
         {
             "Name": "Shoes",
@@ -225,24 +235,20 @@ NFT_DEFINITION_BOOKWORMS = {
                 {"Name": "Wine_Bottle", "Probability": 11},
             ),
         },
+        # Level 12
+        {
+            "Name": "Rings",
+            "Attributes": (
+                {"Name": "Nothing", "FilePath": None, "Probability": 50},
+                {"Name": "Wedding_Band", "Probability": 50},
+            ),
+        },
     ),
     "Inclusions": (
-        # If the hair is dark, then the body must be dark.
+        # --------------------------------- Hair/Body Inclusions ---------------------------------
         (("Hair", "Dark_*"), ("Body", "Dark_*")),
         (("Hair", "Light_*"), ("Body", "Light_*")),
         (("Hair", "Medium_*"), ("Body", "Medium_*")),
-        # If the body is dark, then the hair must be either dark or a Mullet.
-        (("Body", "Dark_*"), ("Hair", ("Dark_*", "Mullet"))),
-        (("Body", "Light_*"), ("Hair", ("Light_*", "Mullet"))),
-        (("Body", "Medium_*"), ("Hair", ("Medium_*", "Mullet"))),
-        # If the shoes are dark, then the body must be dark.
-        (("Shoes", "Dark_*"), ("Body", "Dark_*")),
-        (("Shoes", "Light_*"), ("Body", "Light_*")),
-        (("Shoes", "Medium_*"), ("Body", "Medium_*")),
-        # If the shoes are dark, then the hair must be either dark or a Mullet.
-        (("Shoes", "Dark_*"), ("Hair", ("Dark_*", "Mullet"))),
-        (("Shoes", "Light_*"), ("Hair", ("Light_*", "Mullet"))),
-        (("Shoes", "Medium_*"), ("Hair", ("Medium_*", "Mullet"))),
         # --------------------------------- Body/Shoes Inclusions ---------------------------------
         # Dark_Bell_Bottoms
         (
@@ -320,22 +326,12 @@ NFT_DEFINITION_BOOKWORMS = {
             ("Shoes", ("Boots", "Converse_Tracksuit", "Light_High_Heels_Tracksuit", "Light_Slippers_Tracksuit", "Dress_Shoes_Tracksuit", "Socks_Slides_Tracksuit")),
         ),
     ),
-    # Kyle says these are incorrect.
+    # These are just for testing.  They should be removed.
     # "Exclusions": (
-    #     {"Body": "*_Bell_Bottoms", "Shoes": "*_Robe_Manwoman"},
-    #     {"Body": "*_Bell_Bottoms", "Shoes": "*_Suit"},
-    #     {"Body": "*_Bell_Bottoms", "Shoes": "*_Tracksuit"},
-    #     {"Body": "*_Manwoman", "Shoes": "*_Bell_Bottoms"},
-    #     {"Body": "*_Manwoman", "Shoes": "*_Suit"},
-    #     {"Body": "*_Manwoman", "Shoes": "*_Tracksuit"},
-    #     {"Body": "*_Robe", "Shoes": "*_Bell_Bottoms"},
-    #     {"Body": "*_Robe", "Shoes": "*_Suit"},
-    #     {"Body": "*_Robe", "Shoes": "*_Tracksuit"},
-    #     {"Body": "*_Suit", "Shoes": "*_Bell_Bottoms"},
-    #     {"Body": "*_Suit", "Shoes": "*_Robe_Manwoman"},
-    #     {"Body": "*_Suit", "Shoes": "*_Tracksuit"},
-    #     {"Body": "*_Tracksuit", "Shoes": "*_Bell_Bottoms"},
-    #     {"Body": "*_Tracksuit", "Shoes": "*_Robe_Manwoman"},
-    #     {"Body": "*_Tracksuit", "Shoes": "*_Suit"},
+    #     {"Book Title": "Don't_Shed_On_Me"},
+    #     {"Book Title": "How_To_Survive_The_Y2K"},
+    #     {"Book Title": "Men_On_The_Moon"},
+    #     {"Book Title": "Soul_Not_For_Sale"},
+    #     {"Book Title": "The_12_Steps_for_Social_Media_Addicts"},
     # ),
 }

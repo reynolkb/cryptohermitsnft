@@ -4,6 +4,8 @@ For Profiling run:
    python -m cProfile nftInitializeDatabase.py >t.csv
 """
 import copy
+
+##import csv
 import glob
 import io
 import os
@@ -76,6 +78,17 @@ def AttributeFilePath(nftDefinition, attribute):
     return attribute["Name"] + "." + nftDefinition["ImageType"]
 
 
+# def CsvWrite(permutations):
+#    '''
+#    dssda
+#    '''
+#    with open('tt.csv', 'w', newline='') as file:
+#        csvWriter = csv.writer(file)
+#        for p in permutations:
+#            if p[5] == 15: # mullet
+#                csvWriter.writerow(p)
+
+
 def GenerateQualifyingPermutations(nftDefinition):
     """
     Get all possible qualifying permutations.
@@ -95,6 +108,8 @@ def GenerateRandomPermutationsAndRarities(nftDefinition, signatureImages):
     startTime = time.time()
     qualifyingPermutations = GenerateQualifyingPermutations(nftDefinition)
     print("Generated", len(qualifyingPermutations), "permutations in", round(time.time() - startTime, 2), "seconds")
+
+    ##CsvWrite(qualifyingPermutations)
 
     # go through qualifying permutations and creates rarities
     # [0.0001, 0.0099, 0.0099, 0.9801]
@@ -239,9 +254,13 @@ def GetPermutationExclusions(nftDefinition):
             for traitName, attributeNameSpecification in namedExclusion.items():
                 attributeIndexes = []
                 traitIndex = GetIndexByName(traits, traitName)
+                qtyFound = 0
                 for a, attribute in enumerate(traits[traitIndex]["Attributes"]):
                     if nftUtil.StringsMatch(attributeNameSpecification, attribute["Name"]):
                         attributeIndexes.append(a)
+                        qtyFound += 1
+                if qtyFound == 0:
+                    nftUtil.FatalExit("Typo in " + str(namedExclusion))
                 attributeIndexes = (traitIndex, tuple(attributeIndexes))
                 if maximumTraitLevel < attributeIndexes[0]:
                     maximumTraitLevel = attributeIndexes[0]
@@ -276,9 +295,13 @@ def GetPermutationInclusions(nftDefinition):
                     attributeNameSpecifications = (attributeNameSpecifications,)
                 attributeIndexes = []
                 for attributeNameSpecification in attributeNameSpecifications:
+                    qtyFound = 0
                     for a, attribute in enumerate(traits[traitIndex]["Attributes"]):
                         if nftUtil.StringsMatch(attributeNameSpecification, attribute["Name"]):
                             attributeIndexes.append(a)
+                            qtyFound += 1
+                    if qtyFound == 0:
+                        nftUtil.FatalExit("Typo in " + str(namedInclude))
                 include.append((traitIndex, tuple(attributeIndexes)))
             includes[maximumTraitIndex].append(tuple(include))
 
@@ -409,6 +432,7 @@ def PermutationLevels(nftDefinition, level, inPermutations, allExclusions, allIn
                 # [0, 0, 0, 0]
                 # a is now 1 so we end up with [0, 0, 0, 1]
                 outPermutation.append(a)
+
                 if not PermutationQualifiesInclusions(outPermutation, inclusions) or PermutationQualifiesExclusions(outPermutation, exclusions):
                     continue
                 # [[0, 0, 0, 0]]
