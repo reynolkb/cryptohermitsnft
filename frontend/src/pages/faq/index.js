@@ -12,7 +12,7 @@ export default function Faq(props) {
 	const [qShow4, setQShow4] = useState(false);
 	const [qShow5, setQShow5] = useState(false);
 	return (
-		<div className='page-mint'>
+		<div className='page-mint' style={{ textAlign: 'left' }}>
 			<p className='text-magento-border'>FAQ</p>
 			<div className='faq-text-group'>
 				<div className='faq-text-question' onClick={() => setQShow1((prev) => !prev)}>

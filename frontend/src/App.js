@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate, Route, Routes } from 'react-router-dom';
 import './App.css';
 import ScrollToTop from './util/ScrollToTop';
@@ -18,33 +18,34 @@ import Footer from './components/Footer/Footer';
 import MobileMenu from './components/MobileMenu';
 import logo from './assets/Crypto-Hermits-Logo-2-Small.png';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
 
 export default function App(props) {
 	const navigate = useNavigate();
 
-	const [showButton, setShowButton] = useState(false);
+	// const [showButton, setShowButton] = useState(false);
 
-	const updateScrollState = (e) => {
-		const bottom = e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight;
-		if (bottom) {
-			setShowButton(true);
-		} else {
-			setShowButton(false);
-		}
-	};
+	// const updateScrollState = (e) => {
+	// 	const bottom = e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight;
+	// 	if (bottom) {
+	// 		setShowButton(true);
+	// 	} else {
+	// 		setShowButton(false);
+	// 	}
+	// };
 
-	// This function will scroll the window to the top
-	const scrollToTop = () => {
-		document.getElementById('app').scrollTo({
-			top: 0,
-			behavior: 'smooth', // for smoothly scrolling
-		});
-	};
+	// // This function will scroll the window to the top
+	// const scrollToTop = () => {
+	// 	document.getElementById('app').scrollTo({
+	// 		top: 0,
+	// 		behavior: 'smooth', // for smoothly scrolling
+	// 	});
+	// };
 
 	return (
-		<div className='App' id='app' onScroll={updateScrollState}>
+		<div className='App'>
+			{/* <div className='App' id='app' onScroll={updateScrollState}> */}
 			<div className='site-wrapper'>
 				<ScrollToTop />
 				<nav className='navbar'>
@@ -75,7 +76,7 @@ export default function App(props) {
 					</Routes>
 				</div>
 			</div>
-			{showButton && <FontAwesomeIcon icon={faArrowUp} className='back-to-top' color='#FFF' onClick={() => scrollToTop()} />}
+			{/* {showButton && <FontAwesomeIcon icon={faArrowUp} className='back-to-top' color='#FFF' onClick={() => scrollToTop()} />} */}
 			<Footer />
 		</div>
 	);

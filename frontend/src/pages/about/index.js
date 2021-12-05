@@ -4,11 +4,6 @@ import './about.css';
 import { connect } from 'react-redux';
 
 const About = (props) => {
-	function exploreButtonClicked() {
-		props.dispatch({ type: 'true' });
-		document.getElementById('mobile-bars').classList.add('hide-mobile-bars');
-	}
-
 	return (
 		<div className='page-mint'>
 			<p className='text-magento-border'>About</p>
