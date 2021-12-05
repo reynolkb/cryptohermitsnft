@@ -7,7 +7,7 @@ export default function RoadMap(props) {
 		<div className='page-mint'>
 			<p className='text-magento-border'>Roadmap</p>
 			{/* <p className="text-normal-black" style={{ maxWidth: 542, marginTop: 35 }}> */}
-			<p className='text-normal-black para-team' style={{ maxWidth: 542, marginTop: 35 }}>
+			<p className='text-normal-black para-roadmap' style={{ maxWidth: 542, marginTop: 35 }}>
 				We are starting off with the bookworm collection and if we reach 100% we will begin working on the homesteader collection. All bookworm holders have pre-sale access to the homesteader
 				collection.
 			</p>
