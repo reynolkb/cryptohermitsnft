@@ -60,16 +60,16 @@ export default function Faq(props) {
 				)}
 				<div className='faq-text-question' onClick={() => setQShow4((prev) => !prev)}>
 					<FontAwesomeIcon icon={qShow4 ? faMinusSquare : faPlusSquare} className='faq-text-plus' />
-					<p className='text-faq-black'>How do I mint an NFT?</p>
+					<p className='text-faq-black'>How do I mint a NFT?</p>
 				</div>
 				{qShow4 && (
 					<p className='faq-text-answer'>
-						Once you have MetaMask installed and Ethereum in your wallet you can <Link to='/mint-not-active'>click here</Link> to mint an NFT.
+						Once you have MetaMask installed and Ethereum in your wallet you can <Link to='/mint-not-active'>click here</Link> to mint a NFT.
 					</p>
 				)}
 				<div className='faq-text-question' onClick={() => setQShow5((prev) => !prev)}>
 					<FontAwesomeIcon icon={qShow5 ? faMinusSquare : faPlusSquare} className='faq-text-plus' />
-					<p className='text-faq-black'>When can I mint an NFT?</p>
+					<p className='text-faq-black'>When can I mint a NFT?</p>
 				</div>
 				{qShow5 && <p className='faq-text-answer'>Our presale is opening Wednesday, January 12th at 6pm ET. Normal sale begins Friday, January 14th at 6pm ET.</p>}
 				<div className='faq-text-question' onClick={() => setQShow6((prev) => !prev)}>
