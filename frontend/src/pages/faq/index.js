@@ -47,7 +47,7 @@ export default function Faq(props) {
 				</div>
 				{qShow2 && (
 					<p className='faq-text-answer'>
-						Once you have MetaMask installed and Ethereum in your wallet you can <Link to='/mint'>click here</Link> to mint an NFT.
+						Once you have MetaMask installed and Ethereum in your wallet you can <Link to='/mint-not-active'>click here</Link> to mint an NFT.
 					</p>
 				)}
 				<div className='faq-text-question' onClick={() => setQShow3((prev) => !prev)}>
