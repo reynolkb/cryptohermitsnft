@@ -23,7 +23,8 @@ export default function Connect(props) {
 		<div className='page-rarity'>
 			<p className='text-magento-border'>Rarity</p>
 			<p className='text-normal-black' style={{ marginTop: 20, maxWidth: 970 }}>
-				Each Bookworm NFT has a rarity ranging from common to mythic. The color of the book on the NFT corresponds with the rarity level. Below are some examples of NFTs you could get.
+				Each of the 10,000 Bookworm NFTs have a rarity ranging from common to mythic and are built on the Ethereum blockchain. The color of the book on the NFT corresponds with the rarity
+				level. Below are some examples of NFTs you could get.
 			</p>
 			<div className='rarity-wrapper'>
 				{items.map((item, index) => (
