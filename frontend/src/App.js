@@ -76,11 +76,6 @@ export default function App(props) {
 				</div>
 			</div>
 			{showButton && <FontAwesomeIcon icon={faArrowUp} className='back-to-top' color='#FFF' onClick={() => scrollToTop()} />}
-			{/* {showButton && (
-				<button onClick={() => scrollToTop()} className='back-to-top'>
-					&#8679;
-				</button>
-			)} */}
 			<Footer />
 		</div>
 	);
