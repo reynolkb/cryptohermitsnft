@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { HashRouter } from 'react-router-dom';
+import ScrollToTop from './util/ScrollToTop';
 
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
@@ -29,6 +30,7 @@ ReactDOM.render(
 	<React.StrictMode>
 		<Provider store={store}>
 			<HashRouter>
+				<ScrollToTop />
 				<App />
 			</HashRouter>
 		</Provider>

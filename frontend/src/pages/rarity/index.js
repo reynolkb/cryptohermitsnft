@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import common from '../../assets/common-nft.png';
 import uncommon from '../../assets/uncommon-nft.png';
@@ -19,6 +20,9 @@ export default function Connect(props) {
 		{ title: 'Exotic', color: '#84ECEC', image: exotic },
 		{ title: 'Mythic', color: '#F6D248', image: mythic },
 	];
+
+	const navigate = useNavigate();
+
 	return (
 		<div className='page-rarity'>
 			<p className='text-magento-border'>Rarity</p>
@@ -38,6 +42,9 @@ export default function Connect(props) {
 					</div>
 				))}
 			</div>
+			<button className='btn-black' style={{ marginTop: 40 }} onClick={() => navigate('/mint-not-active')}>
+				MINT
+			</button>
 		</div>
 	);
 }

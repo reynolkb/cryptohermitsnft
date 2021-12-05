@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate, Route, Routes } from 'react-router-dom';
 import './App.css';
-import ScrollToTop from './util/ScrollToTop';
 // import Home from './components/Home/Home';
 import Home from './pages/home';
 import About from './pages/about';
@@ -44,10 +43,9 @@ export default function App(props) {
 	// };
 
 	return (
-		<div className='App'>
+		<div className='App' id='app'>
 			{/* <div className='App' id='app' onScroll={updateScrollState}> */}
 			<div className='site-wrapper'>
-				<ScrollToTop />
 				<nav className='navbar'>
 					<div className='logo-wrapper'>
 						<img className='logo' src={logo} alt='logo' onClick={() => navigate('/')} />

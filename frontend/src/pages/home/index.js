@@ -1,7 +1,5 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import coverPhotoTablet from '../../assets/desktop.jpeg';
-import coverPhotoMobile from '../../assets/mobile.jpeg';
 
 import './home.css';
 
@@ -15,7 +13,7 @@ export default function Home(props) {
 			</div>
 			<img className='bookworm-gif' src='https://media.giphy.com/media/GBbJOa0QP6HEBK2WXW/giphy.gif' alt='gif' />
 			{/* <p className='text-normal-black para-home'> */}
-			<button className='btn-black' style={{ marginTop: 40 }} onClick={() => navigate('/mint-not-active')}>
+			<button className='btn-black' style={{ marginTop: 40 }} onClick={() => navigate('/rarity')}>
 				THE BOOKWORMS
 			</button>
 		</div>

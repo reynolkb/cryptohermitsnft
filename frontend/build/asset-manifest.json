@@ -1,32 +1,30 @@
 {
   "files": {
     "main.css": "/static/css/main.0b42ca93.chunk.css",
-    "main.js": "/static/js/main.1c2610d9.chunk.js",
-    "main.js.map": "/static/js/main.1c2610d9.chunk.js.map",
+    "main.js": "/static/js/main.bdb04850.chunk.js",
+    "main.js.map": "/static/js/main.bdb04850.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.193429dd.js",
     "runtime-main.js.map": "/static/js/runtime-main.193429dd.js.map",
-    "static/js/2.8c665c30.chunk.js": "/static/js/2.8c665c30.chunk.js",
-    "static/js/2.8c665c30.chunk.js.map": "/static/js/2.8c665c30.chunk.js.map",
+    "static/js/2.3a618cac.chunk.js": "/static/js/2.3a618cac.chunk.js",
+    "static/js/2.3a618cac.chunk.js.map": "/static/js/2.3a618cac.chunk.js.map",
     "static/js/3.06087594.chunk.js": "/static/js/3.06087594.chunk.js",
     "static/js/3.06087594.chunk.js.map": "/static/js/3.06087594.chunk.js.map",
     "index.html": "/index.html",
     "static/css/main.0b42ca93.chunk.css.map": "/static/css/main.0b42ca93.chunk.css.map",
-    "static/js/2.8c665c30.chunk.js.LICENSE.txt": "/static/js/2.8c665c30.chunk.js.LICENSE.txt",
+    "static/js/2.3a618cac.chunk.js.LICENSE.txt": "/static/js/2.3a618cac.chunk.js.LICENSE.txt",
     "static/media/Crypto-Hermits-Logo-2-Small.54b58327.png": "/static/media/Crypto-Hermits-Logo-2-Small.54b58327.png",
     "static/media/App.css": "/static/media/NevisBold.706a4540.ttf",
     "static/media/common-nft.3ce3ec12.png": "/static/media/common-nft.3ce3ec12.png",
-    "static/media/desktop.2043187a.jpeg": "/static/media/desktop.2043187a.jpeg",
     "static/media/epic-nft.e09a9220.png": "/static/media/epic-nft.e09a9220.png",
     "static/media/exotic-nft.9459b498.png": "/static/media/exotic-nft.9459b498.png",
     "static/media/legendary-nft.e211a86b.png": "/static/media/legendary-nft.e211a86b.png",
-    "static/media/mobile.9191d20d.jpeg": "/static/media/mobile.9191d20d.jpeg",
     "static/media/rare-nft.f2c8c96e.png": "/static/media/rare-nft.f2c8c96e.png",
     "static/media/uncommon-nft.6ba91ead.png": "/static/media/uncommon-nft.6ba91ead.png"
   },
   "entrypoints": [
     "static/js/runtime-main.193429dd.js",
-    "static/js/2.8c665c30.chunk.js",
+    "static/js/2.3a618cac.chunk.js",
     "static/css/main.0b42ca93.chunk.css",
-    "static/js/main.1c2610d9.chunk.js"
+    "static/js/main.bdb04850.chunk.js"
   ]
 }
