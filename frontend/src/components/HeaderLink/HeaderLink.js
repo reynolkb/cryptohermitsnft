@@ -5,7 +5,7 @@ import './headerlink.css';
 
 const navItems = [
 	{ title: 'Home', link: '/' },
-	{ title: 'Mint NFT', link: '/mint-not-active' },
+	{ title: 'Mint', link: '/mint-not-active' },
 	{ title: 'About', link: '/about' },
 	{ title: 'Rarity', link: '/rarity' },
 	{ title: 'RoadMap', link: '/roadmap' },
