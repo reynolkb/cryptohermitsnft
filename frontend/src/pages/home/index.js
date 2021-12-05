@@ -13,8 +13,8 @@ export default function Home(props) {
 			</div>
 			<img className='bookworm-gif' src='https://media.giphy.com/media/GBbJOa0QP6HEBK2WXW/giphy.gif' alt='gif' />
 			{/* <p className='text-normal-black para-home'> */}
-			<button className='btn-black' style={{ marginTop: 40 }} onClick={() => navigate('/rarity')}>
-				THE BOOKWORMS
+			<button className='btn-black' style={{ marginTop: 40 }} onClick={() => navigate('/bookworms')}>
+				BOOKWORMS
 			</button>
 		</div>
 	);

@@ -8,7 +8,7 @@ import './mobilemenu.css';
 
 const navItems = [
 	{ title: 'Home', link: '/' },
-	{ title: 'Rarity', link: '/rarity' },
+	{ title: 'Bookworms', link: '/bookworms' },
 	{ title: 'Mint', link: '/mint-not-active' },
 	{ title: 'About', link: '/about' },
 	{ title: 'RoadMap', link: '/roadmap' },
