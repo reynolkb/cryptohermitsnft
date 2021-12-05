@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/static/css/main.0b42ca93.chunk.css",
-    "main.js": "/static/js/main.0717fc3f.chunk.js",
-    "main.js.map": "/static/js/main.0717fc3f.chunk.js.map",
+    "main.js": "/static/js/main.d65bab81.chunk.js",
+    "main.js.map": "/static/js/main.d65bab81.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.193429dd.js",
     "runtime-main.js.map": "/static/js/runtime-main.193429dd.js.map",
-    "static/js/2.4a2868c2.chunk.js": "/static/js/2.4a2868c2.chunk.js",
-    "static/js/2.4a2868c2.chunk.js.map": "/static/js/2.4a2868c2.chunk.js.map",
+    "static/js/2.8c665c30.chunk.js": "/static/js/2.8c665c30.chunk.js",
+    "static/js/2.8c665c30.chunk.js.map": "/static/js/2.8c665c30.chunk.js.map",
     "static/js/3.06087594.chunk.js": "/static/js/3.06087594.chunk.js",
     "static/js/3.06087594.chunk.js.map": "/static/js/3.06087594.chunk.js.map",
     "index.html": "/index.html",
     "static/css/main.0b42ca93.chunk.css.map": "/static/css/main.0b42ca93.chunk.css.map",
-    "static/js/2.4a2868c2.chunk.js.LICENSE.txt": "/static/js/2.4a2868c2.chunk.js.LICENSE.txt",
+    "static/js/2.8c665c30.chunk.js.LICENSE.txt": "/static/js/2.8c665c30.chunk.js.LICENSE.txt",
     "static/media/Crypto-Hermits-Logo-2-Small.54b58327.png": "/static/media/Crypto-Hermits-Logo-2-Small.54b58327.png",
     "static/media/App.css": "/static/media/NevisBold.706a4540.ttf",
     "static/media/common-nft.3ce3ec12.png": "/static/media/common-nft.3ce3ec12.png",
@@ -25,8 +25,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.193429dd.js",
-    "static/js/2.4a2868c2.chunk.js",
+    "static/js/2.8c665c30.chunk.js",
     "static/css/main.0b42ca93.chunk.css",
-    "static/js/main.0717fc3f.chunk.js"
+    "static/js/main.d65bab81.chunk.js"
   ]
 }

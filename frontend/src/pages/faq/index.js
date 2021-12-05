@@ -11,15 +11,32 @@ export default function Faq(props) {
 	const [qShow3, setQShow3] = useState(false);
 	const [qShow4, setQShow4] = useState(false);
 	const [qShow5, setQShow5] = useState(false);
+	const [qShow6, setQShow6] = useState(false);
+	const [qShow7, setQShow7] = useState(false);
 	return (
 		<div className='page-mint' style={{ textAlign: 'left' }}>
 			<p className='text-magento-border'>FAQ</p>
 			<div className='faq-text-group'>
 				<div className='faq-text-question' onClick={() => setQShow1((prev) => !prev)}>
 					<FontAwesomeIcon icon={qShow1 ? faMinusSquare : faPlusSquare} className='faq-text-plus' />
-					<p className='text-faq-black'>How do I download MetaMask and fund my MetaMask wallet?</p>
+					<p className='text-faq-black'>What is a NFT?</p>
 				</div>
 				{qShow1 && (
+					<p className='faq-text-answer'>
+						NFT stands for “non-fungible token,” which refers to a unique digital asset that can’t be replaced with something else. The opposite is something that is “fungible”. For
+						example, a dollar bill. One dollar bill can be swapped for another since they are identical. However, no two NFTs are the ever same.
+					</p>
+				)}
+				<div className='faq-text-question' onClick={() => setQShow2((prev) => !prev)}>
+					<FontAwesomeIcon icon={qShow2 ? faMinusSquare : faPlusSquare} className='faq-text-plus' />
+					<p className='text-faq-black'>What is required to mint a NFT?</p>
+				</div>
+				{qShow2 && <p className='faq-text-answer'>You must download MetaMask and fund your MetaMask wallet.</p>}
+				<div className='faq-text-question' onClick={() => setQShow3((prev) => !prev)}>
+					<FontAwesomeIcon icon={qShow3 ? faMinusSquare : faPlusSquare} className='faq-text-plus' />
+					<p className='text-faq-black'>How do I download MetaMask and fund my MetaMask wallet?</p>
+				</div>
+				{qShow3 && (
 					<ol className='faq-text-answer'>
 						<li className='space-list'>
 							You need to{' '}
@@ -41,35 +58,35 @@ export default function Faq(props) {
 						</li>
 					</ol>
 				)}
-				<div className='faq-text-question' onClick={() => setQShow2((prev) => !prev)}>
-					<FontAwesomeIcon icon={qShow2 ? faMinusSquare : faPlusSquare} className='faq-text-plus' />
+				<div className='faq-text-question' onClick={() => setQShow4((prev) => !prev)}>
+					<FontAwesomeIcon icon={qShow4 ? faMinusSquare : faPlusSquare} className='faq-text-plus' />
 					<p className='text-faq-black'>How do I mint an NFT?</p>
 				</div>
-				{qShow2 && (
+				{qShow4 && (
 					<p className='faq-text-answer'>
 						Once you have MetaMask installed and Ethereum in your wallet you can <Link to='/mint-not-active'>click here</Link> to mint an NFT.
 					</p>
 				)}
-				<div className='faq-text-question' onClick={() => setQShow3((prev) => !prev)}>
-					<FontAwesomeIcon icon={qShow3 ? faMinusSquare : faPlusSquare} className='faq-text-plus' />
+				<div className='faq-text-question' onClick={() => setQShow5((prev) => !prev)}>
+					<FontAwesomeIcon icon={qShow5 ? faMinusSquare : faPlusSquare} className='faq-text-plus' />
 					<p className='text-faq-black'>When can I mint an NFT?</p>
 				</div>
-				{qShow3 && <p className='faq-text-answer'>Our presale is opening Wednesday, January 12th at 6pm ET. Normal sale begins Friday, January 14th at 6pm ET.</p>}
-				<div className='faq-text-question' onClick={() => setQShow4((prev) => !prev)}>
+				{qShow5 && <p className='faq-text-answer'>Our presale is opening Wednesday, January 12th at 6pm ET. Normal sale begins Friday, January 14th at 6pm ET.</p>}
+				<div className='faq-text-question' onClick={() => setQShow6((prev) => !prev)}>
 					<FontAwesomeIcon icon={qShow4 ? faMinusSquare : faPlusSquare} className='faq-text-plus' />
 					<p className='text-faq-black'>What do you have planned for the future of CryptoHermits?</p>
 				</div>
-				{qShow4 && (
+				{qShow6 && (
 					<p className='faq-text-answer'>
 						We have a lot planned once we reach 100% in sales for the bookworm collection. The next collection we are excited for is the homesteader collection. From there we hope to
 						expand to other collections. We want to create a community of self-sufficient, independent thinkers who aren't afraid to fight censorship!
 					</p>
 				)}
-				<div className='faq-text-question' onClick={() => setQShow5((prev) => !prev)}>
-					<FontAwesomeIcon icon={qShow5 ? faMinusSquare : faPlusSquare} className='faq-text-plus' />
+				<div className='faq-text-question' onClick={() => setQShow7((prev) => !prev)}>
+					<FontAwesomeIcon icon={qShow7 ? faMinusSquare : faPlusSquare} className='faq-text-plus' />
 					<p className='text-faq-black'>Can I buy on my mobile phone?</p>
 				</div>
-				{qShow5 && <p className='faq-text-answer'>Yes, simply download MetaMask for iOS or Android and visit our site using the MetaMask browser.</p>}
+				{qShow7 && <p className='faq-text-answer'>Yes, simply download MetaMask for iOS or Android and visit our site using the MetaMask browser.</p>}
 			</div>
 		</div>
 	);
