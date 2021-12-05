@@ -54,7 +54,7 @@ export default function Faq(props) {
 					<FontAwesomeIcon icon={qShow3 ? faMinusSquare : faPlusSquare} className='faq-text-plus' />
 					<p className='text-faq-black'>When can I mint an NFT?</p>
 				</div>
-				{qShow3 && <p className='faq-text-answer'>You can officially mint an NFT on January 8th at 1:00 pm ET.</p>}
+				{qShow3 && <p className='faq-text-answer'>Our presale is opening Wednesday, January 12th at 6pm ET. Normal sale begins Friday, January 14th at 6pm ET.</p>}
 				<div className='faq-text-question' onClick={() => setQShow4((prev) => !prev)}>
 					<FontAwesomeIcon icon={qShow4 ? faMinusSquare : faPlusSquare} className='faq-text-plus' />
 					<p className='text-faq-black'>What do you have planned for the future of CryptoHermits?</p>
