@@ -9,18 +9,15 @@ export default function Home(props) {
 	const navigate = useNavigate();
 	return (
 		<div className='page-home'>
-			<div className='cover-photo-container'>
-				<img src={coverPhotoTablet} className='cover-photo-tablet' alt='coverPhoto' />
-				<img src={coverPhotoMobile} className='cover-photo-mobile' alt='coverPhoto' />
-				<div className='centered'>
-					<p className='text-magento-noborder mobile-header-text'>Crypto</p>
-					<p className='text-cyan mobile-header-text'>Hermits</p>
-					{/* <p className='text-normal-black para-home'> */}
-					<button className='btn-black' style={{ marginTop: 40 }} onClick={() => navigate('/about')}>
-						JOIN THE REVOLUTION
-					</button>
-				</div>
+			<div>
+				<p className='text-magento-noborder mobile-header-text'>Crypto</p>
+				<p className='text-cyan mobile-header-text'>Hermits</p>
 			</div>
+			<img className='bookworm-gif' src='https://media.giphy.com/media/GBbJOa0QP6HEBK2WXW/giphy.gif' alt='gif' />
+			{/* <p className='text-normal-black para-home'> */}
+			<button className='btn-black' style={{ marginTop: 40 }} onClick={() => navigate('/mint-not-active')}>
+				THE BOOKWORMS
+			</button>
 		</div>
 	);
 }

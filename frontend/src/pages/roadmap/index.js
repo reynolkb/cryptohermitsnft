@@ -14,27 +14,27 @@ export default function RoadMap(props) {
 			<div className='roadmap-step'>
 				<p className='roadmap-percent'>25%</p>
 				<ul>
-					<li className='space-list'>All inclusive tropical vacation for one random wallet address</li>
+					<li className='space-list'>All inclusive remote tropical vacation for one random wallet address</li>
 				</ul>
 			</div>
 			<div className='roadmap-step'>
 				<p className='roadmap-percent'>50%</p>
 				<ul>
-					<li className='space-list'>All inclusive tropical vacation for one random wallet address</li>
+					<li className='space-list'>All inclusive remote tropical vacation for one random wallet address</li>
 					<li className='space-list'>Airdrop Mythic one of one NFT</li>
 				</ul>
 			</div>
 			<div className='roadmap-step'>
 				<p className='roadmap-percent'>75%</p>
 				<ul>
-					<li className='space-list'>All inclusive tropical vacation for one random wallet address</li>
+					<li className='space-list'>All inclusive remote tropical vacation for one random wallet address</li>
 					<li className='space-list'>Donating $20,000 worth of books to an illiteracy program</li>
 				</ul>
 			</div>
 			<div className='roadmap-step'>
 				<p className='roadmap-percent'>100%</p>
 				<ul>
-					<li className='space-list'>All inclusive tropical vacation for one random wallet address</li>
+					<li className='space-list'>All inclusive remote tropical vacation for one random wallet address</li>
 					<li className='space-list'>Airdrop Mythic one of one NFT</li>
 				</ul>
 			</div>

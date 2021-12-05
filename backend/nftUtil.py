@@ -27,7 +27,7 @@ FIELD_TOTAL_TOKENS = "TotalTokens"
 _COLLECTION_NFTS = "Nfts"
 FIELD_IMAGE_BINARY_STRING = "ImageBinaryString"  # bson image data
 FIELD_RARITY = "rarity"  # Gold, Silver, Bronze
-FIELD_STATISTICAL_RARITY = "StatisticalRarity"  # statistical_rarity
+# FIELD_STATISTICAL_RARITY = 'StatisticalRarity' # statistical_rarity
 FIELD_TOKEN_ID = "TokenId"
 FIELD_TOKEN_IS_EXPOSABLE = "TokenIsExposable"
 FIELD_TRAIT_COUNT = "trait_count"  # The quantity of non-Nothing traits.
@@ -154,21 +154,6 @@ def SetTokensMinted(tokensMinted, password):
     _DB[_COLLECTION_DATA].update_one({}, {"$set": {FIELD_TOKENS_MINTED: tokensMinted}})
 
 
-############################## PUBLIC METHODS CALLED ONLY FROM nftTestCases.py ##############################
-def IsExposable(tokenId):
-    """
-    Determine if the metadata for tokenId is exposable.
-    """
-    return _DB[_COLLECTION_NFTS].find_one({FIELD_TOKEN_ID: tokenId})[FIELD_TOKEN_IS_EXPOSABLE]
-
-
-# def QuantityOfAllNfts():
-#    '''
-#    Get the total quantity of NFT documents.
-#    '''
-#    return _DB[_COLLECTION_NFTS].count_documents({})
-
-
 ################ PUBLIC METHODS CALLED FROM PROGRAMMER UTILITIES (nftInitializeDatabase.py, nftTestCases.py, nftReport.py) ################
 def BackupAndInitializeDatabase(nftDefinition, doBackup=True):
     """
@@ -253,19 +238,26 @@ def CreateMetadata(nftDefinition):
     print("Wrote", len(allMetadatas), "metadata files")
 
 
-def FloatingPointEquivalent(fp1, fp2):
-    """
-    Return True if fp1 ~= fp2
-    """
-    return abs(fp1 - fp2) < 0.000000000001
-
-
 def FatalExit(message):
     """
     Print the fatal message and exit.  Should only be used in utilities that the programmer runs from the command line.
     """
     print(message)
     sys.exit(1)
+
+
+# def FloatingPointEquivalent(fp1, fp2):
+#    '''
+#    Return True if fp1 ~= fp2
+#    '''
+#    return abs(fp1 - fp2) < 0.000000000001
+
+
+def FormatPercent(nbr):
+    """
+    Format nbr into a percent string.
+    """
+    return str(round(100 * nbr, 2)) + "%"
 
 
 def GetDocMetadata(doc):
@@ -304,7 +296,14 @@ def InsertOneDocument(doc):
     _DB[_COLLECTION_NFTS].insert_one(doc)
 
 
-def ReportNfts(filePath="t.csv", fieldNames=(FIELD_TOKEN_ID, FIELD_TOKEN_IS_EXPOSABLE, FIELD_STATISTICAL_RARITY, FIELD_RARITY, FIELD_TRAIT_COUNT, FIELD_TRAITS)):
+def IsExposable(tokenId):
+    """
+    Determine if the metadata for tokenId is exposable.
+    """
+    return _DB[_COLLECTION_NFTS].find_one({FIELD_TOKEN_ID: tokenId})[FIELD_TOKEN_IS_EXPOSABLE]
+
+
+def ReportNfts(filePath="t.csv", fieldNames=(FIELD_TOKEN_ID, FIELD_TOKEN_IS_EXPOSABLE, FIELD_RARITY, FIELD_TRAIT_COUNT, FIELD_TRAITS)):
     """
     Create a csv report to filePath containing fieldNames.
       filePath = The csv report output file.
@@ -354,6 +353,26 @@ def UpdateField(updates):
         if _DB[_COLLECTION_NFTS].find_one(search):
             _DB[_COLLECTION_NFTS].update_one(search, {"$set": {update[2]: update[3]}})
             print(update)
+
+
+def ValidateFolderName(folderName):
+    """
+    If folderName is not valid, then fail.
+    """
+    if folderName[-1] != "/":
+        FatalExit(folderName + ' must end in a "/"')
+
+
+def ValidateUniqueNames(thingList):
+    """
+    Validate that all names are unique.
+    """
+    names = set()
+    for thing in thingList:
+        name = thing["Name"]
+        if name in names:
+            FatalExit("Duplicate name " + name)
+        names.add(name)
 
 
 ############################## PRIVATE METHODS ##############################

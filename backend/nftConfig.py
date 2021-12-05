@@ -21,8 +21,8 @@ NFT_DEFINITION_BOOKWORMS = {
     "Name": "Bookworms",
     "Description": "A description of the bookworm collection that Bianca can come up with.",
     "ImageType": "png",  # png, jpg, etc.
-    "Quantity": 98,  # Quantity of NFT's to generate.  Set to a really high number if you want to generate the maximum number.
-    "QuantityOfExposableTokens": 10,  # The initial quantity of tokens that will have their metadata exposable.
+    "TotalQuantity": 100,  # Quantity of NFT's to generate.
+    "QuantityOfExposableTokens": 5,  # The initial quantity of tokens that will have their metadata exposable.
     # Update the database with the images.  Since the images are so large, it can be very slow to update a remote database.
     # So only turn this to True when you are 100% sure that the images are finalized.
     "UpdateDatabaseWithImages": True,
@@ -34,7 +34,7 @@ NFT_DEFINITION_BOOKWORMS = {
     # So if there are 10 of them, and you have specified the above 'Quantity' = 990, then a total of 1000 NFTs will be produced.
     # They will be assigned a StatisticalRaity of 0, the highest Rarity (eg 'Mythic'), and a TraitCount of 1.
     # You will need to back into the first attribute[0] probability.
-    "SignatureImageFolder": "CryptoHermits/Bookworm/SignatureImages/",
+    # "SignatureImageFolder": "CryptoHermits/Bookworm/SignatureImages/",
     # Round 1 - Images and metadata are on Mongo via nftInitializeDatabase
     # the 'external_url' = 'BaseExternalUri' and 'image' = 'BaseImageUri'
     # Generate the images
@@ -53,120 +53,123 @@ NFT_DEFINITION_BOOKWORMS = {
         {
             "Name": "Floor",
             "Attributes": (
-                {"Name": "Checkered", "Probability": 18},
-                {"Name": "Concrete", "Probability": 19},
-                {"Name": "Grass", "Probability": 20},
-                {"Name": "Shag_Rug", "Probability": 21},
-                {"Name": "Wood_Floor", "Probability": 22},
+                {"Name": "Checkered", "Probability": 2},
+                {"Name": "Concrete", "Probability": 1},
+                {"Name": "Grass", "Probability": 1},
+                {"Name": "Shag_Rug", "Probability": 2},
+                {"Name": "Wood_Floor", "Probability": 2},
             ),
         },
         # Level 1
-        {"Name": "Left Wall", "Attributes": ({"Name": "Left_Wall", "Probability": 100},)},
+        {
+            "Name": "Left Wall",
+            "Attributes": ({"Name": "Left_Wall", "Probability": 1},),
+        },
         # Level 2
         {
             "Name": "Back Wall",
             "Attributes": (
-                {"Name": "Brick_Wall", "Probability": 14},
-                {"Name": "Last_Supper_Wall", "Probability": 15},
-                {"Name": "Marriage_Wall", "Probability": 16},
-                {"Name": "Palm_Tree_Wall", "Probability": 17},
-                {"Name": "Roses_Wall", "Probability": 18},
-                {"Name": "TV_Wall", "Probability": 20},
+                # {"Name": "Blank_Wall", "Probability": 2},
+                {"Name": "Brick_Wall", "Probability": 1},
+                {"Name": "Last_Supper_Wall", "Probability": 3},
+                {"Name": "Marriage_Wall", "Probability": 3},
+                {"Name": "Palm_Tree_Wall", "Probability": 2},
+                {"Name": "Roses_Wall", "Probability": 1},
+                {"Name": "TV_Wall", "Probability": 2},
             ),
         },
         # Level 3
         {
             "Name": "Lighting",
             "Attributes": (
-                {"Name": "Nothing", "FilePath": None, "Probability": 25},
-                {"Name": "Cannabis", "Probability": 10},
-                {"Name": "Disco_Ball", "Probability": 11},
-                {"Name": "Gun_Lamp", "Probability": 12},
-                {"Name": "Lava_Lamp", "Probability": 13},
-                {"Name": "Leg_Lamp", "Probability": 14},
-                {"Name": "Torch", "Probability": 15},
+                {"Name": "Nothing", "FilePath": None, "Probability": 1},
+                {"Name": "Cannabis", "Probability": 4},
+                {"Name": "Disco_Ball", "Probability": 3},
+                {"Name": "Gun_Lamp", "Probability": 3},
+                {"Name": "Lava_Lamp", "Probability": 1},
+                {"Name": "Leg_Lamp", "Probability": 5},
+                {"Name": "Torch", "Probability": 2},
             ),
         },
         # Level 4
         {
             "Name": "Chair",
             "Attributes": (
-                {"Name": "Flag_Chair", "Probability": 14},
-                {"Name": "Leather_Chair", "Probability": 15},
-                {"Name": "Plaid_Chair", "Probability": 16},
-                {"Name": "Polka_Dot_Chair", "Probability": 17},
-                {"Name": "Shell_Chair", "Probability": 18},
-                {"Name": "Tie_Dye_Chair", "Probability": 20},
+                {"Name": "Flag_Chair", "Probability": 4},
+                {"Name": "Leather_Chair", "Probability": 3},
+                {"Name": "Plaid_Chair", "Probability": 1},
+                {"Name": "Polka_Dot_Chair", "Probability": 1},
+                {"Name": "Shell_Chair", "Probability": 2},
+                {"Name": "Tie_Dye_Chair", "Probability": 1},
             ),
         },
         # Level 5
         {
             "Name": "Hair",
             "Attributes": (
-                {"Name": "Dark_Beehive", "Probability": 6.25},
-                {"Name": "Dark_Box_Braids", "Probability": 6.25},
-                {"Name": "Dark_Buzzcut", "Probability": 6.25},
-                {"Name": "Dark_Mohawk", "Probability": 6.25},
-                {"Name": "Dark_Rainbow_Hair", "Probability": 6.25},
-                {"Name": "Light_Beehive", "Probability": 6.25},
-                {"Name": "Light_Box_Braids", "Probability": 6.25},
-                {"Name": "Light_Buzzcut", "Probability": 6.25},
-                {"Name": "Light_Mohawk", "Probability": 6.25},
-                {"Name": "Light_Rainbow_Hair", "Probability": 6.25},
-                {"Name": "Medium_Beehive", "Probability": 6.25},
-                {"Name": "Medium_Box_Braids", "Probability": 6.25},
-                {"Name": "Medium_Buzzcut", "Probability": 6.25},
-                {"Name": "Medium_Mohawk", "Probability": 6.25},
-                {"Name": "Medium_Rainbow_Hair", "Probability": 6.25},
+                {"Name": "Dark_Beehive", "Probability": 1},
+                {"Name": "Dark_Box_Braids", "Probability": 1},
+                {"Name": "Dark_Buzzcut", "Probability": 1},
+                {"Name": "Dark_Mohawk", "Probability": 1},
+                {"Name": "Dark_Rainbow_Hair", "Probability": 1},
+                {"Name": "Light_Beehive", "Probability": 1},
+                {"Name": "Light_Box_Braids", "Probability": 1},
+                {"Name": "Light_Buzzcut", "Probability": 1},
+                {"Name": "Light_Mohawk", "Probability": 1},
+                {"Name": "Light_Rainbow_Hair", "Probability": 1},
+                {"Name": "Medium_Beehive", "Probability": 1},
+                {"Name": "Medium_Box_Braids", "Probability": 1},
+                {"Name": "Medium_Buzzcut", "Probability": 1},
+                {"Name": "Medium_Mohawk", "Probability": 1},
+                {"Name": "Medium_Rainbow_Hair", "Probability": 1},
                 # A Mullet can be worn by any body, irrespective of skin tone.
-                {"Name": "Mullet", "Probability": 6.25},
+                {"Name": "Mullet", "Probability": 1},
             ),
         },
         # Level 6
         {
             "Name": "Body",
             "Attributes": (
-                {"Name": "Dark_Bell_Bottoms", "Probability": 6.67},
-                {"Name": "Dark_Manwoman", "Probability": 6.67},
-                {"Name": "Dark_Robe", "Probability": 6.67},
-                {"Name": "Dark_Suit", "Probability": 6.67},
-                {"Name": "Dark_Tracksuit", "Probability": 6.67},
-                {"Name": "Light_Bell_Bottoms", "Probability": 6.67},
-                {"Name": "Light_Manwoman", "Probability": 6.67},
-                {"Name": "Light_Robe", "Probability": 6.67},
-                {"Name": "Light_Suit", "Probability": 6.67},
-                {"Name": "Light_Tracksuit", "Probability": 6.67},
-                {"Name": "Medium_Bell_Bottoms", "Probability": 6.67},
-                {"Name": "Medium_Manwoman", "Probability": 6.67},
-                {"Name": "Medium_Robe", "Probability": 6.67},
-                {"Name": "Medium_Suit", "Probability": 6.67},
-                {"Name": "Medium_Tracksuit", "Probability": 6.62},
+                {"Name": "Dark_Bell_Bottoms", "Probability": 1},
+                {"Name": "Dark_Manwoman", "Probability": 1},
+                {"Name": "Dark_Robe", "Probability": 1},
+                {"Name": "Dark_Suit", "Probability": 1},
+                {"Name": "Dark_Tracksuit", "Probability": 1},
+                {"Name": "Light_Bell_Bottoms", "Probability": 1},
+                {"Name": "Light_Manwoman", "Probability": 1},
+                {"Name": "Light_Robe", "Probability": 1},
+                {"Name": "Light_Suit", "Probability": 1},
+                {"Name": "Light_Tracksuit", "Probability": 1},
+                {"Name": "Medium_Bell_Bottoms", "Probability": 1},
+                {"Name": "Medium_Manwoman", "Probability": 1},
+                {"Name": "Medium_Robe", "Probability": 1},
+                {"Name": "Medium_Suit", "Probability": 1},
+                {"Name": "Medium_Tracksuit", "Probability": 1},
             ),
         },
-        # Level 7 (RarityTrait)
+        # Level 7
         {
             "Name": "Book Color",
-            "IsRarityTrait": True,
             "Attributes": (
-                {"Name": "Mythic", "FilePath": "Mythic.png", "Probability": 2},
-                {"Name": "Exotic", "FilePath": "Exotic.png", "Probability": 3.4},
-                {"Name": "Legendary", "FilePath": "Legendary.png", "Probability": 7.5},
-                {"Name": "Epic", "FilePath": "Epic.png", "Probability": 12},
-                {"Name": "Rare", "FilePath": "Rare.png", "Probability": 17},
-                {"Name": "Uncommon", "FilePath": "Uncommon.png", "Probability": 25},
-                {"Name": "Common", "FilePath": "Common.png", "Probability": 33.1},  # 33.1
+                # {"Name": "Mythic", "Probability": 1}, # Not applicable.  Mythic will be using the Signature Series images.
+                {"Name": "Exotic", "Probability": 1},
+                {"Name": "Legendary", "Probability": 1},
+                {"Name": "Epic", "Probability": 1},
+                {"Name": "Rare", "Probability": 1},
+                {"Name": "Uncommon", "Probability": 1},
+                {"Name": "Common", "Probability": 1},
             ),
         },
         # Level 8
         {
             "Name": "Book Title",
             "Attributes": (
-                {"Name": "Comply_Or_Die", "Probability": 14},
-                {"Name": "Don't_Shed_On_Me", "Probability": 15},
-                {"Name": "How_To_Survive_The_Y2K", "Probability": 16},
-                {"Name": "Men_On_The_Moon", "Probability": 17},
-                {"Name": "Soul_Not_For_Sale", "Probability": 18},
-                {"Name": "The_12_Steps_for_Social_Media_Addicts", "Probability": 20},
+                {"Name": "Comply_Or_Die", "Probability": 5},
+                {"Name": "Don't_Shed_On_Me", "Probability": 1},
+                {"Name": "How_To_Survive_The_Y2K", "Probability": 1},
+                {"Name": "Men_On_The_Moon", "Probability": 1},
+                {"Name": "Soul_Not_For_Sale", "Probability": 5},
+                {"Name": "The_12_Steps_for_Social_Media_Addicts", "Probability": 5},
             ),
         },
         # Level 9
@@ -174,73 +177,171 @@ NFT_DEFINITION_BOOKWORMS = {
             "Name": "Shoes",
             "Attributes": (
                 # These shoes can be worn by any body.
-                {"Name": "Boots", "Probability": 3.2},  # 3.2
-                {"Name": "Converse", "Probability": 6.2},
-                {"Name": "Socks_Slides", "Probability": 3.1},
+                {"Name": "Boots", "Probability": 2},
+                {"Name": "Converse", "Probability": 2},
+                {"Name": "Socks_Slides", "Probability": 2},
                 # These shoes can only be worn by a body with the matching clothes.  The skin tone of the body is irrelevant.
-                {"Name": "Boots_Bell_Bottoms", "Probability": 2.5},
-                {"Name": "Converse_Bell_Bottoms", "Probability": 2.5},
-                {"Name": "Converse_Suit", "Probability": 2.5},
-                {"Name": "Converse_Tracksuit", "Probability": 2.5},
-                {"Name": "Dress_Shoes_Bell_Bottoms", "Probability": 2.5},
-                {"Name": "Dress_Shoes_Robe_Manwoman", "Probability": 2.5},  # These can be worn both by a 'Robe' or 'Manwoman' body.
-                {"Name": "Dress_Shoes_Suit", "Probability": 2.5},
-                {"Name": "Dress_Shoes_Tracksuit", "Probability": 2.5},
-                {"Name": "Socks_Slides_Bell_Bottoms", "Probability": 2.5},
-                {"Name": "Socks_Slides_Suit", "Probability": 2.5},
-                {"Name": "Socks_Slides_Tracksuit", "Probability": 2.5},
+                {"Name": "Boots_Bell_Bottoms", "Probability": 1},
+                {"Name": "Converse_Bell_Bottoms", "Probability": 1},
+                {"Name": "Converse_Suit", "Probability": 1},
+                {"Name": "Converse_Tracksuit", "Probability": 1},
+                {"Name": "Dress_Shoes_Bell_Bottoms", "Probability": 1},
+                {"Name": "Dress_Shoes_Robe_Manwoman", "Probability": 1},  # These can be worn both by a 'Robe' or 'Manwoman' body.
+                {"Name": "Dress_Shoes_Suit", "Probability": 1},
+                {"Name": "Dress_Shoes_Tracksuit", "Probability": 1},
+                {"Name": "Socks_Slides_Bell_Bottoms", "Probability": 1},
+                {"Name": "Socks_Slides_Suit", "Probability": 1},
+                {"Name": "Socks_Slides_Tracksuit", "Probability": 1},
                 # These shoes can only be worn by a dark body with the matching clothes.
-                {"Name": "Dark_High_Heels_Bell_Bottoms", "Probability": 2.5},
-                {"Name": "Dark_High_Heels_Robe_Manwoman", "Probability": 2.5},  # These can be worn both by a 'Robe' or 'Manwoman' body.
-                {"Name": "Dark_High_Heels_Suit", "Probability": 2.5},
-                {"Name": "Dark_High_Heels_Tracksuit", "Probability": 2.5},
-                {"Name": "Dark_Slippers_Bell_Bottoms", "Probability": 2.5},
-                {"Name": "Dark_Slippers_Robe_Manwoman", "Probability": 2.5},  # These can be worn both by a 'Robe' or 'Manwoman' body.
-                {"Name": "Dark_Slippers_Suit", "Probability": 2.5},
-                {"Name": "Dark_Slippers_Tracksuit", "Probability": 2.5},
+                {"Name": "Dark_High_Heels_Bell_Bottoms", "Probability": 1},
+                {"Name": "Dark_High_Heels_Robe_Manwoman", "Probability": 1},  # These can be worn both by a 'Robe' or 'Manwoman' body.
+                {"Name": "Dark_High_Heels_Suit", "Probability": 1},
+                {"Name": "Dark_High_Heels_Tracksuit", "Probability": 1},
+                {"Name": "Dark_Slippers_Bell_Bottoms", "Probability": 1},
+                {"Name": "Dark_Slippers_Robe_Manwoman", "Probability": 1},  # These can be worn both by a 'Robe' or 'Manwoman' body.
+                {"Name": "Dark_Slippers_Suit", "Probability": 1},
+                {"Name": "Dark_Slippers_Tracksuit", "Probability": 1},
                 # These shoes can only be worn by a light body with the matching clothes.
-                {"Name": "Light_High_Heels_Bell_Bottoms", "Probability": 2.5},
-                {"Name": "Light_High_Heels_Robe_Manwoman", "Probability": 2.5},  # These can be worn both by a 'Robe' or 'Manwoman' body.
-                {"Name": "Light_High_Heels_Suit", "Probability": 2.5},
-                {"Name": "Light_High_Heels_Tracksuit", "Probability": 2.5},
-                {"Name": "Light_Slippers_Bell_Bottoms", "Probability": 2.5},
-                {"Name": "Light_Slippers_Robe_Manwoman", "Probability": 2.5},  # These can be worn both by a 'Robe' or 'Manwoman' body.
-                {"Name": "Light_Slippers_Suit", "Probability": 2.5},
-                {"Name": "Light_Slippers_Tracksuit", "Probability": 2.5},
+                {"Name": "Light_High_Heels_Bell_Bottoms", "Probability": 1},
+                {"Name": "Light_High_Heels_Robe_Manwoman", "Probability": 1},  # These can be worn both by a 'Robe' or 'Manwoman' body.
+                {"Name": "Light_High_Heels_Suit", "Probability": 1},
+                {"Name": "Light_High_Heels_Tracksuit", "Probability": 1},
+                {"Name": "Light_Slippers_Bell_Bottoms", "Probability": 1},
+                {"Name": "Light_Slippers_Robe_Manwoman", "Probability": 1},  # These can be worn both by a 'Robe' or 'Manwoman' body.
+                {"Name": "Light_Slippers_Suit", "Probability": 1},
+                {"Name": "Light_Slippers_Tracksuit", "Probability": 1},
                 # These shoes can only be worn by a medium body with the matching clothes.
-                {"Name": "Medium_High_Heels_Bell_Bottoms", "Probability": 2.5},
-                {"Name": "Medium_High_Heels_Robe_Manwoman", "Probability": 2.5},  # These can be worn both by a 'Robe' or 'Manwoman' body.
-                {"Name": "Medium_High_Heels_Suit", "Probability": 2.5},
-                {"Name": "Medium_High_Heels_Tracksuit", "Probability": 2.5},
-                {"Name": "Medium_Slippers_Bell_Bottoms", "Probability": 2.5},
-                {"Name": "Medium_Slippers_Robe_Manwoman", "Probability": 2.5},  # These can be worn both by a 'Robe' or 'Manwoman' body.
-                {"Name": "Medium_Slippers_Suit", "Probability": 2.5},
-                {"Name": "Medium_Slippers_Tracksuit", "Probability": 2.5},
+                {"Name": "Medium_High_Heels_Bell_Bottoms", "Probability": 1},
+                {"Name": "Medium_High_Heels_Robe_Manwoman", "Probability": 1},  # These can be worn both by a 'Robe' or 'Manwoman' body.
+                {"Name": "Medium_High_Heels_Suit", "Probability": 1},
+                {"Name": "Medium_High_Heels_Tracksuit", "Probability": 1},
+                {"Name": "Medium_Slippers_Bell_Bottoms", "Probability": 1},
+                {"Name": "Medium_Slippers_Robe_Manwoman", "Probability": 1},  # These can be worn both by a 'Robe' or 'Manwoman' body.
+                {"Name": "Medium_Slippers_Suit", "Probability": 1},
+                {"Name": "Medium_Slippers_Tracksuit", "Probability": 1},
             ),
         },
         # Level 10
-        # You have to have the sideboard, otherwise there will be a hole in the left wall.
-        {"Name": "Sideboard", "Attributes": ({"Name": "Sideboard", "Probability": 100},)},
+        {
+            # You have to have the sideboard, otherwise there will be a hole in the left wall.
+            "Name": "Sideboard",
+            "Attributes": (
+                # {"Name": "Nothing", "FilePath": None, "Probability": 1},
+                {"Name": "Sideboard", "Probability": 1},
+            ),
+        },
         # Level 11
         {
             "Name": "Sideboard Object",
             "Attributes": (
-                {"Name": "Nothing", "FilePath": None, "Probability": 23},
-                {"Name": "Beer_Bottle", "Probability": 11},
-                {"Name": "Bong", "Probability": 11},
-                {"Name": "Cigars", "Probability": 11},
-                {"Name": "Coffee_Mug", "Probability": 11},
-                {"Name": "Crypto_Hermit", "Probability": 11},
-                {"Name": "Tumbler", "Probability": 11},
-                {"Name": "Wine_Bottle", "Probability": 11},
+                {"Name": "Nothing", "FilePath": None, "Probability": 1},
+                {"Name": "Beer_Bottle", "Probability": 1},
+                {"Name": "Bong", "Probability": 1},
+                {"Name": "Cigars", "Probability": 1},
+                {"Name": "Coffee_Mug", "Probability": 1},
+                {"Name": "Crypto_Hermit", "Probability": 1},
+                {"Name": "Tumbler", "Probability": 1},
+                {"Name": "Wine_Bottle", "Probability": 1},
             ),
         },
         # Level 12
         {
             "Name": "Rings",
             "Attributes": (
-                {"Name": "Nothing", "FilePath": None, "Probability": 50},
-                {"Name": "Wedding_Band", "Probability": 50},
+                {"Name": "Nothing", "FilePath": None, "Probability": 1},
+                {"Name": "Wedding_Band", "Probability": 1},
+            ),
+        },
+    ),
+    "Rarities": (
+        # Mythic: Comletely Custom
+        {
+            "Name": "Mythic",
+            "Probability": 2,
+            "FinalImageFolder": "CryptoHermits/Bookworm/SignatureImages/",
+        },
+        # Exotic: Force Sideboard Object to be "Crypto_Hermit"
+        {
+            "Name": "Exotic",
+            "Probability": 13,
+            "Traits": (
+                {"Name": "Floor", "Exclusions": "Concrete"},
+                {"Name": "Back Wall", "Exclusions": "TV_Wall"},
+                {"Name": "Lighting", "Exclusions": "Nothing"},
+                {"Name": "Chair", "Exclusions": "Leather_Chair"},
+                {"Name": "Book Color", "Inclusions": "Exotic"},
+                # {"Name": "Sideboard", "Exclusions": "Nothing"},
+                {"Name": "Sideboard Object", "Inclusions": "Crypto_Hermit"},
+            ),
+        },
+        # Legendary: Add Lighting and Sideboard Object (except for "Nothing", "Crypto_Hermit")
+        {
+            "Name": "Legendary",
+            "Probability": 15,
+            "Traits": (
+                {"Name": "Floor", "Exclusions": "Concrete"},
+                {"Name": "Back Wall", "Exclusions": "TV_Wall"},
+                {"Name": "Lighting", "Exclusions": "Nothing"},
+                {"Name": "Chair", "Exclusions": "Leather_Chair"},
+                {"Name": "Book Color", "Inclusions": "Legendary"},
+                # {"Name": "Sideboard", "Exclusions": "Nothing"},
+                {"Name": "Sideboard Object", "Exclusions": ("Nothing", "Crypto_Hermit")},
+            ),
+        },
+        # Epic: Adding Floor
+        {
+            "Name": "Epic",
+            "Probability": 16,
+            "Traits": (
+                {"Name": "Floor", "Exclusions": "Concrete"},
+                {"Name": "Back Wall", "Exclusions": "TV_Wall"},
+                {"Name": "Lighting", "Inclusions": "Nothing"},
+                {"Name": "Chair", "Exclusions": "Leather_Chair"},
+                {"Name": "Book Color", "Inclusions": "Epic"},
+                # {"Name": "Sideboard", "Exclusions": "Nothing"},
+                {"Name": "Sideboard Object", "Inclusions": "Nothing"},
+            ),
+        },
+        # Rare: Adding Wall
+        {
+            "Name": "Rare",
+            "Probability": 17,
+            "Traits": (
+                {"Name": "Floor", "Inclusions": "Concrete"},
+                {"Name": "Back Wall", "Exclusions": "TV_Wall"},
+                {"Name": "Lighting", "Inclusions": "Nothing"},
+                {"Name": "Chair", "Exclusions": "Leather_Chair"},
+                {"Name": "Book Color", "Inclusions": "Rare"},
+                # {"Name": "Sideboard", "Exclusions": "Nothing"},
+                {"Name": "Sideboard Object", "Inclusions": "Nothing"},
+            ),
+        },
+        # Uncommon: Adding Chair
+        {
+            "Name": "Uncommon",
+            "Probability": 18,
+            "Traits": (
+                {"Name": "Floor", "Inclusions": "Concrete"},
+                {"Name": "Back Wall", "Inclusions": "TV_Wall"},
+                {"Name": "Lighting", "Inclusions": "Nothing"},
+                {"Name": "Chair", "Exclusions": "Leather_Chair"},
+                {"Name": "Book Color", "Inclusions": "Uncommon"},
+                # {"Name": "Sideboard", "Exclusions": "Nothing"},
+                {"Name": "Sideboard Object", "Inclusions": "Nothing"},
+            ),
+        },
+        # Common
+        {
+            "Name": "Common",
+            "Probability": 19,
+            "Traits": (
+                {"Name": "Floor", "Inclusions": "Concrete"},
+                {"Name": "Back Wall", "Inclusions": "TV_Wall"},
+                {"Name": "Lighting", "Inclusions": "Nothing"},
+                {"Name": "Chair", "Inclusions": "Leather_Chair"},
+                {"Name": "Book Color", "Inclusions": "Common"},
+                # {"Name": "Sideboard", "Inclusions": "Nothing"},
+                {"Name": "Sideboard Object", "Inclusions": "Nothing"},
             ),
         },
     ),
@@ -326,12 +427,15 @@ NFT_DEFINITION_BOOKWORMS = {
             ("Shoes", ("Boots", "Converse_Tracksuit", "Light_High_Heels_Tracksuit", "Light_Slippers_Tracksuit", "Dress_Shoes_Tracksuit", "Socks_Slides_Tracksuit")),
         ),
     ),
-    # These are just for testing.  They should be removed.
-    # "Exclusions": (
-    #     {"Book Title": "Don't_Shed_On_Me"},
-    #     {"Book Title": "How_To_Survive_The_Y2K"},
-    #     {"Book Title": "Men_On_The_Moon"},
-    #     {"Book Title": "Soul_Not_For_Sale"},
-    #     {"Book Title": "The_12_Steps_for_Social_Media_Addicts"},
-    # ),
+    # These are just for John's testing.  Bianca and her Mom need to fill out this section.
+    "Exclusions": (
+        {
+            "Floor": "Checkered",
+            "Chair": (
+                "Plaid_Chair",
+                "Tie_Dye_Chair",
+            ),
+            "Hair": "*_Rainbow_Hair",
+        },
+    ),
 }

@@ -1,23 +1,23 @@
 import React from 'react';
 
-import rarityImage1 from '../../assets/rarity-item1.png';
-import rarityImage2 from '../../assets/rarity-item2.png';
-import rarityImage3 from '../../assets/rarity-item3.png';
-import rarityImage4 from '../../assets/rarity-item4.png';
-import rarityImage5 from '../../assets/rarity-item5.png';
-import rarityImage6 from '../../assets/rarity-item6.png';
-import rarityImage7 from '../../assets/rarity-item7.png';
+import common from '../../assets/common-nft.png';
+import uncommon from '../../assets/uncommon-nft.png';
+import rare from '../../assets/rare-nft.png';
+import epic from '../../assets/epic-nft.png';
+import legendary from '../../assets/legendary-nft.png';
+import exotic from '../../assets/exotic-nft.png';
+import mythic from '../../assets/mythic-nft.png';
 import './rarity.css';
 
 export default function Connect(props) {
 	const items = [
-		{ title: 'Common', color: '#999999', image: rarityImage1 },
-		{ title: 'Uncommon', color: '#6DAE10', image: rarityImage2 },
-		{ title: 'Rare', color: '#10A1BA', image: rarityImage3 },
-		{ title: 'Epic', color: '#B049BD', image: rarityImage4 },
-		{ title: 'Legendary', color: '#D57F38', image: rarityImage5 },
-		{ title: 'Exotic', color: '#84ECEC', image: rarityImage6 },
-		{ title: 'Mythic', color: '#F6D248', image: rarityImage7 },
+		{ title: 'Common', color: '#999999', image: common },
+		{ title: 'Uncommon', color: '#6DAE10', image: uncommon },
+		{ title: 'Rare', color: '#10A1BA', image: rare },
+		{ title: 'Epic', color: '#B049BD', image: epic },
+		{ title: 'Legendary', color: '#D57F38', image: legendary },
+		{ title: 'Exotic', color: '#84ECEC', image: exotic },
+		{ title: 'Mythic', color: '#F6D248', image: mythic },
 	];
 	return (
 		<div className='page-rarity'>

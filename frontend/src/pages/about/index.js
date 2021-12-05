@@ -18,9 +18,6 @@ const About = (props) => {
 				of ethical, sustainable living. Collect art and make friends with those who are just as intentional (and probably fed up) as you. We just want to be left alone and leave others alone.
 				Let's find peace in solitary, together.
 			</p>
-			<button className='btn-black explore' style={{ marginTop: 40 }} onClick={() => exploreButtonClicked()}>
-				EXPLORE
-			</button>
 		</div>
 	);
 };

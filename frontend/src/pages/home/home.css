@@ -26,12 +26,17 @@
 	align-items: center;
 }
 
+.bookworm-gif {
+	margin-top: 30px;
+	border: 3px solid white;
+}
+
 .btn-black {
 	background: black;
 	color: white;
 	border-radius: 10px;
 	border-style: none;
-	padding: 13px 52px;
+	padding: 13px 25px;
 	font-family: 'GenuineSansSerif', sans-serif !important;
 }
 .btn-black:hover {
@@ -45,16 +50,20 @@
 }
 
 @media screen and (max-width: 768px) {
-	.mobile-header-text {
-		/* display: none; */
+	.page-home {
+		margin-top: 30px;
 	}
 
 	.btn-black {
-		padding: 8px 30px;
+		padding: 8px 20px;
 	}
 }
 
 @media screen and (max-width: 480px) {
+	.bookworm-gif {
+		max-width: 375px;
+	}
+
 	.cover-photo-tablet {
 		display: none;
 	}
@@ -68,15 +77,23 @@
 	.p-home {
 		font-size: 12px;
 	}
-}
 
-@media screen and (max-width: 480px) {
 	.btn-black {
 		padding: 8px 15px;
 	}
 }
 
+@media screen and (max-width: 375px) {
+	.bookworm-gif {
+		max-width: 320px;
+	}
+}
+
 @media screen and (max-width: 320px) {
+	.bookworm-gif {
+		max-width: 280px;
+	}
+
 	.btn-black {
 		padding: 4px 7.5px;
 	}

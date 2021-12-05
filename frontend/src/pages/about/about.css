@@ -3,16 +3,6 @@
 	max-width: 579px;
 }
 
-.explore {
-	display: none;
-}
-
-@media screen and (max-width: 768px) {
-	.explore {
-		display: block;
-	}
-}
-
 @media screen and (max-width: 480px) {
 	.para-about {
 		max-width: 354px;
