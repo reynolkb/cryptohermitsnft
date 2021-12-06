@@ -27,7 +27,7 @@ export default function Connect(props) {
 		<div className='page-bookworms'>
 			<p className='text-magento-border'>Rarity</p>
 			<p className='text-normal-black p-bookworms' style={{ marginTop: 30, marginBottom: 20, maxWidth: 970 }}>
-				Each of the 10,000 Bookworm NFTs have a rarity ranging from common to mythic and are built on the Ethereum blockchain. The color of the book along with the back wall on the NFT
+				Each of the 5,555 Bookworm NFTs have a rarity ranging from common to mythic and are built on the Ethereum blockchain. The color of the book along with the back wall on the NFT
 				corresponds with the rarity level. Exotic NFTs can have any back wall, but always have a CrytoHermit. Below are some examples of NFTs you could get.
 			</p>
 			<div className='rarity-wrapper'>
