@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/static/css/main.d6497b29.chunk.css",
-    "main.js": "/static/js/main.8a915d38.chunk.js",
-    "main.js.map": "/static/js/main.8a915d38.chunk.js.map",
+    "main.css": "/static/css/main.86a49038.chunk.css",
+    "main.js": "/static/js/main.2e02df13.chunk.js",
+    "main.js.map": "/static/js/main.2e02df13.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.193429dd.js",
     "runtime-main.js.map": "/static/js/runtime-main.193429dd.js.map",
     "static/js/2.3a618cac.chunk.js": "/static/js/2.3a618cac.chunk.js",
@@ -10,7 +10,7 @@
     "static/js/3.06087594.chunk.js": "/static/js/3.06087594.chunk.js",
     "static/js/3.06087594.chunk.js.map": "/static/js/3.06087594.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.d6497b29.chunk.css.map": "/static/css/main.d6497b29.chunk.css.map",
+    "static/css/main.86a49038.chunk.css.map": "/static/css/main.86a49038.chunk.css.map",
     "static/js/2.3a618cac.chunk.js.LICENSE.txt": "/static/js/2.3a618cac.chunk.js.LICENSE.txt",
     "static/media/Crypto-Hermits-Logo-2-Small.54b58327.png": "/static/media/Crypto-Hermits-Logo-2-Small.54b58327.png",
     "static/media/App.css": "/static/media/NevisBold.706a4540.ttf",
@@ -24,7 +24,7 @@
   "entrypoints": [
     "static/js/runtime-main.193429dd.js",
     "static/js/2.3a618cac.chunk.js",
-    "static/css/main.d6497b29.chunk.css",
-    "static/js/main.8a915d38.chunk.js"
+    "static/css/main.86a49038.chunk.css",
+    "static/js/main.2e02df13.chunk.js"
   ]
 }

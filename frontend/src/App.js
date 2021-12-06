@@ -8,7 +8,7 @@ import Team from './pages/team';
 import Connect from './pages/connect';
 import Mint from './pages/mint/index';
 import MintNotActive from './pages/mint/mint-not-active';
-import Bookworms from './pages/bookworms';
+import Rarity from './pages/rarity';
 import Faq from './pages/faq';
 import RoadMap from './pages/roadmap';
 // import Minter from './components/Minter/Minter';
@@ -63,12 +63,12 @@ export default function App(props) {
 				<div className='default-layout'>
 					<Routes>
 						<Route path='/' element={<Home />} />
-						<Route path='/about' element={<About />} />
+						{/* <Route path='/about' element={<About />} /> */}
 						<Route path='/team' element={<Team />} />
 						<Route path='/connect' element={<Connect />} />
 						<Route path='/mint-not-active' element={<MintNotActive />} />
 						<Route path='/mint' element={<Mint />} />
-						<Route path='/bookworms' element={<Bookworms />} />
+						<Route path='/rarity' element={<Rarity />} />
 						<Route path='/faq' element={<Faq />} />
 						<Route path='/roadmap' element={<RoadMap />} />
 					</Routes>

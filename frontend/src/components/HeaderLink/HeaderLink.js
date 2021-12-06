@@ -5,9 +5,9 @@ import './headerlink.css';
 
 const navItems = [
 	{ title: 'Home', link: '/' },
-	{ title: 'Bookworms', link: '/bookworms' },
+	{ title: 'Rarity', link: '/rarity' },
 	{ title: 'Mint', link: '/mint-not-active' },
-	{ title: 'About', link: '/about' },
+	// { title: 'About', link: '/about' },
 	{ title: 'RoadMap', link: '/roadmap' },
 	{ title: 'Team', link: '/team' },
 	{ title: 'FAQ', link: '/faq' },
