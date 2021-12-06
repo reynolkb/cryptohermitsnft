@@ -16,7 +16,7 @@ const MintNotActive = (props) => {
 				Our presale begins Wednesday, January 12th at 6pm ET. Public sale begins Friday, January 14th at 6pm ET. Each wallet can mint up to 5 NFTs. If your wallet address is whitelisted you
 				can mint 5 NFTs during the presale and 5 NFTs during the public sale for a total of 10 NFTs.
 			</p>
-			<img className='bookworm-gif' src='https://media.giphy.com/media/N0ZDS9hYOP2beXWd7N/giphy.gif' alt='gif' />
+			<img className='bookworm-gif' src='https://media.giphy.com/media/UtxHBMT3CrAqV2bw2Y/giphy.gif' alt='gif' />
 			<button className='btn-black explore' style={{ marginTop: 40 }} onClick={() => exploreButtonClicked()}>
 				EXPLORE
 			</button>

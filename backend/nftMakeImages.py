@@ -1,8 +1,8 @@
-'''
+"""
 Make images for the METADATAS
-'''
+"""
 import os
-from PIL import Image
+from PIL import Image, ImageFont, ImageDraw
 import nftConfig
 
 # Metadata for the images to make.
@@ -352,25 +352,52 @@ METADATAS = [
 ]
 
 
+def ApplyCopyright(image):
+    """
+    Apply a copyright notice to the image.
+    """
+    # You cannot use ImageFont.load_default(), because that does not let you specify the font size.
+    # So use arial.ttf.  You can find ttf files on a mac in either /System/Library/Fonts or /Library/Fonts.
+    # 6-point size seems to be the smallest allowable, but you need at least 10-point to decipher the copyright circle logo.
+    # https://stackoverflow.com/questions/58968752/loading-fonts-in-python-pillow-on-a-mac
+    # font = ImageFont.truetype('arial.ttf', size=10)
+    font = ImageFont.truetype("Roboto-Regular.ttf", size=8)  # You can use size=6, but it gets really fuzzy.
+    text = "Copyright " + "\u00a9" + " 2021 BlockBot LLC, All Rights Reserved."
+    imageDraw = ImageDraw.Draw(image)
+
+    # Set the xy placement and fill color.
+    #   x = 2 Gets the white tile color, when most of the copyright is in the black tile.
+    #         So set x to 20 instead.
+    #   y = 986 is enough vertical room for 12-point font (or less)
+    #   y = 987 is enough vertical room for 10-point font (or less)
+    #   y = 988 is enough vertical room for  8-point font (or less)
+    #   y = 990 is enough vertical room for  6-point font (or less)
+    fill = image.getpixel((20, 988))  # Or 'white' to make it visible.
+    imageDraw.text(xy=(2, 988), text=text, fill=fill, font=font)
+
+    return image
+
+
 ############################################# MAIN CODE TO RUN ####################################
 nftDefinition = nftConfig.NFT_DEFINITION_BOOKWORMS
-attributeImageFolder = nftDefinition['AttributeImageFolder']
+attributeImageFolder = nftDefinition["AttributeImageFolder"]
 for m, metadata in enumerate(METADATAS):
-    for a, attribute in enumerate(metadata['attributes']):
-        attributeName = attribute['value']
-        if attributeName in ('None', 'Nothing'):
+    for a, attribute in enumerate(metadata["attributes"]):
+        attributeName = attribute["value"]
+        if attributeName in ("None", "Nothing"):
             continue
-        trait = attribute['trait_type']
-        filePath = os.path.join(attributeImageFolder, trait, attributeName) + '.png'
-        if trait == 'Book Color':
+        trait = attribute["trait_type"]
+        filePath = os.path.join(attributeImageFolder, trait, attributeName) + ".png"
+        if trait == "Book Color":
             bookColor = attributeName
-        elif trait == 'Back Wall':
+        elif trait == "Back Wall":
             backWall = attributeName
         if a == 0:
             baseImage = Image.open(filePath)
         else:
             attributeImage = Image.open(filePath)
             baseImage.paste(attributeImage, (0, 0), attributeImage)
-    filePath = os.path.join(str(m + 1) + '.' + bookColor + '.' + backWall + '.' + '.png')
+    ApplyCopyright(baseImage)
+    filePath = os.path.join(str(m + 1) + "." + bookColor + "." + backWall + "." + ".png")
     print(filePath)
     baseImage.save(os.path.join(filePath))
