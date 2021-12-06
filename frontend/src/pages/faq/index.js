@@ -27,7 +27,7 @@ export default function Faq(props) {
 				{qShow1 && (
 					<p className='faq-text-answer'>
 						NFT stands for “non-fungible token,” which refers to a unique digital asset that can’t be replaced with something else. The opposite is something that is “fungible”. For
-						example, a dollar bill. One dollar bill can be swapped for another since they are identical. However, no two NFTs are the ever same.
+						example, a dollar bill. One dollar bill can be swapped for another since they are identical. However, no two NFTs are ever the same.
 					</p>
 				)}
 				{/* question 2 */}
@@ -86,8 +86,8 @@ export default function Faq(props) {
 				</div>
 				{qShow6 && (
 					<p className='faq-text-answer'>
-						Essentially, you are purchasing the token id which acts as a certificate for your NFT. Think of it like a certificate of ownership for a piece of art. The smart contract keeps
-						track that your wallet owns a token id that corresponds to the NFT that you purchased.
+						Essentially, you are purchasing the token id which acts as a digital certificate for your NFT. Think of it like a certificate of ownership for a piece of art. The smart
+						contract keeps track that your wallet owns a token id that corresponds to the NFT that you purchased.
 					</p>
 				)}
 				{/* question 7 */}
@@ -104,7 +104,7 @@ export default function Faq(props) {
 				{/* question 8 */}
 				<div className='faq-text-question' onClick={() => setQShow8((prev) => !prev)}>
 					<FontAwesomeIcon icon={qShow8 ? faMinusSquare : faPlusSquare} className='faq-text-plus' />
-					<p className='text-faq-black'>Can I buy on my mobile phone?</p>
+					<p className='text-faq-black'>Can I mint a NFT on my mobile phone?</p>
 				</div>
 				{qShow8 && <p className='faq-text-answer'>Yes, simply download MetaMask for iOS or Android and visit our site using the MetaMask browser.</p>}
 			</div>
