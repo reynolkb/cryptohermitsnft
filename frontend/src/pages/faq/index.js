@@ -78,7 +78,12 @@ export default function Faq(props) {
 					<FontAwesomeIcon icon={qShow5 ? faMinusSquare : faPlusSquare} className='faq-text-plus' />
 					<p className='text-faq-black'>When can I mint a NFT?</p>
 				</div>
-				{qShow5 && <p className='faq-text-answer'>Our presale begins Wednesday, January 12th at 6pm ET. Public sale begins Friday, January 14th at 6pm ET.</p>}
+				{qShow5 && (
+					<p className='faq-text-answer'>
+						Our presale begins Wednesday, January 12th at 6pm ET. Public sale begins Friday, January 14th at 6pm ET. Each wallet can mint up to 5 NFTs. If your wallet address is
+						whitelisted you can mint 5 NFTs during the presale and 5 NFTs during the public sale for a total of 10 NFTs.
+					</p>
+				)}
 				{/* question 6 */}
 				<div className='faq-text-question' onClick={() => setQShow6((prev) => !prev)}>
 					<FontAwesomeIcon icon={qShow6 ? faMinusSquare : faPlusSquare} className='faq-text-plus' />

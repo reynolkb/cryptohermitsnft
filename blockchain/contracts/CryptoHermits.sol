@@ -18,15 +18,15 @@ contract CryptoHermits is ERC721Enumerable, Ownable {
     // https://gateway.pinata.cloud/ipfs/QmYrVgtkHnXDw9KURzgSbmejgzpEcje6FV5AofEmBx98kz/1.json
     string public baseExtension = ".json";
     // cost for each nft
-    uint256 public cost = 0.01 ether;
+    uint256 public cost = 0.05 ether;
     // max supply of NFT tokens
-    uint256 public maxSupply = 15;
+    uint256 public maxSupply = 100;
     // // max amount a wallet can mint for presale
     // uint256 public maxPresaleSupply = 8;
     // max amount a wallet can mint after presale is over
-    uint256 public maxMintAmount = 3;
+    uint256 public maxMintAmount = 5;
     // max amount a wallet can mint for presale
-    uint256 public maxPresaleMintAmount = 3;
+    uint256 public maxPresaleMintAmount = 5;
     // paused boolean for pausing the smart contract
     bool public paused = false;
     // boolean for if presale is active
@@ -41,7 +41,7 @@ contract CryptoHermits is ERC721Enumerable, Ownable {
         string memory _symbol,
         string memory _initBaseURI
     ) ERC721(_name, _symbol) {
-        mint(5);
+        mint(10);
         setBaseURI(_initBaseURI);
     }
 

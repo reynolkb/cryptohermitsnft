@@ -124,8 +124,8 @@ export default function Connect(props) {
 			return;
 		}
 
-		if (_mintAmount > 3) {
-			alert('mint amount cannot be greater than 3');
+		if (_mintAmount > 5) {
+			alert('mint amount cannot be greater than 5');
 			return;
 		}
 
@@ -248,13 +248,15 @@ export default function Connect(props) {
 				Get your random cryptohermit nft below, All nfts are 0.01 Eth!
 			</p>
 			<p className='text-normal-black' style={{ marginTop: 30 }}>
-				Number of Nfts to mint (3 max per wallet)
+				Number of Nfts to mint (5 max per wallet)
 			</p>
 			<div className='mint-select-wrapper'>
 				<select name='mintAmount' id='mintAmount' className='mint-amount'>
 					<option value='1'>1</option>
 					<option value='2'>2</option>
 					<option value='3'>3</option>
+					<option value='4'>3</option>
+					<option value='5'>3</option>
 				</select>
 				<FontAwesomeIcon icon={faChevronDown} className='mint-icon-down' onClick={() => document.getElementById('mintAmount').click()} />
 			</div>
