@@ -78,7 +78,7 @@ export default function Faq(props) {
 					<FontAwesomeIcon icon={qShow5 ? faMinusSquare : faPlusSquare} className='faq-text-plus' />
 					<p className='text-faq-black'>When can I mint a NFT?</p>
 				</div>
-				{qShow5 && <p className='faq-text-answer'>Our presale is opening Wednesday, January 12th at 6pm ET. Normal sale begins Friday, January 14th at 6pm ET.</p>}
+				{qShow5 && <p className='faq-text-answer'>Our presale begins Wednesday, January 12th at 6pm ET. Public sale begins Friday, January 14th at 6pm ET.</p>}
 				{/* question 6 */}
 				<div className='faq-text-question' onClick={() => setQShow6((prev) => !prev)}>
 					<FontAwesomeIcon icon={qShow6 ? faMinusSquare : faPlusSquare} className='faq-text-plus' />
@@ -86,8 +86,8 @@ export default function Faq(props) {
 				</div>
 				{qShow6 && (
 					<p className='faq-text-answer'>
-						Essentially, you are purchasing the token id which acts a certificate for your NFT. Think of it like a certificate of ownership for a piece of art. The smart contract keeps
-						track that your wallet owns a token id that corresponds to your NFT you purchased.
+						Essentially, you are purchasing the token id which acts as a certificate for your NFT. Think of it like a certificate of ownership for a piece of art. The smart contract keeps
+						track that your wallet owns a token id that corresponds to the NFT that you purchased.
 					</p>
 				)}
 				{/* question 7 */}
