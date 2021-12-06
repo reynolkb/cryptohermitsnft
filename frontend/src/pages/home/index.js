@@ -11,7 +11,7 @@ export default function Home(props) {
 				<p className='text-magento-noborder mobile-header-text'>Crypto</p>
 				<p className='text-cyan mobile-header-text'>Hermits</p>
 			</div>
-			<img className='bookworm-gif' src='https://media.giphy.com/media/iBcPKkUkxndjiQg9Oy/giphy.gif' alt='gif' />
+			<img className='bookworm-gif' src='https://media.giphy.com/media/N0ZDS9hYOP2beXWd7N/giphy.gif' alt='gif' />
 			{/* <p className='text-normal-black para-home'> */}
 			<p className='text-normal-black p-home'>
 				The Bookworms are a collection of 5,555 NFTs sitting on top of the Ethereum blockchain costing 0.05 ETH each. After decades of down time and solitude, they are ready to make some
