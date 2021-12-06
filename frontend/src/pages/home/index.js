@@ -20,7 +20,7 @@ export default function Home(props) {
 				who are just as intentional (and probably fed up) as you. We just want to be left alone and leave others alone. Let's find peace in solitary, together.
 			</p>
 			<button className='btn-black' style={{ marginTop: 40 }} onClick={() => navigate('/rarity')}>
-				BOOKWORMS
+				LEARN MORE
 			</button>
 		</div>
 	);
