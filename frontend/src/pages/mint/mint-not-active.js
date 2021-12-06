@@ -13,7 +13,7 @@ const MintNotActive = (props) => {
 		<div className='page-mint'>
 			<p className='text-magento-border'>Mint</p>
 			<p className='text-normal-black para-about'>Our presale begins Wednesday, January 12th at 6pm ET. Public sale begins Friday, January 14th at 6pm ET.</p>
-			<img className='bookworm-gif' src='https://media.giphy.com/media/GBbJOa0QP6HEBK2WXW/giphy.gif' alt='gif' />
+			<img className='bookworm-gif' src='https://media.giphy.com/media/iBcPKkUkxndjiQg9Oy/giphy.gif' alt='gif' />
 			<button className='btn-black explore' style={{ marginTop: 40 }} onClick={() => exploreButtonClicked()}>
 				EXPLORE
 			</button>

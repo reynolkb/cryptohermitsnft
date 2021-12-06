@@ -4,12 +4,8 @@ For Profiling run:
    python -m cProfile nftInitializeDatabase.py >t.csv
 """
 import copy
-
-##import csv
 import glob
 import io
-
-# import math
 import os
 import pathlib
 import random
@@ -74,7 +70,7 @@ def AttributeFilePath(nftDefinition, attribute):
 
 def BuildPermutations(nftDefinition, finalImages, rarityQuantities):
     """
-    asdsadsadas
+    Build the permutations, taking into account the exclusions and inclusions.
     """
     # Define working variables
     traits = nftDefinition["Traits"]
@@ -101,31 +97,31 @@ def BuildPermutations(nftDefinition, finalImages, rarityQuantities):
         else:
             rarityAttributeDistribution = rarityAttributeDistributions[r]
             for _ in range(rarityQuantities[r]):
-                # newPermutationFound = True
-                while True:  # not newPermutationFound:
+                while True:
                     permutation = []
-                    newPermutationFound = True
-                    # for t, trait in enumerate(traits):
+                    qualifyingPermutationFound = True
                     for t in range(len(traits)):
                         attributeDistribution = rarityAttributeDistribution[t]
                         attributeDistributionIndex = random.randint(0, len(attributeDistribution) - 1)
                         permutation.append(attributeDistribution[attributeDistributionIndex])
                         if not PermutationQualifiesInclusions(permutation, globalInclusions[t]) or PermutationQualifiesExclusions(permutation, globalExclusions[t]):
-                            newPermutationFound = False
+                            qualifyingPermutationFound = False
                             break
-                    if newPermutationFound and permutation not in permutations:
+                    if qualifyingPermutationFound and permutation not in permutations:
                         permutations.append(permutation)
                         permutationRarityIndexes.append(r)
+                        if len(permutations) % 1000 == 0:
+                            print("Generating Permutations", len(permutations))
                         break
 
     return permutations, permutationRarityIndexes
 
 
-##def CsvWrite(permutations):
+##def CsvWritePermutations(permutations):
 ##    '''
-##    dssda
+##    Write out the permutations
 ##    '''
-##    with open('tt.csv', 'w', newline='') as file:
+##    with open('permutations.csv', 'w', newline='') as file:
 ##        csvWriter = csv.writer(file)
 ##        for p in permutations:
 ##            if p[5] == 15: # mullet
@@ -141,8 +137,8 @@ def DetermineAttributeProbabilities(traits, permutations):
         attributeProbabilities.append([0] * len(trait["Attributes"]))
     qty = 0
     for permutation in permutations:
+        qty += 1
         if not isinstance(permutation, str):  # Signature Series
-            qty += 1
             for t, a in enumerate(permutation):
                 attributeProbabilities[t][a] += 1
     for attributeProbability in attributeProbabilities:
@@ -168,14 +164,10 @@ def DetermineRarityQuantities(nftDefinition):
     probabilityDistribution = ProbabilityDistribution(rarities)
     lenProbabilityDistribution = len(probabilityDistribution)
 
-    # probabilityDistribution is going to have say 38 buckets.
-    # quantityNeeded is going to be like 10000.
-    quantityNeeded = nftDefinition["TotalQuantity"]
+    quantityNeeded = nftDefinition["TotalQuantity"]  # 10000
     if quantityNeeded % lenProbabilityDistribution != 0:
         nftUtil.FatalExit("TotalQuantity " + str(quantityNeeded) + " must be a factor of " + str(lenProbabilityDistribution))
     quantityPerBucket = int(quantityNeeded / lenProbabilityDistribution)
-    # if quantityPerBucket != int(quantityPerBucket):
-    #    nftUtil.FatalExit('TotalQuantity ' + str(quantityNeeded) + ' must be a factor of ' + str(lenProbabilityDistribution))
 
     rarityQuantities = [0] * len(rarities)
     actualQuantity = 0
@@ -194,7 +186,7 @@ def DetermineRarityQuantities(nftDefinition):
 
 def GetExclusionInclusionAttributeIndexes(attributeNameSpecifications, namedExclusionInclusion, traits, traitIndex):
     """
-    saasdsada
+    Workhorse for getting the excluded/included attributeIndexes for the traitIndex
     """
     if isinstance(attributeNameSpecifications, str):
         attributeNameSpecifications = (attributeNameSpecifications,)
@@ -207,16 +199,16 @@ def GetExclusionInclusionAttributeIndexes(attributeNameSpecifications, namedExcl
                 qtyFound += 1
         if qtyFound == 0:
             nftUtil.FatalExit("Typo in " + str(namedExclusionInclusion))
-    return (traitIndex, tuple(attributeIndexes))
+    return (traitIndex, attributeIndexes)
 
 
 def GetGlobalExclusions(nftDefinition):
     """
-    exclusions =
+    Get the global exclusions based on nftDefinition['Exclusions']
     """
     # exclusions contains an array for each trait level.
     traits = nftDefinition["Traits"]
-    exclusions = [[] for i in range(len(traits))]
+    exclusions = [[] for _ in range(len(traits))]
 
     if "Exclusions" in nftDefinition:
         for namedExclusion in nftDefinition["Exclusions"]:
@@ -228,17 +220,17 @@ def GetGlobalExclusions(nftDefinition):
                     maximumTraitIndex = traitIndex
                 exclusion.append(GetExclusionInclusionAttributeIndexes(attributeNameSpecifications, namedExclusion, traits, traitIndex))
 
-            exclusions[maximumTraitIndex].append(tuple(exclusion))
+            exclusions[maximumTraitIndex].append(exclusion)
 
     return exclusions
 
 
 def GetGlobalInclusions(nftDefinition):
     """
-    includeName
+    Get the global inclusions based on nftDefinition['Inclusions']
     """
     traits = nftDefinition["Traits"]
-    includes = [[] for i in range(len(traits))]
+    includes = [[] for _ in range(len(traits))]
 
     # for each inclusion or inclusion in the array
     if "Inclusions" in nftDefinition:
@@ -256,7 +248,7 @@ def GetGlobalInclusions(nftDefinition):
                 attributeNameSpecifications = namedInclude[1]
                 include.append(GetExclusionInclusionAttributeIndexes(attributeNameSpecifications, namedInclude, traits, traitIndex))
 
-            includes[maximumTraitIndex].append(tuple(include))
+            includes[maximumTraitIndex].append(include)
 
     return includes
 
@@ -298,10 +290,7 @@ def GetRarityAttributeDistributions(nftDefinition):
                 if rarityInclusions[r][t] and a not in rarityInclusions[r][t]:
                     continue
                 # OK, we're on a valid attribute.  So now build the buckets from traitProbabilityDistributions
-                for i in traitProbabilityDistribution:
-                    if i == a:
-                        traitAttributes.append(a)
-                # traitAttributes.append(a)
+                traitAttributes.extend([a] * traitProbabilityDistribution.count(a))
             rarityAttributeDistributions[r].append(traitAttributes)
 
     return rarityAttributeDistributions
@@ -345,8 +334,8 @@ def LoadAttributeImages(nftDefinition):
 
             attributeImage = Image.open(filePath)
             ##attributeImage = attributeImage.convert("RGBA")
-            if "Resize" in attribute:
-                attributeImage = attributeImage.resize(attribute["Resize"])
+            ##if 'Resize' in attribute:
+            ##    attributeImage = attributeImage.resize(attribute['Resize'])
             images[t][a] = attributeImage
 
     return images
@@ -436,15 +425,29 @@ def PreProcessing(nftDefinition):
 
 def ProbabilityDistribution(thingList):
     """
-    ssadsada
+    Create a probability distribution for the values in thingList.
+    (3, 2, 4) -> [0, 0, 0, 1, 1, 2, 2, 2, 2]
     """
+    # This will keep multyiplying times 10 until they are all integers.
+    factor = 1
+    while True:
+        allAreIntegers = True
+        for thing in thingList:
+            probability = thing["Probability"] * factor
+            if probability != int(probability):
+                allAreIntegers = False
+                factor *= 10
+                if 100 < factor:
+                    nftUtil.FatalExit("Probability " + str(probability) + " has too many decimals.")
+                break
+        if allAreIntegers:
+            break
+
     probabilityDistribution = []
     for t, thing in enumerate(thingList):
-        probability = thing["Probability"]
-        if probability != int(probability):
-            nftUtil.FatalExit("Probability " + str(probability) + " must be an integer.")
-        for _ in range(probability):
-            probabilityDistribution.append(t)
+        probability = int(thing["Probability"] * factor)
+        probabilityDistribution.extend([t] * probability)
+
     return probabilityDistribution
 
 
@@ -470,8 +473,9 @@ def ProcessNftDefinition(nftDefinition):
     rarityQuantities = DetermineRarityQuantities(nftDefinition)
     rarityProbabilities = DetermineRarityProbabilities(rarityQuantities)
 
-    # Get the permutations and permutationRarityIndexes
+    # Get the permutations and permutationRarityIndexes.  This takes the majority of the time.
     permutations, permutationRarityIndexes = BuildPermutations(nftDefinition, finalImages, rarityQuantities)
+
     # Paranoid validation that there are no duplicate permutations in randomPermutations.
     ##randomPermutations.append(randomPermutations[1]) # This will force add a duplicate for testing.
     if not PermutationsAreUnique(permutations):
@@ -496,6 +500,7 @@ def ProcessNftDefinition(nftDefinition):
     # Remove any old output files and then initialize the database.
     PreProcessing(nftDefinition)
 
+    print()
     for p, permutationAndRarityIndex in enumerate(permutationsAndRarityIndexes):
         permutation = permutationAndRarityIndex[0]
         rarityIndex = permutationAndRarityIndex[1]
@@ -504,37 +509,37 @@ def ProcessNftDefinition(nftDefinition):
             finalImage = finalImages[rarityIndex][int(permutation)]
             baseImage = finalImage[1]
             docTraits = [{"trait_type": "Signature Series", "value": finalImage[0], "probability": nftUtil.FormatPercent(rarityProbabilities[rarityIndex])}]
+            traitCount = 1
         else:
-            baseAttr = traits[0]["Attributes"][permutation[0]]
-            baseImage = attributeImages[0][permutation[0]]  #   os.path.join(nftDefinition['AttributeImageFolder'], traits[0]['Name'], AttributeFilePath(nftDefinition, baseAttr))]
-            docTraits = [{"trait_type": traits[0]["Name"], "value": baseAttr["Name"], "probability": nftUtil.FormatPercent(attributeProbabilities[0][permutation[0]])}]
+            baseImage = attributeImages[0][permutation[0]]
+            docTraits = []
+            traitCount = 0
         baseImage = copy.copy(baseImage)
         extension = "." + nftDefinition["ImageType"]
-        # rarity = rarities[rarityIndex]['Name'] #rarityTraitAttributes[randomRarityIndexes[p]]['Name']
         tokenId = p + 1
         doc = {
             nftUtil.FIELD_TOKEN_ID: tokenId,
             nftUtil.FIELD_TOKEN_IS_EXPOSABLE: None,
             nftUtil.FIELD_RARITY: rarities[rarityIndex]["Name"],
-            nftUtil.FIELD_TRAIT_COUNT: 1,  # This default will be used for isSignatureSeries.
+            nftUtil.FIELD_TRAIT_COUNT: traitCount,
             nftUtil.FIELD_TRAITS: docTraits,
             nftUtil.FIELD_IMAGE_BINARY_STRING: None,
         }  # Put this at the end because it is so huge.
 
-        # continue
-
         # Apply all attributes
         if not isFinalImage:
-            traitCount = 1  # Base
             for t, a in enumerate(permutation):
-                if t == 0:
-                    continue  # base
                 trait = traits[t]
                 attribute = trait["Attributes"][a]
                 baseImage = ApplyAttribute(baseImage, attribute, attributeImages[t][a])
-                if AttributeFilePath(nftDefinition, attribute) is not None:
-                    traitCount += 1
-                doc[nftUtil.FIELD_TRAITS].append({"trait_type": trait["Name"], "value": attribute["Name"], "probability": nftUtil.FormatPercent(attributeProbabilities[t][a])})
+                # Something is only considered to be a "trait" if there is more than one choice.
+                # For instance, the Left Wall and the Floor just have one value, so they are nor considered traits.
+                if len(traits[t]["Attributes"]) != 1:
+                    # If a traitImage is None (typically name = "Nothing"), then it should not be included in the
+                    # trait count, although it still should be listed in the metadata.
+                    if AttributeFilePath(nftDefinition, attribute) is not None:
+                        traitCount += 1
+                    doc[nftUtil.FIELD_TRAITS].append({"trait_type": trait["Name"], "value": attribute["Name"], "probability": nftUtil.FormatPercent(attributeProbabilities[t][a])})
             doc[nftUtil.FIELD_TRAIT_COUNT] = traitCount
             # Add the "Signature Series" attribute for non-SignatureSeries.
             doc[nftUtil.FIELD_TRAITS].append({"trait_type": "Signature Series", "value": None, "probability": signatureSeriesProbabilityForNonSignatureSeries})
@@ -542,19 +547,22 @@ def ProcessNftDefinition(nftDefinition):
         # Apply copyright statement
         ApplyCopyright(baseImage)
 
-        # Determine FIELD_IMAGE_BINARY_STRING
-        if nftDefinition["UpdateDatabaseWithImages"]:
+        # Save the images
+        print("Generating Image", tokenId)
+        if nftDefinition["UploadImagesToDatabase"]:
             buffer = io.BytesIO()
             baseImage.save(buffer, format=extension[1:])
             doc[nftUtil.FIELD_IMAGE_BINARY_STRING] = bson.Binary(buffer.getvalue())
 
-        print("Writing Image", tokenId)
-        nftUtil.InsertOneDocument(doc)
         baseImage.save(os.path.join(nftDefinition["OutputImageFolder"], str(tokenId)) + extension)
+        nftUtil.InsertOneDocument(doc)
 
     # Create the metadata and store the images
     nftUtil.CreateMetadata(nftDefinition)
     print("\nGenerated", len(permutations), "NFTs in", round(time.time() - startTime, 2), "seconds")
+
+    # Dump the database out to 'AllNfts.csv'.
+    nftUtil.ReportNfts()
 
 
 def ValidateNftDefinition(nftDefinition):
@@ -585,10 +593,10 @@ def ValidateNftDefinition(nftDefinition):
     totalProbability = 0
     for rarity in rarities:
         probability = rarity["Probability"]
-        if 1 <= probability <= 100:
+        if 0.001 <= probability <= 100:
             totalProbability += probability
         else:
-            nftUtil.FatalExit("Rarity probability " + str(probability) + " must be between 1 and 100 inclusive.")
+            nftUtil.FatalExit("Rarity probability " + str(probability) + " must be between 0.001 and 100 inclusive.")
     if totalProbability != 100:
         nftUtil.FatalExit("Rarity probabilities toal " + str(totalProbability) + " != 100")
 

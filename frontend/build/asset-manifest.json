@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/static/css/main.d6497b29.chunk.css",
-    "main.js": "/static/js/main.501ac2b9.chunk.js",
-    "main.js.map": "/static/js/main.501ac2b9.chunk.js.map",
+    "main.js": "/static/js/main.8a915d38.chunk.js",
+    "main.js.map": "/static/js/main.8a915d38.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.193429dd.js",
     "runtime-main.js.map": "/static/js/runtime-main.193429dd.js.map",
     "static/js/2.3a618cac.chunk.js": "/static/js/2.3a618cac.chunk.js",
@@ -14,17 +14,17 @@
     "static/js/2.3a618cac.chunk.js.LICENSE.txt": "/static/js/2.3a618cac.chunk.js.LICENSE.txt",
     "static/media/Crypto-Hermits-Logo-2-Small.54b58327.png": "/static/media/Crypto-Hermits-Logo-2-Small.54b58327.png",
     "static/media/App.css": "/static/media/NevisBold.706a4540.ttf",
-    "static/media/common-nft.3ce3ec12.png": "/static/media/common-nft.3ce3ec12.png",
-    "static/media/epic-nft.e09a9220.png": "/static/media/epic-nft.e09a9220.png",
-    "static/media/exotic-nft.9459b498.png": "/static/media/exotic-nft.9459b498.png",
-    "static/media/legendary-nft.e211a86b.png": "/static/media/legendary-nft.e211a86b.png",
-    "static/media/rare-nft.f2c8c96e.png": "/static/media/rare-nft.f2c8c96e.png",
-    "static/media/uncommon-nft.6ba91ead.png": "/static/media/uncommon-nft.6ba91ead.png"
+    "static/media/common-nft.35093dd1.png": "/static/media/common-nft.35093dd1.png",
+    "static/media/epic-nft.e8a440e7.png": "/static/media/epic-nft.e8a440e7.png",
+    "static/media/exotic-nft.55be8a7d.png": "/static/media/exotic-nft.55be8a7d.png",
+    "static/media/legendary-nft.500cee34.png": "/static/media/legendary-nft.500cee34.png",
+    "static/media/rare-nft.fdea2244.png": "/static/media/rare-nft.fdea2244.png",
+    "static/media/uncommon-nft.fca9eda3.png": "/static/media/uncommon-nft.fca9eda3.png"
   },
   "entrypoints": [
     "static/js/runtime-main.193429dd.js",
     "static/js/2.3a618cac.chunk.js",
     "static/css/main.d6497b29.chunk.css",
-    "static/js/main.501ac2b9.chunk.js"
+    "static/js/main.8a915d38.chunk.js"
   ]
 }

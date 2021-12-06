@@ -11,7 +11,7 @@ export default function Home(props) {
 				<p className='text-magento-noborder mobile-header-text'>Crypto</p>
 				<p className='text-cyan mobile-header-text'>Hermits</p>
 			</div>
-			<img className='bookworm-gif' src='https://media.giphy.com/media/GBbJOa0QP6HEBK2WXW/giphy.gif' alt='gif' />
+			<img className='bookworm-gif' src='https://media.giphy.com/media/iBcPKkUkxndjiQg9Oy/giphy.gif' alt='gif' />
 			{/* <p className='text-normal-black para-home'> */}
 			<button className='btn-black' style={{ marginTop: 40 }} onClick={() => navigate('/bookworms')}>
 				BOOKWORMS

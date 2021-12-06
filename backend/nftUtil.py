@@ -303,7 +303,7 @@ def IsExposable(tokenId):
     return _DB[_COLLECTION_NFTS].find_one({FIELD_TOKEN_ID: tokenId})[FIELD_TOKEN_IS_EXPOSABLE]
 
 
-def ReportNfts(filePath="t.csv", fieldNames=(FIELD_TOKEN_ID, FIELD_TOKEN_IS_EXPOSABLE, FIELD_RARITY, FIELD_TRAIT_COUNT, FIELD_TRAITS)):
+def ReportNfts(filePath="AllNfts.csv", fieldNames=(FIELD_TOKEN_ID, FIELD_TOKEN_IS_EXPOSABLE, FIELD_RARITY, FIELD_TRAIT_COUNT, FIELD_TRAITS)):
     """
     Create a csv report to filePath containing fieldNames.
       filePath = The csv report output file.
