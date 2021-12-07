@@ -9,6 +9,10 @@ export default function Footer(props) {
 		window.open('https://twitter.com/cryptohermits', '_blank');
 	}
 
+	function openDiscord() {
+		window.open('https://discord.gg/kZcUJk4XTM', '_blank');
+	}
+
 	return (
 		<footer id='footer'>
 			<div className='footer-wrapper'>
@@ -16,7 +20,7 @@ export default function Footer(props) {
 				<br></br>
 				<p>
 					<FontAwesomeIcon className='social-hover' icon={faTwitter} style={{ marginRight: 16 }} onClick={openTwitter} />
-					<FontAwesomeIcon className='social-hover' icon={faDiscord} />
+					<FontAwesomeIcon className='social-hover' icon={faDiscord} onClick={openDiscord} />
 				</p>
 			</div>
 		</footer>
