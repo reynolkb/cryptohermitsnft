@@ -27,26 +27,32 @@ export default function Connect(props) {
 	// string that contains the transactionURLTxt to display at the bottom of the UI
 	const [transactionURLTxt, setTransactionURLTxt] = useState('');
 
-	// var tokensMintedResponse;
-	// var totalTokensResponse;
+	// var for the number of tokens currently minted
 	let tokensMintedResponse = useRef();
+	// var for the total number of tokens in the collection
 	let totalTokensResponse = useRef();
 
+	// run upon load/mount/unmount
 	useEffect(() => {
 		async function connectWallet() {
 			// empty [] means it will be only called on the component's first render
 			const { address, status } = await getCurrentWalletConnected();
 
+			// set wallet address
 			setWallet(address);
+			// set status
 			setStatus(status);
 
+			// run add wallet listenter function
 			addWalletListener();
 
+			// update tokens minted response
 			tokensMintedResponse.current = await fetch(`https://www.cryptohermitsnft.com/getTokensMinted`, { method: 'GET' });
 			tokensMintedResponse.current = await tokensMintedResponse.current.json();
 			tokensMintedResponse.current = tokensMintedResponse.current['tokensMinted'];
 			setTokensMinted(tokensMintedResponse.current);
 
+			// update total tokens
 			totalTokensResponse.current = await fetch(`https://www.cryptohermitsnft.com/getTotalTokens`, { method: 'GET' });
 			totalTokensResponse.current = await totalTokensResponse.current.json();
 			totalTokensResponse.current = totalTokensResponse.current['totalTokens'];
@@ -56,6 +62,7 @@ export default function Connect(props) {
 		connectWallet();
 	}, []);
 
+	// function to update wallet and status
 	function addWalletListener() {
 		// check if Metamask is installed
 		if (window.ethereum) {
@@ -73,7 +80,9 @@ export default function Connect(props) {
 					setStatus('🦊 Connect to Metamask using the top right button.');
 				}
 			});
-		} else {
+		}
+		// if metamask is not installed then disable the mint button and tell user to download metamask
+		else {
 			document.getElementById('mintButton').disabled = true;
 			setStatus(
 				<p>
@@ -96,12 +105,14 @@ export default function Connect(props) {
 		setWallet(walletResponse.address);
 	};
 
+	// wait function
 	async function wait(ms) {
 		return new Promise((resolve) => {
 			setTimeout(resolve, ms);
 		});
 	}
 
+	// update number with commas for current tokens minted and total tokens
 	function numberWithCommas(x) {
 		return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 	}
@@ -119,11 +130,13 @@ export default function Connect(props) {
 
 		var _mintAmount = document.getElementById('mintAmount').value;
 
+		// make sure mint amount is not empty
 		if (_mintAmount === '') {
 			alert('mint amount cannot be empty');
 			return;
 		}
 
+		// mint amount cannot be greater then 5
 		if (_mintAmount > 5) {
 			alert('mint amount cannot be greater than 5');
 			return;
@@ -138,13 +151,16 @@ export default function Connect(props) {
 		success = mintNFTResponse['success'];
 		status = mintNFTResponse['status'];
 
+		// if the smart contract call is successful then update status
 		if (success) {
 			document.getElementById('mintButton').innerHTML = 'pending transaction...';
 
 			setTransactionStatus(`Check out your pending transaction on Etherscan in a new tab while you wait.`);
 			setTransactionURL(`https://rinkeby.etherscan.io/tx/${txHash}`);
 			setTransactionURLTxt('Pending Transaction');
-		} else {
+		}
+		// else update user with status
+		else {
 			document.getElementById('mintButton').innerHTML = 'Mint NFT';
 
 			setStatus(status);
@@ -200,28 +216,37 @@ export default function Connect(props) {
 			var tokenId;
 			console.log(txReceipt['logs']);
 
+			// if the logs are less then 3 then you know the user minted 1 token
 			if (txReceipt['logs'].length < 3) {
 				tokenId = parseInt(txReceipt['logs'][1]['data'], 16);
 				tokenIdArr.push(tokenId);
 
+				// store token id
 				lastIndex = tokenIdArr.length - 1;
+				// update database
 				tokensMintedResponse = await fetch(`https://www.cryptohermitsnft.com/setTokensMinted/${numberWithCommas(tokenIdArr[lastIndex])}/${password}`, { method: 'PUT' });
 				tokensMintedResponse = await tokensMintedResponse.json();
 				setTokensMinted(tokensMintedResponse['tokensMinted']);
 
+				// update frontend
 				setTransactionStatus(`Your transaction is completed, please view your NFT on Open Sea once the metadata is revealed. Your token id is ${tokenIdArr}.`);
 				setTransactionURLTxt('Completed Transaction');
-			} else {
+			}
+			// user has minted more then 1 token
+			else {
+				// loop through and create token id arr
 				for (let i = 1; i <= txReceipt['logs'].length; i += 2) {
 					tokenId = parseInt(txReceipt['logs'][i]['data'], 16);
 					tokenIdArr.push(tokenId);
 				}
 
 				lastIndex = tokenIdArr.length - 1;
+				// update database with tokens minted
 				tokensMintedResponse = await fetch(`https://www.cryptohermitsnft.com/setTokensMinted/${numberWithCommas(tokenIdArr[lastIndex])}/${password}`, { method: 'PUT' });
 				tokensMintedResponse = await tokensMintedResponse.json();
 				setTokensMinted(tokensMintedResponse['tokensMinted']);
 
+				// update frontend with ids user minted
 				setTransactionStatus(`Your transaction is completed, please view your NFTs on Open Sea once the metadata is revealed. Your token ids are ${tokenIdArr}.`);
 				setTransactionURLTxt('Completed Transaction');
 			}
