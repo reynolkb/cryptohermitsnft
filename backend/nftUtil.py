@@ -1,5 +1,5 @@
 """
-Nft utilities.  All back-end.  See nft.py for front-end methods.
+Nft utilities.
 """
 import datetime
 import json
@@ -8,6 +8,7 @@ import sys
 import traceback
 
 import csv
+from PIL import ImageFont, ImageDraw
 import pymongo
 
 import nftConfig
@@ -16,22 +17,21 @@ import nftConfig
 ######################################## GLOBAL CONSTANTS, DO NOT CHANGE!! ########################################
 # 'CollectionData' Field Names
 _COLLECTION_DATA = "CollectionData"
-FIELD_BASE_EXTERNAL_URL = "BaseExternalUri"  # Used for 'external_url'
-FIELD_BASE_IMAGE_URI = "BaseImageUri"  # Used for 'image'
+FIELD_BASE_EXTERNAL_URL = "BaseExternalUri"  # Used for the metadata field 'external_url'
+FIELD_BASE_IMAGE_URI = "BaseImageUri"  # Used for the metadata field 'image'
 FIELD_COLLECTION_NAME = "CollectionName"
 FIELD_IMAGE_TYPE = "ImageType"  # png, json, etc
-FIELD_TOKENS_MINTED = "TokensMinted"
-FIELD_TOTAL_TOKENS = "TotalTokens"
+FIELD_TOKENS_MINTED = "TokensMinted"  # The quantity of tokens that have been minted so far.
+FIELD_TOTAL_TOKENS = "TotalTokens"  # The total quantity of tokens in the collection.
 
 # 'Nfts' Collection Field Names
 _COLLECTION_NFTS = "Nfts"
 FIELD_IMAGE_BINARY_STRING = "ImageBinaryString"  # bson image data
-FIELD_RARITY = "rarity"  # Gold, Silver, Bronze
-# FIELD_STATISTICAL_RARITY = 'StatisticalRarity' # statistical_rarity
-FIELD_TOKEN_ID = "TokenId"
-FIELD_TOKEN_IS_EXPOSABLE = "TokenIsExposable"
-FIELD_TRAIT_COUNT = "trait_count"  # The quantity of non-Nothing traits.
-FIELD_TRAITS = "attributes"  # 'Traits'
+FIELD_RARITY = "rarity"  # Common, Uncommon, Rare, Epic, etc.
+FIELD_TOKEN_ID = "TokenId"  # The integer tokenId.
+FIELD_TOKEN_IS_EXPOSABLE = "TokenIsExposable"  # The token is exposable to the outside world.
+FIELD_TRAIT_COUNT = "trait_count"  # The quantity of traits that have non-Nothing attributes.
+FIELD_TRAITS = "attributes"  # The json that describes the attributes for each trait.
 
 # Mongo database name.
 _MONGO_DATABASE_NAME = "Nfts"
@@ -138,7 +138,7 @@ def GetTotalTokens():
 def ProcessException():
     """
     Called for totally unexpected errors from an 'Except:' block where you need a stack trace.
-    It's only called from the front-end nft.py.
+    It's only called from the front-end app.py.
     """
     stackTrace = traceback.format_exc()
     return stackTrace
@@ -154,17 +154,46 @@ def SetTokensMinted(tokensMinted, password):
     _DB[_COLLECTION_DATA].update_one({}, {"$set": {FIELD_TOKENS_MINTED: tokensMinted}})
 
 
-################ PUBLIC METHODS CALLED FROM PROGRAMMER UTILITIES (nftInitializeDatabase.py, nftTestCases.py, nftReport.py) ################
+########## PUBLIC METHODS CALLED FROM PROGRAMMER UTILITIES (nftInitializeDatabase.py, nftMakeImage.py, nftTestCases.py, nftReport.py) ##########
+def ApplyCopyright(image):
+    """
+    Apply a copyright notice to the image.
+    """
+    # You cannot use ImageFont.load_default(), because that does not let you specify the font size.
+    # So use a specific .ttf file.  You can find ttf files on a mac in either /System/Library/Fonts or /Library/Fonts.
+    # https://stackoverflow.com/questions/58968752/loading-fonts-in-python-pillow-on-a-mac
+    font = ImageFont.truetype("Roboto-Regular.ttf", size=8)  # You can use size=6, but it gets really fuzzy.
+    text = "Copyright " + "\u00a9" + " 2021 BlockBot LLC, All Rights Reserved."
+    imageDraw = ImageDraw.Draw(image)
+
+    #   x = 2
+    #   y = 986 is enough vertical room for 12-point font (or less)
+    #   y = 987 is enough vertical room for 10-point font (or less)
+    #   y = 988 is enough vertical room for  8-point font (or less)
+    #   y = 990 is enough vertical room for  6-point font (or less)
+
+    # Turn (62,63,64,255) into (22,23,24,255)
+    # x = 2 Gets the white tile color, when most of the copyright is in the black tile.  So set x to 30 instead when determining the fill color.
+    whiter = 40  # Increase to make copyright more visible (whiter), decrease to make copyright less visible.
+    fill = []
+    for f, rgba in enumerate(image.getpixel((30, 988))):
+        fill.append(min(rgba + whiter, 254) if f < 3 else rgba)
+    imageDraw.text(xy=(2, 988), text=text, fill=tuple(fill), font=font)
+
+    return image
+
+
 def BackupAndInitializeDatabase(nftDefinition, doBackup=True):
     """
-    Rename the existing collection with a time stamp as a backup, and then drop the existing collection.
-    # You can manually drop the backups later using db.collectionName.drop()
+    Rename the existing collection with a date/time stamp suffix as a backup, and then drop the existing collection.
+    You can manually drop the backups later using db.collectionName.drop()
     """
     with _GetMongoClient() as client:
         if _MONGO_DATABASE_NAME in client.list_database_names():
             if doBackup:
                 for collection in (_COLLECTION_NFTS, _COLLECTION_DATA):
                     if collection in _DB.list_collection_names():
+                        # Make a backup copy of the collection with a date/time stamp as the suffix.
                         _DB[collection].rename(collection + "_" + _Now())
                         _DB[collection].drop()
             else:
@@ -202,7 +231,7 @@ def CreateMetadata(nftDefinition):
     """
     print()
 
-    # First change the _COLLECTION_DATA.  This will apply any changes made to nftDefinition.
+    # 1. Change the _COLLECTION_DATA.  This will apply any changes that have been made to nftDefinition.
     _DB[_COLLECTION_DATA].update_one(
         {},
         {
@@ -216,6 +245,7 @@ def CreateMetadata(nftDefinition):
         },
     )
 
+    # 2. Create all of the metadata files.
     allMetadatas = []
     for i, doc in enumerate(_DB[_COLLECTION_NFTS].find()):
         if i % 10 == 0:
@@ -246,13 +276,6 @@ def FatalExit(message):
     sys.exit(1)
 
 
-# def FloatingPointEquivalent(fp1, fp2):
-#    '''
-#    Return True if fp1 ~= fp2
-#    '''
-#    return abs(fp1 - fp2) < 0.000000000001
-
-
 def FormatPercent(nbr):
     """
     Format nbr into a percent string.
@@ -262,30 +285,18 @@ def FormatPercent(nbr):
 
 def GetDocMetadata(doc):
     """
-    Return the metadata for doc.  This is from the OpenSea standard:
-    https://medium.com/code-sprout/upload-multiple-images-in-opensea-nft-d79dd7bb762b
-    {
-      "description": "Friendly OpenSea Creature that enjoys long swims in the ocean.",
-      "external_url": "https://openseacreatures.io/3",
-      "image": "https://storage.googleapis.com/opensea-prod.appspot.com/puffs/3.png",
-      "name": "Dave Starbelly",
-      "attributes": [ ... ],
-    }
+    Return the metadata for doc.
     """
     collectionDataDoc = _DB[_COLLECTION_DATA].find_one({})
     metadata = {
-        "description": collectionDataDoc[FIELD_COLLECTION_NAME] + " token number " + str(doc[FIELD_TOKEN_ID]) + ("" if doc[FIELD_RARITY] is None else ", with a rarity of '" + doc[FIELD_RARITY] + "'"),
+        "description": collectionDataDoc[FIELD_COLLECTION_NAME] + " token number " + str(doc[FIELD_TOKEN_ID]) + ", with a rarity of '" + doc[FIELD_RARITY] + "'",
         "external_url": collectionDataDoc[FIELD_BASE_EXTERNAL_URL] + str(doc[FIELD_TOKEN_ID]) + "." + collectionDataDoc[FIELD_IMAGE_TYPE],
         "image": collectionDataDoc[FIELD_BASE_IMAGE_URI] + str(doc[FIELD_TOKEN_ID]) + "." + collectionDataDoc[FIELD_IMAGE_TYPE],
-        #'image': doc[FIELD_IMAGE_URI],
         "name": str(doc[FIELD_TOKEN_ID]),
-        #'statistical_rarity': doc[FIELD_STATISTICAL_RARITY],
         "trait_count": doc[FIELD_TRAIT_COUNT],
         "rarity": doc[FIELD_RARITY],
         "attributes": doc[FIELD_TRAITS],
     }
-    if metadata["rarity"] is None:
-        del metadata["rarity"]
     return metadata
 
 
@@ -298,7 +309,7 @@ def InsertOneDocument(doc):
 
 def IsExposable(tokenId):
     """
-    Determine if the metadata for tokenId is exposable.
+    Determine if the metadata for tokenId is exposable to the outside world.
     """
     return _DB[_COLLECTION_NFTS].find_one({FIELD_TOKEN_ID: tokenId})[FIELD_TOKEN_IS_EXPOSABLE]
 
@@ -340,13 +351,14 @@ def StringsMatch(a, b):
 
 def UpdateField(updates):
     """
-    updates is a list of lists:
-       0 = uniqueKeyFieldName
-       1 = uniqueKeyFieldValue
-       2 = fieldNameToUpdate
-       3 = fieldValueToUpdate
-    Example"
-       data = [['TokenId', 21, 'TokenIsExposable', True], ['TokenId', 22, 'TraitCount', 12]]
+    Update mongoDB with a list of field values.
+        updates is a list of lists:
+           0 = uniqueKeyFieldName
+           1 = uniqueKeyFieldValue
+           2 = fieldNameToUpdate
+           3 = fieldValueToUpdate
+        Example"
+           data = [['TokenId', 21, 'TokenIsExposable', True], ['TokenId', 22, 'TraitCount', 12]]
     """
     for update in updates:
         search = {update[0]: (int(update[1]) if update[0] == FIELD_TOKEN_ID else update[1])}
@@ -412,9 +424,3 @@ def _Now():
     Now.
     """
     return str(datetime.datetime.now().strftime("%Y%m%d_%H%M%S_%f"))
-
-
-############################## HOUSEKEEPING ##############################
-# Don't continue if you cannot access the log file.
-# if nftConfig.DO_WRITE_LOG_FILE:
-#    _LogLine('Initializing ' + _LOG_FILE_NAME + '...', _LEVEL_DEBUG)
