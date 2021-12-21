@@ -45,12 +45,12 @@ contract CryptoHermits is ERC721Enumerable, Ownable {
         setBaseURI(_initBaseURI);
     }
 
-    // internal
+    // ---------------------- internal functions ----------------------
     function _baseURI() internal view virtual override returns (string memory) {
         return baseURI;
     }
 
-    // public
+    // ---------------------- public functions ----------------------
     function mint(uint256 _mintAmount) public payable {
         uint256 supply = totalSupply();
         // contract cannot be paused
@@ -100,6 +100,8 @@ contract CryptoHermits is ERC721Enumerable, Ownable {
         }
     }
 
+    // function to check if user is whitelisted
+    // loop through array of whitelisted users, if the address is there then return true, else return false
     function isWhitelisted(address _user) public view returns (bool) {
         for(uint256 i = 0; i < whitelistedAddresses.length; i++) {
             if (whitelistedAddresses[i] == _user) {
@@ -109,15 +111,22 @@ contract CryptoHermits is ERC721Enumerable, Ownable {
         return false;
     }
 
+    // function to check the token ids a wallet has
     function walletOfOwner(address _owner) public view returns (uint256[] memory) {
+        // get the balance of the wallet address
         uint256 ownerTokenCount = balanceOf(_owner);
+        // array of tokenIds = balance of wallet address
+        // ie. if the address has 5 tokens then tokenIds = 5
         uint256[] memory tokenIds = new uint256[](ownerTokenCount);
+        // loop through each token and get the id
+        // update tokenIds array
         for (uint256 i; i < ownerTokenCount; i++) {
             tokenIds[i] = tokenOfOwnerByIndex(_owner, i);
         }
         return tokenIds;
     }
 
+    // return tokenUri of tokenId
     function tokenURI(uint256 tokenId) public view virtual override returns (string memory) {
         require(_exists(tokenId), "ERC721Metadata: URI query for nonexistent token");
 
@@ -125,31 +134,37 @@ contract CryptoHermits is ERC721Enumerable, Ownable {
         return bytes(currentBaseURI).length > 0 ? string(abi.encodePacked(currentBaseURI, tokenId.toString(), baseExtension)) : "";
     }
 
+    // remove renounceOwnership
     function renounceOwnership() public pure override {
         revert("Can't renounce ownership here");
     }
 
-    // only owner
+    // ---------------------- only owner functions ----------------------
     function setCost(uint256 _newCost) public onlyOwner {
         cost = _newCost;
     }
 
+    // set new max mint amount
     function setmaxMintAmount(uint256 _newMaxMintAmount) public onlyOwner {
         maxMintAmount = _newMaxMintAmount;
     }
 
+    // set max presale amount
     function setMaxPresaleMintAmount(uint256 _newMaxPresaleMintAmount) public onlyOwner {
         maxPresaleMintAmount = _newMaxPresaleMintAmount;
     }
 
+    // set base uri
     function setBaseURI(string memory _newBaseURI) public onlyOwner {
         baseURI = _newBaseURI;
     }
 
+    // set base extension
     function setBaseExtension(string memory _newBaseExtension) public onlyOwner {
         baseExtension = _newBaseExtension;
     }
 
+    // set presale status
     function setPresaleStatus(bool _state) public onlyOwner {
         presaleActive = _state;
     }
@@ -160,14 +175,17 @@ contract CryptoHermits is ERC721Enumerable, Ownable {
         whitelistedAddresses = _users;
     }
 
+    // update pause status
     function pause(bool _state) public onlyOwner {
         paused = _state;
     }
 
+    // get balance of contract
     function getBalance() public view onlyOwner returns (uint256) {
         return address(this).balance;
     }
 
+    // withdraw from contract
     function withdraw() public payable onlyOwner {
         payable(owner()).transfer(getBalance());
     }
