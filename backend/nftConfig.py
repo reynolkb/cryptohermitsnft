@@ -6,66 +6,48 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-############################################# STANDARD PROCESSING PARAMETERS #############################################
+################################################# STANDARD PROCESSING PARAMETERS #################################################
 # Get the DATABASE_CONNECTION_STRING from the environment (.env or Heroku config)
 DATABASE_CONNECTION_STRING = os.getenv("DATABASE_CONNECTION_STRING")
 
 # The port for the localhost database.  Only relevant if DATABASE_CONNECTION_STRING is an empty string or None.
 DATABASE_LOCAL_PORT = 27017
 
-# Get the 'FRONTEND_BACKEND_PASSWORD' which can be used for sensitive front-end flask app calls into back-end
-# methods like SetTokensMinted().
+# Get the optional 'FRONTEND_BACKEND_HANDSHAKE' which will be required for external flask `apps.
 FRONTEND_BACKEND_PASSWORD = os.getenv("FRONTEND_BACKEND_PASSWORD")
 
-
-########################################## GENERATIVE NFT COLLECTION DEFINITIONS #########################################
-# The generation of each NFT collection is fully defined by the parameters specified in it's definition.
+################################################# NFT COLLECTION DEFINITIONS #################################################
 NFT_DEFINITION_BOOKWORMS = {
-    # The name of the collection that will appear in mongoDB and in the NFT metadata.
     "Name": "Bookworms",
-    # The total quantity of NFT images that will be generated.
-    "TotalQuantity": 55,  # 5555
-    # The initial quantity of tokens that will have their metadata and images exposable by mongoDB.
-    "QuantityOfExposableTokens": 5,
-    # Writing the images to disk is very slow, so you can set this to False if you are just testing and don't
-    # need the images stored on disk.
-    "WriteImagesToDisk": True,
-    # It can be very slow to update a remote mongoDB, so set this to False if you are just testing and don't
-    # need the images stored in mongoDB.
-    "UploadImagesToDatabase": True,
-    # The type/extension of both the input attribute inages and the output NFT images. (png, jpg, etc.)
-    "ImageType": "png",
-    # Main folder containing the input attribute images.
-    "AttributeImageFolder": "CryptoHermits/Bookworm/AttributeImages/",
-    # The output folder containing the final generated NFT images.
-    "OutputImageFolder": "CryptoHermits/Bookworm/OutputImages/",
-    # The output folder containing the final generated NFT metadata files.
-    "OutputMetadataFolder": "CryptoHermits/Bookworm/OutputMetadata/",
-    # TODO: Kyle needs to clean up these comments, or move them to an implementation document.
+    "Description": "A description of the bookworm collection that Bianca can come up with.",
+    "ImageType": "png",  # png, jpg, etc.
+    "TotalQuantity": 500,  # 10000  # Quantity of NFT's to generate.
+    "QuantityOfExposableTokens": 5,  # The initial quantity of tokens that will have their metadata exposable.
+    # Update the database with the images.  Since the images are so large, it can be very slow to update a remote database.
+    # So only turn this to True when you are 100% sure that the images are finalized.
+    "UploadImagesToDatabase": False,
+    # Local folders for the input images and output images and output metadata.
+    "AttributeImageFolder": "CryptoHermits/Bookworm/AttributeImages/",  # input image files
+    "OutputImageFolder": "CryptoHermits/Bookworm/OutputImages/",  # output NFT images
+    "OutputMetadataFolder": "CryptoHermits/Bookworm/OutputMetadata/",  # output json metadata files
+    # The optional SignatureImages is a sub-folder contaiing full complete unique images.
+    # So if there are 10 of them, and you have specified the above 'Quantity' = 990, then a total of 1000 NFTs will be produced.
+    # They will be assigned a StatisticalRaity of 0, the highest Rarity (eg 'Mythic'), and a TraitCount of 1.
+    # You will need to back into the first attribute[0] probability.
+    # "SignatureImageFolder": "CryptoHermits/Bookworm/SignatureImages/",
     # Round 1 - Images and metadata are on Mongo via nftInitializeDatabase
+    # the 'external_url' = 'BaseExternalUri' and 'image' = 'BaseImageUri'
+    # Generate the images
+    "BaseExternalUri": "https://www.cryptohermitsnft.com/images/",
+    "BaseImageUri": "https://www.cryptohermitsnft.com/images/",
     # Round 2 - Images on Mongo, JSON on Mongo. Buyer views on OpenSea
-    # Check Mongo and make sure Mongo returns correct metadata.
-    #   Example: https://www.cryptohermitsnft.com/1.json should return the correct metadata for NFT 1
+    # Check Mongo and make sure Mongo returns correct metadata. Example: https://www.cryptohermitsnft.com/1.json should return the correct metadata for NFT 1
     # Launch smart contract and make base uri https://cryptohermitsnft.com/metadata/
     # Update BaseImageUri hash to hash of IPFS image folder
     # 'BaseExternalUri' : 'https://gateway.pinata.cloud/ipfs/QmVpkXZkWoTf9AQWzHcA4HZxjRRpJPoSUUekL2RX5sMbxd/',
     # 'BaseImageUri' : 'ipfs://QmVpkXZkWoTf9AQWzHcA4HZxjRRpJPoSUUekL2RX5sMbxd/',
     # Round 3 - Images on IPFS, JSON on IPFS. Sale is over and all NFTs are sold.
     # Update smart contract base uri to ipfs://QmYrVgtkHnXDw9KURzgSbmejgzpEcje6FV5AofEmBx98kz/
-    # The base uri for the field 'external_url' in the metadate.
-    "BaseExternalUri": "https://www.cryptohermitsnft.com/images/",
-    # The base uri for the field 'image' in the metadate.
-    "BaseImageUri": "https://www.cryptohermitsnft.com/images/",
-    # This is a list of the traits.  Each NFT is generated by stepping through this list of traits in sequential order,
-    # generating a random attribute for that trait based on it's probability, and then pasting that attribute onto
-    # the image.
-    # Each trait has:
-    #    1. A unique name.
-    #    2. A list of attributes specific to the trait.
-    # Each attribute has:
-    #    1. A unique name.
-    #    2. An optional filepath (which will default to the unique name if not specified).
-    #    3. A probability.
     "Traits": (
         # Level 0
         {
@@ -126,7 +108,7 @@ NFT_DEFINITION_BOOKWORMS = {
             "Name": "Hair",
             "Attributes": (
                 {"Name": "Dark_Beehive", "Probability": 1},
-                {"Name": "Dark_Box_Braids", "Probability": 1},
+                {"Name": "Dark_Box_Braids", "Probability": 1},  # Because excluding medium and light box_braids
                 {"Name": "Dark_Buzzcut", "Probability": 1},
                 {"Name": "Dark_Mohawk", "Probability": 1},
                 {"Name": "Dark_Rainbow_Hair", "Probability": 1},
@@ -271,62 +253,56 @@ NFT_DEFINITION_BOOKWORMS = {
             ),
         },
     ),
-    # Each 'Rarity' has:
-    #    1. A unique name.
-    #    2. A percentage (e.g. the percentage of all NFTs that will have this rarity).
-    #    3. A list of mandatory included trait attributes and/or a list of mandatory excluded trait attributes.
-    #    4. An optional 'FinalImageFolder' for stand-alone final images that are not built up from attributes.
-    # For this Bookworms collection, each rarity level is visually identifiable by the 'Book Color' attribute.
     "Rarities": (
-        # Mythic: Comletely Custom (e.g. Signature Series)
+        # Mythic: Comletely Custom
         {
             "Name": "Mythic",
-            "Percentage": 2,  # 0.22 * 5555 = 12 Total signature series images.
+            "Probability": 1,  # 1.0, 0.1 # 0.12,
             "FinalImageFolder": "CryptoHermits/Bookworm/SignatureImages/",
         },
         # Exotic: Force Sideboard Object to be "Crypto_Hermit"
         {
             "Name": "Exotic",
-            "Percentage": 3,  # 4.78
+            "Probability": 4,  # 14, 14.9, 14.88,
             "Traits": (
                 {"Name": "Book Color", "Inclusions": "Exotic"},
                 {"Name": "Sideboard Object", "Inclusions": "Crypto_Hermit"},
             ),
         },
-        # Legendary
+        # Legendary: Add Decor and Sideboard Object (except for "Nothing", "Crypto_Hermit")
         {
             "Name": "Legendary",
-            "Percentage": 9,
+            "Probability": 9,
             "Traits": (
                 {"Name": "Back Wall", "Inclusions": "Last_Supper_Wall"},
                 {"Name": "Book Color", "Inclusions": "Legendary"},
                 {"Name": "Sideboard Object", "Exclusions": "Crypto_Hermit"},
             ),
         },
-        # Epic
+        # Epic: Adding Floor
         {
             "Name": "Epic",
-            "Percentage": 14,
+            "Probability": 14,
             "Traits": (
                 {"Name": "Back Wall", "Inclusions": "Brick_Wall"},
                 {"Name": "Book Color", "Inclusions": "Epic"},
                 {"Name": "Sideboard Object", "Exclusions": "Crypto_Hermit"},
             ),
         },
-        # Rare
+        # Rare: Adding Wall
         {
             "Name": "Rare",
-            "Percentage": 19,
+            "Probability": 19,
             "Traits": (
                 {"Name": "Back Wall", "Inclusions": "Marriage_Wall"},
                 {"Name": "Book Color", "Inclusions": "Rare"},
                 {"Name": "Sideboard Object", "Exclusions": "Crypto_Hermit"},
             ),
         },
-        # Uncommon
+        # Uncommon: Adding Chair
         {
             "Name": "Uncommon",
-            "Percentage": 24,
+            "Probability": 24,
             "Traits": (
                 {"Name": "Back Wall", "Inclusions": "Palm_Tree_Wall"},
                 {"Name": "Book Color", "Inclusions": "Uncommon"},
@@ -336,7 +312,7 @@ NFT_DEFINITION_BOOKWORMS = {
         # Common
         {
             "Name": "Common",
-            "Percentage": 29,
+            "Probability": 29,
             "Traits": (
                 {"Name": "Back Wall", "Inclusions": "TV_Wall"},
                 {"Name": "Book Color", "Inclusions": "Common"},
@@ -344,20 +320,13 @@ NFT_DEFINITION_BOOKWORMS = {
             ),
         },
     ),
-    # The Inclusions define a list of 2 traits that define a valid combination as such:
-    # If the first trait has one of it's listed attribute values, then the second trait must also have one of
-    # it's listed attribute values.  See comments below for examples.
     "Inclusions": (
         # --------------------------------- Hair/Body Inclusions ---------------------------------
-        # If the 'Hair' trait starts with 'Dark_*', then the body must also start with 'Dark_*'.
         (("Hair", "Dark_*"), ("Body", "Dark_*")),
-        # If the 'Hair' trait starts with 'Light_*', then the body must also start with 'Light_*'.
         (("Hair", "Light_*"), ("Body", "Light_*")),
-        # If the 'Hair' trait starts with 'Medium_*', then the body must also start with 'Medium_*'.
         (("Hair", "Medium_*"), ("Body", "Medium_*")),
         # --------------------------------- Body/Shoes Inclusions ---------------------------------
         # Dark_Bell_Bottoms
-        #   If the 'Body' trait is Dark_Bell_Bottoms, then the 'Shoes' trait must be in the specified list of shoes.
         (
             ("Body", "Dark_Bell_Bottoms"),
             ("Shoes", ("Boots_Bell_Bottoms", "Converse_Bell_Bottoms", "Dark_High_Heels_Bell_Bottoms", "Dark_Slippers_Bell_Bottoms", "Dress_Shoes_Bell_Bottoms", "Socks_Slides_Bell_Bottoms")),
@@ -433,19 +402,14 @@ NFT_DEFINITION_BOOKWORMS = {
             ("Shoes", ("Boots", "Converse_Tracksuit", "Light_High_Heels_Tracksuit", "Light_Slippers_Tracksuit", "Dress_Shoes_Tracksuit", "Socks_Slides_Tracksuit")),
         ),
     ),
-    # 'Exclusions' define invalid trait combinations.  See below comments for examples.
     "Exclusions": (
-        # --------------------------------- Boring/Plain Exclusions ---------------------------------
-        # A TV_Wall cannot be combined with a Concrete Floor.
+        ############### Boring/Plain Exclusions 12/06/21 ###############
         {"Back Wall": "TV_Wall", "Floor": "Concrete"},
-        # A TV_Wall cannot be combined with a Leather Chair.
         {"Back Wall": "TV_Wall", "Chair": "Leather_Chair"},
-        # A Concrete floor cannot be combined with a Leather Chair.
         {"Floor": "Concrete", "Chair": "Leather_Chair"},
-        # ------------------------------- John's Body/Hair Exclusions -------------------------------
+        ############### John's Body/Hair Exclusions 12/06/21 ###############
         # The Dark_Beehive and Medium_Beehive scalp skin colors are both light.  They do not match their Dark_* and
-        # Medium_* bodies.  The artist should really darken their scalp skin tones, and possibly darken their hair color.
-        # But for now, just exclude the Dark_Beehive and Medium_Beehive.
+        # Medium_* bodies.  The artist should darken their scalp skin tones, and possibly darken their hair color.
         {
             "Hair": (
                 "Dark_Beehive",
@@ -466,35 +430,37 @@ NFT_DEFINITION_BOOKWORMS = {
         {"Hair": "Dark_Rainbow_Hair"},
         ## The Mullet does not look natural on the Dark_* bodies.  Unless they dyed their hair.
         {"Hair": "Mullet", "Body": "Dark_*"},
-        # ------------------------------- Unfashionable Body/Shoe Exclusions -------------------------------
-        # *_Manwoman
-        {
-            "Body": "*_Manwoman",
-            "Shoes": (
-                "Converse*",
-                "Dress_Shoes_*",
-            ),
-        },
-        # *_Robe
-        {
-            "Body": "*_Robe",
-            "Shoes": (
-                "Boots*",
-                "Converse*",
-                "Dress_Shoes_*",
-                "*_High_Heels_*",
-            ),
-        },
-        # *_Suit
-        {"Body": "*_Suit", "Shoes": ("Converse*", "*_High_Heels_*", "*_Slippers_*", "Socks_Slides_*")},
-        # *_Tracksuit
-        {
-            "Body": "*_Tracksuit",
-            "Shoes": (
-                "Boots*",
-                "Dress_Shoes_*",
-                "*_High_Heels_*",
-            ),
-        },
+        ############### John's Body/Shoe Exclusions 12/06/21 ###############
+        # ## *_Bell_Bottoms
+        # ##{"Body": "*_Bell_Bottoms", "Shoes": "*_High_Heels_*"},
+        # # *_Manwoman
+        # {
+        #     "Body": "*_Manwoman",
+        #     "Shoes": (
+        #         "Converse*",
+        #         "Dress_Shoes_*",
+        #     ),
+        # },
+        # # *_Robe
+        # {
+        #     "Body": "*_Robe",
+        #     "Shoes": (
+        #         "Boots*",
+        #         "Converse*",
+        #         "Dress_Shoes_*",
+        #         "*_High_Heels_*",
+        #     ),
+        # },
+        # # *_Suit
+        # {"Body": "*_Suit", "Shoes": ("Converse*", "*_High_Heels_*", "*_Slippers_*", "Socks_Slides_*")},
+        # # *_Tracksuit
+        # {
+        #     "Body": "*_Tracksuit",
+        #     "Shoes": (
+        #         "Boots*",
+        #         "Dress_Shoes_*",
+        #         "*_High_Heels_*",
+        #     ),
+        # },
     ),
 }
